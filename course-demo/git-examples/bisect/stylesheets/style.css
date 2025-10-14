@@ -1,0 +1,40 @@
+input  {
+  font-size: 1rem;
+  padding: 3px;
+}
+
+input[type=submit] {
+  width: 80px;
+  border-radius: 3px;
+  background-color: lightgray;
+}
+
+a {
+  font-size: 1.2rem;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+footer {
+  margin-top: 20px;
+}
+
+nav {
+  margin-bottom: 20px;
+}
+
+.cat {
+  background-color: lightgreen;
+}
+
+.dog {
+  background-color: lightcoral;
+}
+
+.fish {
+  background-color: lightsalmon;
+}
+
+.tiger {
+  background-color: darkred;
+}
