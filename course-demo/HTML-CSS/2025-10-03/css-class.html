@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS class屬性練習</title>
+    <link rel="stylesheet" href="css-class.css" />
+  </head>
+  <body>
+    <ol>
+      <li>li1</li>
+      <li class="even">li2</li>
+      <li>li3</li>
+      <li class="even">li4</li>
+      <li>li5</li>
+      <li class="even">li6</li>
+      <li>li7</li>
+      <li id="li8">this is "li8" id selector</li>
+      <!-- li.li9{li9} -->
+      <li class="li9">li9</li>
+      <!-- li#li10{li10} -->
+      <li id="li10">li10</li>
+      <!-- li#li11.li11.fz30{li11} -->
+      <li id="li11" class="li11 fz30">li11</li>
+      <!-- 會自動歸類被分開寫的屬性 -->
+      <!-- li.li12#li12.fz30{li12} -->
+      <li class="li12 fz30" id="li12">li12</li>
+
+      <!-- 有序遞增文字($) -->
+      <!-- ol>li{li$}*5 -->
+      <ol>
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+        <li>li4</li>
+        <li>li5</li>
+      </ol>
+    </ol>
+  </body>
+</html>
