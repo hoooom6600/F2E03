@@ -2,4 +2,4 @@
 
 1. HTML & CSS
 
-   - [課表](https://hoooom6600.github.io/F2E03/course-schedule.html)
+   - [課表](https://hoooom6600.github.io/F2E03/HW/course-schedule.html)
