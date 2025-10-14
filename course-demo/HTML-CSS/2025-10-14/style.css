@@ -1,0 +1,41 @@
+section {
+  margin: 100px;
+}
+
+div {
+  padding: 20px;
+  border: 1px solid black;
+}
+
+img {
+  width: 260px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+.login-link,
+.buy-btn {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: blue;
+  color: white;
+}
+
+.job {
+  color: #626264;
+}
+
+.job-hint {
+  color: #13ab67;
+}
+
+.card {
+  width: 300px;
+}
+
+.buy-btn {
+  display: inline-block;
+  margin-top: 20px;
+}
