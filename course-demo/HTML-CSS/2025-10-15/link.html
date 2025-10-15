@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>嵌入外站的標籤</title>
+    <link rel="stylesheet" href="../../reset.css" />
+    <link rel="stylesheet" href="link.css" />
+  </head>
+  <body>
+    <section>
+      <h2>&lt;iframe&gt;</h2>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14459.77316260575!2d121.5559306267695!3d25.03599851799849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6e9d93249%3A0xd508f7b3aa02d931!2z5Y-w5YyXMTAx6KeA5pmv5Y-w!5e0!3m2!1szh-TW!2stw!4v1760515943040!5m2!1szh-TW!2stw"
+        width="600"
+        height="450"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      >
+      </iframe>
+
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/IxPANmjPaek?si=POhkZFvYF2MVwUZc"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      >
+      </iframe>
+    </section>
+
+    <section>
+      <h2>&lt;object&gt;</h2>
+      <object data="demo.pdf" type=""></object>
+    </section>
+
+    <section>
+      <h2>&lt;picture&gt;</h2>
+      <picture>
+        <source srcset="big-usagi.jpg" media="(min-width: 1200px)" />
+        <source srcset="small-usagi.webp" media="(min-width: 900px)" />
+        <img src="normal-usagi.webp" alt="" />
+      </picture>
+    </section>
+  </body>
+</html>
