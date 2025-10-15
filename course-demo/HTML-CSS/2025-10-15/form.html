@@ -11,6 +11,7 @@
     <section>
       <form action="#" method="post">
         <h2>登入頁面</h2>
+        <div>這是進度條<progress max="100" value="30"></progress></div>
         <div>
           <label>
             帳號
@@ -24,8 +25,8 @@
           </label>
         </div>
         <div>
-          <label for="tel"
-            >電話
+          <label for="tel">
+            電話
             <input
               type="tel"
               name="tel"
@@ -76,6 +77,25 @@
               step="0.01"
               required
             />
+          </label>
+        </div>
+        <div>
+          <label>
+            問題種類
+            <!-- <select name="topic" multiple> -->
+            <select name="topic">
+              <option value="" disabled selected hidden>請選擇問題種類</option>
+              <optgroup label="會員功能">
+                <option value="info">更改資料</option>
+                <option value="delete">註銷申請</option>
+              </optgroup>
+
+              <optgroup label="購物系統">
+                <option value="history">購買紀錄</option>
+                <option value="change">退換服務</option>
+              </optgroup>
+              <option value="else">其他</option>
+            </select>
           </label>
         </div>
         <div>

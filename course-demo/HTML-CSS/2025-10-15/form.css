@@ -2,6 +2,11 @@ section {
   margin: 100px;
 }
 
+h2 {
+  font-size: 26px;
+}
+
+select,
 textarea,
 .input {
   border: 1px solid black;
