@@ -11,22 +11,81 @@
     <section>
       <form action="#" method="post">
         <h2>登入頁面</h2>
-        <input
-          type="text"
-          name="username"
-          placeholder="帳號"
-          class="text-input"
-        />
-        <input
-          type="text"
-          name="password"
-          placeholder="密碼"
-          class="text-input"
-        />
+        <label>
+          帳號
+          <input
+            type="text"
+            name="username"
+            placeholder="帳號"
+            class="input"
+            required
+          />
+        </label>
+        <label for="tel"
+          >電話
+          <input
+            type="tel"
+            name="tel"
+            placeholder="電話"
+            class="input"
+            id="tel"
+            required
+          />
+        </label>
+        <label for="password">
+          密碼
+          <input
+            type="password"
+            name="password"
+            placeholder="密碼"
+            class="input"
+            id="password"
+            required
+          />
+        </label>
+        <label for="email">
+          信箱
+          <input
+            type="email"
+            name="email"
+            placeholder="信箱"
+            class="input"
+            id="email"
+            required
+          />
+        </label>
+        <label for="score">
+          分數
+          <input
+            type="number"
+            name="score"
+            placeholder="分數"
+            class="input"
+            id="score"
+            min="0"
+            max="100"
+            step="0.01"
+            required
+          />
+        </label>
         <input type="submit" class="btn" value="input的登入" />
         <button type="submit" class="btn">button的登入</button>
         <button type="reset" class="btn">清空</button>
       </form>
+    </section>
+    <section>
+      <label for="date">
+        日期<input type="date" class="input" id="date" required />
+      </label>
+      <input type="button" class="input" value="input的button" required />
+      <label for="color">
+        顏色
+        <input type="color" class="input" id="color" required />
+      </label>
+      <label for="file">
+        選擇檔案
+        <input type="file" class="input" id="file" required />
+      </label>
     </section>
   </body>
 </html>
