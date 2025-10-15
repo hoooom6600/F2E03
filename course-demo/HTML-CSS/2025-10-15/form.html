@@ -79,6 +79,13 @@
           </label>
         </div>
         <div>
+          <label>
+            問題描述
+            <textarea cols="50" rows="20" placeholder="詳細描述"></textarea>
+          </label>
+        </div>
+        <div>
+          <h2>更多互動的input</h2>
           <input type="image" class="btn img" src="chrome-icon.svg" alt="" />
           <input type="submit" class="btn" value="input的登入" />
           <button type="submit" class="btn">button的登入</button>
@@ -146,6 +153,68 @@
           </tr>
         </tbody>
       </table>
+    </section>
+
+    <section>
+      <h2>範圍</h2>
+      <label>
+        多寡
+        <input type="range" min="0" max="100" step="5" value="20" />
+      </label>
+    </section>
+
+    <section>
+      <h2>單選題</h2>
+      <fieldset>
+        <legend>隨意挑一種水果</legend>
+        <label>
+          <input type="radio" name="pick-fruit" value="apple" />
+          蘋果
+        </label>
+        <label>
+          <input type="radio" name="pick-fruit" value="strawberry" />
+          草莓
+        </label>
+        <label>
+          <input type="radio" name="pick-fruit" value="lemon" />
+          檸檬
+        </label>
+        <label>
+          <input type="radio" name="pick-fruit" value="grape" checked />
+          葡萄
+        </label>
+        <label>
+          <input type="radio" name="pick-fruit" value="pineapple" />
+          鳳梨
+        </label>
+      </fieldset>
+    </section>
+
+    <section>
+      <h2>複選題</h2>
+      <fieldset>
+        <legend>吃過的水果</legend>
+        <label>
+          <input type="checkbox" name="raten-fruit" value="apple" checked />
+          蘋果
+        </label>
+        <label>
+          <input type="checkbox" name="raten-fruit" value="strawberry" />
+          草莓
+        </label>
+        <label>
+          <input type="checkbox" name="raten-fruit" value="lemon" />
+          檸檬
+        </label>
+        <label>
+          <input type="checkbox" name="raten-fruit" value="grape" />
+          葡萄
+        </label>
+        <label>
+          <input type="checkbox" name="raten-fruit" value="pineapple" />
+          鳳梨
+        </label>
+      </fieldset>
     </section>
   </body>
 </html>

@@ -2,6 +2,7 @@ section {
   margin: 100px;
 }
 
+textarea,
 .input {
   border: 1px solid black;
 }
