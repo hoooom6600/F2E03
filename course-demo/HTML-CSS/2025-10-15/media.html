@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>多媒體檔案嵌入練習</title>
+    <link rel="stylesheet" href="../../reset.css" />
+  </head>
+  <body>
+    <section>
+      <img src="chrome-icon.svg" alt="chrome browser" />
+    </section>
+
+    <section>
+      <video src="ship.mp4" controls autoplay muted loop>
+        <track default kind="captions" srclang="zh-TW" src="ship.vtt" />
+        帆船影片，這個影片本身沒有音訊
+      </video>
+      <a href="https://www.pexels.com/zh-tw/video/27443269/" target="_blank"
+        >影片來源
+      </a>
+      <hr />
+      <audio src="ocean.mp3" controls type="audio/mp3"></audio>
+      <a
+        href="https://www.motionelements.com/zh-hant/stock-music-28901226-element"
+        >音訊來源</a
+      >
+    </section>
+  </body>
+</html>

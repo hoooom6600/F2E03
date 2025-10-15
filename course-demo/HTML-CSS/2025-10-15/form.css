@@ -1,0 +1,13 @@
+section {
+  margin: 100px;
+}
+
+.text-input {
+  border: 1px solid black;
+}
+
+.btn {
+  padding: 5px;
+  border-radius: 3px;
+  background-color: #faa;
+}
