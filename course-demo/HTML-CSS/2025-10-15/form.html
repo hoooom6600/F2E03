@@ -11,81 +11,141 @@
     <section>
       <form action="#" method="post">
         <h2>登入頁面</h2>
-        <label>
-          帳號
-          <input
-            type="text"
-            name="username"
-            placeholder="帳號"
-            class="input"
-            required
-          />
-        </label>
-        <label for="tel"
-          >電話
-          <input
-            type="tel"
-            name="tel"
-            placeholder="電話"
-            class="input"
-            id="tel"
-            required
-          />
-        </label>
-        <label for="password">
-          密碼
-          <input
-            type="password"
-            name="password"
-            placeholder="密碼"
-            class="input"
-            id="password"
-            required
-          />
-        </label>
-        <label for="email">
-          信箱
-          <input
-            type="email"
-            name="email"
-            placeholder="信箱"
-            class="input"
-            id="email"
-            required
-          />
-        </label>
-        <label for="score">
-          分數
-          <input
-            type="number"
-            name="score"
-            placeholder="分數"
-            class="input"
-            id="score"
-            min="0"
-            max="100"
-            step="0.01"
-            required
-          />
-        </label>
-        <input type="submit" class="btn" value="input的登入" />
-        <button type="submit" class="btn">button的登入</button>
-        <button type="reset" class="btn">清空</button>
+        <div>
+          <label>
+            帳號
+            <input
+              type="text"
+              name="username"
+              placeholder="帳號"
+              class="input"
+              required
+            />
+          </label>
+        </div>
+        <div>
+          <label for="tel"
+            >電話
+            <input
+              type="tel"
+              name="tel"
+              placeholder="電話"
+              class="input"
+              id="tel"
+              required
+            />
+          </label>
+        </div>
+        <div>
+          <label for="password">
+            密碼
+            <input
+              type="password"
+              name="password"
+              placeholder="密碼"
+              class="input"
+              id="password"
+              required
+            />
+          </label>
+        </div>
+        <div>
+          <label for="email">
+            信箱
+            <input
+              type="email"
+              name="email"
+              placeholder="信箱"
+              class="input"
+              id="email"
+              required
+            />
+          </label>
+        </div>
+        <div>
+          <label for="score">
+            分數
+            <input
+              type="number"
+              name="score"
+              placeholder="分數"
+              class="input"
+              id="score"
+              min="0"
+              max="100"
+              step="0.01"
+              required
+            />
+          </label>
+        </div>
+        <div>
+          <input type="image" class="btn img" src="chrome-icon.svg" alt="" />
+          <input type="submit" class="btn" value="input的登入" />
+          <button type="submit" class="btn">button的登入</button>
+          <button type="reset" class="btn">清空</button>
+        </div>
       </form>
     </section>
     <section>
-      <label for="date">
-        日期<input type="date" class="input" id="date" required />
-      </label>
-      <input type="button" class="input" value="input的button" required />
-      <label for="color">
-        顏色
-        <input type="color" class="input" id="color" required />
-      </label>
-      <label for="file">
-        選擇檔案
-        <input type="file" class="input" id="file" required />
-      </label>
+      <div>
+        <label for="date">
+          日期<input type="date" class="input" id="date" required />
+        </label>
+      </div>
+      <div>
+        <input type="button" class="input" value="input的button" required />
+      </div>
+      <div>
+        <label for="color">
+          顏色
+          <input type="color" class="input" id="color" required />
+        </label>
+      </div>
+      <div>
+        <label for="file">
+          選擇檔案
+          <input type="file" class="input" id="file" required />
+        </label>
+      </div>
+    </section>
+
+    <section>
+      <table>
+        <caption>
+          button VS input
+        </caption>
+        <thead>
+          <tr>
+            <th></th>
+            <th class="no-right-border">input</th>
+            <th class="no-left-border no-right-border"></th>
+            <th class="no-left-border">button</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th rowspan="4">type</th>
+            <td class="no-right-border">button</td>
+            <td class="no-left-border no-right-border">=</td>
+            <td class="no-left-border"><span>*</span>button</td>
+          </tr>
+          <tr>
+            <td class="no-right-border">submit</td>
+            <td class="no-left-border no-right-border">=</td>
+            <td class="no-left-border">submit</td>
+          </tr>
+          <tr class="highlight">
+            <td class="no-right-border">image</td>
+            <td class="no-left-border no-right-border">=</td>
+            <td class="no-left-border">submit</td>
+          </tr>
+          <tr>
+            <td class="no-right-border">reset</td>
+            <td class="no-left-border no-right-border">=</td>
+            <td class="no-left-border">reset</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
   </body>
 </html>
