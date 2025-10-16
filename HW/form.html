@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>表單-025_李怡潔</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="form.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>F2E02 表單練習</h1>
+        <h2 class="instruction">僅供新尖兵 F2E02 表單切版練習作業</h2>
+        <p class="instruction-save">
+          <a href="#" class="login">登入 Google</a>
+          <span class="save">即可儲存進度。</span>
+          <a href="#" class="detail">瞭解詳情</a>
+        </p>
+        <p class="highlight">* 表示必填問題</p>
+      </div>
+    </header>
+    <main>
+      <form action="#" method="post">
+        <section>
+          <label for="name" class="q-title"
+            >姓名 <span class="highlight">*</span></label
+          >
+          <input
+            type="text"
+            name="name"
+            class="answer border-bottom"
+            id="name"
+            placeholder="您的回答"
+            required
+          />
+        </section>
+        <section>
+          <label for="email" class="q-title"
+            >信箱 <span class="highlight">*</span></label
+          >
+          <input
+            type="email"
+            name="email"
+            class="answer border-bottom"
+            id="email"
+            placeholder="您的回答"
+            required
+          />
+        </section>
+        <section>
+          <label for="birthday" class="q-title">生日</label>
+          <span class="q-instruction">日期</span>
+          <input
+            type="date"
+            name="birthday"
+            class="answer border-bottom"
+            id="birthday"
+          />
+        </section>
+        <section>
+          <label for="whisper" class="q-title">想跟老師說悄悄話</label>
+          <input
+            type="text"
+            name="whisper"
+            class="answer border-bottom"
+            id="whisper"
+            placeholder="您的回答"
+          />
+        </section>
+        <section>
+          <p class="q-title">喜歡的顏色</p>
+
+          <label for="yellow" class="answer">
+            <input
+              type="radio"
+              name="color"
+              class="choice"
+              id="yellow"
+              value="yellow"
+            />黃</label
+          >
+
+          <label for="green" class="answer">
+            <input
+              type="radio"
+              name="color"
+              class="choice"
+              id="green"
+              value="green"
+            />綠</label
+          >
+
+          <label for="red" class="answer">
+            <input
+              type="radio"
+              name="color"
+              class="choice"
+              id="red"
+              value="red"
+            />紅</label
+          >
+        </section>
+        <section>
+          <p class="q-title">喜歡吃的飲食類型</p>
+          <label for="chinese" class="answer"
+            ><input
+              type="checkbox"
+              name="food-type"
+              class="choice"
+              id="chinese"
+            />中式</label
+          >
+          <label for="italian" class="answer"
+            ><input
+              type="checkbox"
+              name="food-type"
+              class="choice"
+              id="italian"
+            />義式</label
+          >
+          <label for="japanese" class="answer"
+            ><input
+              type="checkbox"
+              name="food-type"
+              class="choice"
+              id="japanese"
+            />日式</label
+          >
+          <label for="korean" class="answer"
+            ><input
+              type="checkbox"
+              name="food-type"
+              class="choice"
+              id="korean"
+            />韓式</label
+          >
+          <label for="american" class="answer"
+            ><input
+              type="checkbox"
+              name="food-type"
+              class="choice"
+              id="american"
+            />美式</label
+          >
+          <label for="thai" class="answer"
+            ><input
+              type="checkbox"
+              name="food-type"
+              class="choice"
+              id="thai"
+            />泰式</label
+          >
+        </section>
+        <section>
+          <label for="country" class="q-title"
+            >最想去的國家 (使用 optgroup 將選項分為不同洲)</label
+          >
+          <select name="country" class="answer all-border" id="country">
+            <option value="" selected disabled hidden>選擇</option>
+            <optgroup label="亞洲">
+              <option name="country" value="japan">日本</option>
+              <option name="country" value="korea">韓國</option>
+              <option name="country" value="thailand">泰國</option>
+            </optgroup>
+            <optgroup label="歐洲">
+              <option name="country" value="germany">德國</option>
+              <option name="country" value="uk">英國</option>
+            </optgroup>
+            <optgroup label="北美">
+              <option name="country" value="canada">加拿大</option>
+              <option name="country" value="us">美國</option>
+            </optgroup>
+          </select>
+        </section>
+
+        <section class="btns">
+          <button type="submit" class="color-btn">提交</button>
+          <button type="reset" class="transparent-btn">清除表單</button>
+          <p class="notice">請勿利用 Google 表單送出密碼。</p>
+        </section>
+      </form>
+    </main>
+    <footer>
+      <div>
+        <p>這份表單是在 五倍紅寶石程式資訊教育股份有限公司 中建立。</p>
+        <p class="report">
+          這份表單很可疑嗎？ <a href="#" target="_blank">報告</a>
+        </p>
+      </div>
+      <div>
+        <p>
+          <a href="#" target="_blank" class="about">
+            <img
+              class="logo"
+              src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_dark_clr_74x24px.svg"
+              alt="Google LOGO"
+            />
+            <span>表單</span>
+          </a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
