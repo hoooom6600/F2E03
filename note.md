@@ -163,10 +163,13 @@
 - 定義: input 和 output 的關係
 - 目的: 把複雜的邏輯包在裡面，給出想要的結果（回傳值）
 - 用法:
+
   - 函數名字後加上() --> 呼叫、執行
+  - 在 JS 世界裡，函數本身就是一種值，所以可以把它 assign 給一個變量，如：<br>
+    `const hello = function () {...}`
   - 定義內是參數 (parameter)
-    - ES6 新寫法，可以用 `...` 來代表收取所有引數，不管數量，但會收成一個**陣列**
-    - 預設參數設定 `parammeter = value`
+  - ES6 新寫法，可以用 `...` 來代表收取所有引數，不管數量，但會收成一個**陣列**
+  - 預設參數設定 `parammeter = value`
   - 呼叫的是引數 (argument)
     - 有規定參數但少給: 該引數位置顯示 `undefined`；多給則**省略**多出的
   - 回傳值 (return)
@@ -180,8 +183,14 @@
         所以沒有固定答案<br>
         個人想法: JS 裡所有函數不管有沒有 return 都有 return value，因為就算是 undefined，也會被轉譯成 boolean 的 false
   - REPL = Read + Eval + Print + Loop
+
     - console.log() 就是一個 REPL
     - 無窮迴圈不一定會當機，比如作業系統就是不斷在等待動作指令
+
+  - 種類
+    - 一般正規寫法
+    - 匿名函數
+    - 箭頭函數
 
 ## 陣列 TODO:
 
