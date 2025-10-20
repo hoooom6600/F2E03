@@ -115,3 +115,12 @@ function getTotal(acc, currentValue) {
 }
 
 console.log(nums2.filter(getEvens).map(getSquares).reduce(getTotal));
+
+// 改成使用箭頭函數
+console.log("綜合練習(改成使用箭頭函數): 1 - 10 中，偶數的平方總和");
+console.log(
+  nums2
+    .filter((num) => num % 2 == 0)
+    .map((even) => Math.pow(even, 2))
+    .reduce((acc, currentValue) => acc + currentValue)
+);
