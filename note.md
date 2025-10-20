@@ -298,9 +298,10 @@
       - 參考(Reference)
         - 指向某記憶體位置
 
-## DOM (Document Object Model)
+## DOM (Document Object Model) 文件物件模型
 
-- 操作 DOM ≠ 寫 JS
+- DOM Tree: DOM 樹狀結構
+- 操作 DOM ≠ 寫 JS； DOM ≠ HTML
 - 不是 JS 直接讀取 HTML，功勞是在於**_瀏覽器_**
 - `document.querySelector` 的 `document` 是瀏覽器提供的 (WEB API)，不是 JS 的
   - HTML 經過瀏覽器物化變成 DOM，才會被 JS 間接存取
@@ -333,12 +334,21 @@
 
 ### 選取
 
-- `document.getElementById/Class();`
-- `document.querySelector();`: 較後期推出的用法，須加上 `.` 或 `#`
-- 選取結果（以 <div id="hi">hello</div> 為例）
+- getElement 系列
+  - `document.getElementById()`
+  - `document.getElementsByClassName()`: Element**_s_**
+  - `document.getElementsByTagName()`: Element**_s_**
+- querySelector 系列
+  - `document.querySelector()`
+  - `querySelectorAll()`
+    - 選取結果是 `NodeList` ，同上，可以用 `array[index]` 訪問
+  - 較後期推出的用法，須加上 `.` 或 `#`
+- 選取結果（以 `<div id="hi">hello</div>` 為例）
   - `div#hi`
   - `<div id="hi">hello</div>`
   - 都代表有抓取到，只是瀏覽器顯示問題，多重整幾次會有不同顯示結果
+- 以 class 選取的結果會是 `HTMLCollection` 集合，可以用 `array[index]` 來取用個別元素<br>但不完全等同陣列，因為無法使用內建的陣列方法
+- `HTMLCollection` ≠ `NodeList`
 - 如果 HTML 有 id，可以不用特別選取抓取
   - 只會抓第一個符合該 id 的元素
   - 但沒事不要這樣做!!!!!
@@ -347,22 +357,40 @@
 
 - `.textContent`: 不會渲染 HTML 標籤，是純文字
 - `.innerHTML`: 會渲染 HTML 標籤
+- `.innerText`: 取得經 CSS 渲染後的文字
 - `.innerHTML`因為會渲染 HTML，所以效能會比`.textContent`差。<br>
   但也不用太擔心，因為現在電腦科技效能過剩。
+- `.value`: `<input>`的值。不管 type 是否為 number，在 JS 取用都會解析為**_字串_**。做運算時記得轉成數字型態
 
 ### 事件監聽器(event listener)
 
-- `document.addEventListener(<觸發事件>, <callback function>)`
+- `document / target.addEventListener(<觸發事件>, <callback function>)`
+  - callback function 若已經在其他地方定義宣告，則不用小括號
 - 和 JS 在 HTML 裡的擺放位置相關
   - 若執意放在`<head>`內或其他位置，觸發事件則為`DOMContentLoaded`
 - 事件
-  - DOMContentLoaded
-  - 滑鼠系列
-    - click
-    - mouseover
-    - mousemove
-    - mousedown
-    - mouseup
+
+  - DOM
+    - onclick 屬性
+    - 以 DOM 來處理事件比較不好維護，且無法重複使用
+  - JS
+    - DOMContentLoaded
+    - 滑鼠系列
+      - click
+      - mouseover
+      - mousemove
+      - mousedown
+      - mouseup
+    - 鍵盤系列
+  - 預設行為
+
+    - 比如 `<a>` 標籤的超連結
+    - 阻止預設行為: `.preventDefault()`
+
+  - on 系列 vs event listener 系列
+    |項目|on 系列|event listener 系列|
+    |:--:|:--:|:--:|
+    |重複使用|X|O|
 
 # RWD TODO:
 
