@@ -280,13 +280,14 @@
         - 判斷函數一定要有 `return`
     - 加總陣列每個元素的值
       - 運用 for 迴圈
-      - `<array>.reduce(<執行加總函數>)`
+      - `<array>.reduce(<執行累進函數>)`
         - 有逐一丟出元素作為引數的效果
         - reduce 方法本身接受二個參數，
           - callback function
-          - 加總起始值（可寫可不寫，預設為陣列內第一個元素）
-        - 加總函數要二個參數 `function (<累加值>, <目前索引的值(被丟出的引數)>)`
-          - 每一輪 function 的 return value 就是下一輪 function 的累加值
+          - 起始值（可寫可不寫，預設為陣列內第一個元素，然後少跑一圈）
+        - 累進函數要二個參數 `function (<累進值>, <目前索引的值(被丟出的引數)>)`
+          - 每一輪 function 的 return value 就是下一輪 function 的累進值
+          - 加減乘除都可以，不一定只能用加法
     - 修改陣列
       - 參考(Reference)
         - 指向某記憶體位置
