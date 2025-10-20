@@ -297,6 +297,72 @@
       - 參考(Reference)
         - 指向某記憶體位置
 
+## DOM (Document Object Model)
+
+- 操作 DOM ≠ 寫 JS
+- 不是 JS 直接讀取 HTML，功勞是在於**_瀏覽器_**
+- `document.querySelector` 的 `document` 是瀏覽器提供的 (WEB API)，不是 JS 的
+  - HTML 經過瀏覽器物化變成 DOM，才會被 JS 間接存取
+  - 檢查方式，用 Node 去執行 `document`
+
+### 瀏覽器的運作順序
+
+- 一般狀況（沒有 `defer`）
+  - 遇到要下載檔案（如：外聯 JS）以及執行期間會停止渲染
+  - 下載檔案之後會馬上執行
+- 有 `defer`
+  - 下載檔案之後不會馬上執行，但下載期間一樣不會渲染
+  - 等到全部 HTML 渲染完才會執行
+- 以上二種，如果 JS 檔案很大，不管放在哪裡，有沒有 `defer` 都會使渲染卡住
+- async
+  - 下載檔案的同時，仍會繼續渲染
+  - 檔案太大時，不會造成渲染阻塞
+  - 下載完會執行檔案
+  - **_也會有可能抓不到 HTML 的問題_**
+  - 主要目的不在於處理載入 vs 渲染的問題
+  - 通常用在埋 GA code (Google Analytics 流量分析)，或者廣告欄位。因為不在乎與網頁的互動
+- 想確保可以隨時抓取到 HTML: `defer` >>>>>>>>>>>>>>>> 一般 = async
+
+### HTML 外聯 JS 的擺放位置
+
+- `<head>` 內
+- `</body>` 上一行
+- `defer` 屬性: 延遲讀取。這樣隨便放哪都可以
+- 擺放位置和效能無關
+
+### 選取
+
+- `document.getElementById/Class();`
+- `document.querySelector();`: 較後期推出的用法，須加上 `.` 或 `#`
+- 選取結果（以 <div id="hi">hello</div> 為例）
+  - `div#hi`
+  - `<div id="hi">hello</div>`
+  - 都代表有抓取到，只是瀏覽器顯示問題，多重整幾次會有不同顯示結果
+- 如果 HTML 有 id，可以不用特別選取抓取
+  - 只會抓第一個符合該 id 的元素
+  - 但沒事不要這樣做!!!!!
+
+### 修改
+
+- `.textContent`: 不會渲染 HTML 標籤，是純文字
+- `.innerHTML`: 會渲染 HTML 標籤
+- `.innerHTML`因為會渲染 HTML，所以效能會比`.textContent`差。<br>
+  但也不用太擔心，因為現在電腦科技效能過剩。
+
+### 事件監聽器(event listener)
+
+- `document.addEventListener(<觸發事件>, <callback function>)`
+- 和 JS 在 HTML 裡的擺放位置相關
+  - 若執意放在`<head>`內或其他位置，觸發事件則為`DOMContentLoaded`
+- 事件
+  - DOMContentLoaded
+  - 滑鼠系列
+    - click
+    - mouseover
+    - mousemove
+    - mousedown
+    - mouseup
+
 # RWD TODO:
 
 # 終端機(Ternimal)使用
@@ -407,3 +473,8 @@
 - 絕對不要不宣告就使用變數
 - 巢狀結構不要用三元運算，閱讀性和維護性都低
 - 避免波動拳程式碼
+- 操作 DOM 有錯誤
+  - 少了選取器符號或引號
+  - 拼寫錯誤
+  - HTML 引用位置錯誤
+- Early Return: 提早結束，因為前面是在檢查，重點在最後
