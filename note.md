@@ -140,6 +140,7 @@
     - 執行指令: 到對應路徑輸入 `node <JS file name>`
     - 只認檔案內容，不管副檔名，不過沒事不會這樣做
       - 比如 node aa.py 也會執行，只要內容是 JaveScript 寫法
+    - 目的不在於網頁視覺處理(DOM)
   - Deno
     - 和 Node.js 是同一個作者，只是把 Node 錯誤的東西修改到 Deno
   - Bun
