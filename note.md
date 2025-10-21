@@ -341,7 +341,7 @@
   - `document.getElementsByTagName()`: Element**_s_**
 - querySelector 系列
   - `document.querySelector()`
-  - `querySelectorAll()`
+  - `document.querySelectorAll()`
     - 選取結果是 `NodeList` ，同上，可以用 `array[index]` 訪問
   - 較後期推出的用法，須加上 `.` 或 `#`
 - 選取結果（以 `<div id="hi">hello</div>` 為例）
@@ -356,12 +356,12 @@
 
 ### 修改
 
-- `.textContent`: 不會渲染 HTML 標籤，是純文字
-- `.innerHTML`: 會渲染 HTML 標籤
-- `.innerText`: 取得經 CSS 渲染後的文字
-- `.innerHTML`因為會渲染 HTML，所以效能會比`.textContent`差。<br>
+- `textContent`: 不會渲染 HTML 標籤，是純文字
+- `innerHTML`: 會渲染 HTML 標籤
+- `innerText`: 取得經 CSS 渲染後的文字
+- `innerHTML`因為會渲染 HTML，所以效能會比`.textContent`差。<br>
   但也不用太擔心，因為現在電腦科技效能過剩。
-- `.value`: `<input>`的值。不管 type 是否為 number，在 JS 取用都會解析為**_字串_**。做運算時記得轉成數字型態
+- `value`: `<input>`的值。不管 type 是否為 number，在 JS 取用都會解析為**_字串_**。做運算時記得轉成數字型態
 
 ### 事件監聽器(event listener)
 
@@ -396,14 +396,16 @@
     - | Capturing | Bubbling |
       | :-------: | :------: |
       |   true    |  false   |
-    - `.stopPropagation`: 暫停事件的傳遞（包含捕捉和冒泡期）
-    - `.target`: **_在哪裡轉彎_**，不是指稱一個物件元素
-    - `.currentTarget`: 事件在哪裡發生
+    - `stopPropagation`: 暫停事件的傳遞（包含捕捉和冒泡期）
+      - 防止捕捉: 在捕捉期調用，則後續的冒泡期也不會執行
+      - 防止冒泡: 在子元素呼叫 `.stopPropagation` ，避免父元素監聽器被觸發
+    - `target`: **_在哪裡轉彎_**，不是指稱一個物件元素
+    - `currentTarget`: 事件在哪裡發生
       - 使用情境之一: 在一堆撲克牌抽取中間的卡牌
   - 預設行為
 
     - 比如 `<a>` 標籤的超連結、`<form>` + `<button>` 的送出表單
-    - 阻止預設行為: `.preventDefault()`
+    - 阻止預設行為: `preventDefault()`
 
   - 監聽事件不一定要 return，看專案需求。若有需要透過事件得到某 return 結果
 
@@ -411,6 +413,50 @@
     |項目|on 系列|event listener 系列|
     |:--:|:--:|:--:|
     |重複使用|X|O|
+
+## 同步 (Synchronous) vs 非同步 (Asynchronous)
+
+### 同步 (Synchronous)
+
+- 觀念概論
+  - call stack (呼叫堆疊)
+  - First In last Out (FILO)
+  - JS 是單執行句
+  - 一般逐行執行
+
+### 非同步 (Asynchronous)
+
+- 觀念概論
+
+  - First In First Out (FIFO)
+  - queue
+
+    - 一般
+      - 要上場表演的條件是: **_快速通關的 queue_** 沒有人
+    - 快速通關
+      - 要上場表演的條件是: **_call stack_** 沒有人
+      - 比較重要的動作會歸類在快速通關，如： `fetch`
+
+  - 假如在 stack 放了一個無窮迴圈，則 queue 永遠不會執行
+  - 優先序: callstack > 快速通關 queue > 一般 queue
+
+  - 所以即便設定 `setTimeout` 0 毫秒，執行順序仍會落後
+
+  - [非同步圖像展示網站](http://latentflip.com/loupe/) (10 幾年前開發的網站，不支援 ES6 語法)
+
+- 常見用法
+
+  - `setTimeout(<callback function>, <millisecond>)`
+
+    - 像是設定鬧鐘，讀取到該行馬上就執行完畢了，只是內部的 callback 等待幾秒再發作
+    - WEB API (瀏覽器) 提供位置放等待發作的 callback
+    - 等待發作的 callback 會排隊 (queue)，等到上台表演再到 call stack
+
+  - `fetch`
+    - JSON (JavaScript Object Notation)
+      - JSON ≠ 物件
+      - 先有 JS 物件才有 JSON 誕生，所以語法是: JSON 長得像 JS 物件
+      - JSON 是**_純文字_**，看起來是陣列裡面有物件，但它只是**_純文字_**
 
 # RWD TODO:
 
