@@ -245,9 +245,12 @@
     - 抽出
       - 陣列開頭: `<array>.shift()`
       - 陣列尾端: `<array>.pop()`
-    - 抽換: 重新對第 n 個元素賦值
-      - `<array>[n] = <new value>`
-      - `<array>.splice(<在第n個索引位置>, <刪除n個>, <new value>)`
+    - 抽換
+      - 重新對第 n 個元素賦值
+        - `<array>[n] = <new value>`
+        - `<array>.splice(<在第n個索引位置>, <刪除n個>, <new value>)`
+      - 字串更改
+      - `<array>.replace(<被替換的文字>, <新文字>)`
     - 刪除
       - `<array>.splice(<在第n個索引位置>, <刪除n個>)`
       - 若第二個參數未提供，則會刪除起始位置以後的所有元素
@@ -453,10 +456,25 @@
     - 等待發作的 callback 會排隊 (queue)，等到上台表演再到 call stack
 
   - `fetch`
+    - 把資料拿回來，會是 JSON 格式
     - JSON (JavaScript Object Notation)
       - JSON ≠ 物件
       - 先有 JS 物件才有 JSON 誕生，所以語法是: JSON 長得像 JS 物件
       - JSON 是**_純文字_**，看起來是陣列裡面有物件，但它只是**_純文字_**
+    - Promise
+      - `then`
+        - 接 Promise 的回應
+        - 不是一個 then 就有一個新的 promise
+      - 內建方法
+        - `json()`: 將純文字的 JSON 格式轉換成 JSON 格式的檔案
+        - `text()`
+        - `catch()`: 處理 fetch 或 then 失敗問題
+          - 網址寫錯
+          - 轉不了 JSON
+          - 任何函數出錯
+    - 範例 API
+      - [{JSON} Placeholder](https://jsonplaceholder.typicode.com/)
+      - [Fake Store API](https://fakestoreapi.com/)
 
 # RWD TODO:
 
@@ -585,3 +603,10 @@
     | 1 - N - 2 |  2   |
 
   - 結果不一定是偶數
+
+# 執行不理想的常見原因
+
+- 執行路徑錯誤
+- 開錯檔案，改到其他專案一樣的檔名
+- 沒存檔
+- 註解不乾淨
