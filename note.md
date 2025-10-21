@@ -200,7 +200,8 @@
         - `(x, y) => 123`
         - `x => 123` 當參數只有一個的時候才能這樣寫，且沒事不要這樣寫
     - 回呼函數 (callback function): 當發生某事件，呼叫某函數
-    - 一等公民 (First Class Citizen): 如何看待數字、字串、陣列...etc，就如何看待函數
+      - 一等公民 (First Class Citizen): 如何看待數字、字串、陣列...etc，就如何看待函數
+      - 若 callback function 加上 ()，這樣實際上叫做 `callnow`
 
   - 高階函數 (Higher Order Function)
     - 使用別的函數當作參數
@@ -365,7 +366,10 @@
 ### 事件監聽器(event listener)
 
 - `document / target.addEventListener(<觸發事件>, <callback function>)`
-  - callback function 若已經在其他地方定義宣告，則不用小括號
+  - callback function 若已經在其他地方定義宣告，則不用小括號<br>
+    回到**_一等公民_**概念，如何看待數字、字串，就如何看待函數，所以通常不用 `()`，除非需要該 callback 的 return value<br>
+    把第二個參數當作**_參數_**，而非 function 本身。 <br>
+    若 callback assignment 加上 ()，這時候應該叫做 `callnow`
 - 和 JS 在 HTML 裡的擺放位置相關
   - 若執意放在`<head>`內或其他位置，觸發事件則為`DOMContentLoaded`
 - 事件
@@ -382,10 +386,26 @@
       - mousedown
       - mouseup
     - 鍵盤系列
+  - 事件流
+    - 監聽器的第三個參數
+      - 預設是 false (Bubbling)
+    - 捕捉 / 捕獲期 (Capturing)
+    - 冒泡期 (Bubbling)
+    - 目標期 (Targeting): 轉彎的地方
+    - 監聽器是加在事件流的出入口，並非 HTML 標籤
+    - | Capturing | Bubbling |
+      | :-------: | :------: |
+      |   true    |  false   |
+    - `.stopPropagation`: 暫停事件的傳遞（包含捕捉和冒泡期）
+    - `.target`: **_在哪裡轉彎_**，不是指稱一個物件元素
+    - `.currentTarget`: 事件在哪裡發生
+      - 使用情境之一: 在一堆撲克牌抽取中間的卡牌
   - 預設行為
 
-    - 比如 `<a>` 標籤的超連結
+    - 比如 `<a>` 標籤的超連結、`<form>` + `<button>` 的送出表單
     - 阻止預設行為: `.preventDefault()`
+
+  - 監聽事件不一定要 return，看專案需求。若有需要透過事件得到某 return 結果
 
   - on 系列 vs event listener 系列
     |項目|on 系列|event listener 系列|
@@ -507,3 +527,15 @@
   - 拼寫錯誤
   - HTML 引用位置錯誤
 - Early Return: 提早結束，因為前面是在檢查，重點在最後
+
+# 演算法
+
+- 銀行家捨入法
+
+  - 消彌四捨五入的不公平
+  - |   範圍    | 結果 |
+    | :-------: | :--: |
+    | 0 - N - 1 |  0   |
+    | 1 - N - 2 |  2   |
+
+  - 結果不一定是偶數
