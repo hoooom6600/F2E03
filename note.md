@@ -1,11 +1,48 @@
-# HTML & CSS TODO:
+# HTML
+
+## 表單提交
+
+- `<input>` 和 `<button>` type 比較
+  - | input  |     |  button  |
+    | :----: | :-: | :------: |
+    | button |  =  | \*button |
+    | submit |  =  |  submit  |
+    | image  |  =  |  submit  |
+    | reset  |  =  |  reset   |
+
+# CSS
 
 - 各家瀏覽器預設樣式不同
   - 比如複雜的表格，每格 rowspan 數量不一樣，高度會依不同瀏覽器設定而異，<br>
     以這個例子而言，CSS 規範並沒有對這種表格有明確的高度說明。
 - CSS reset
 
-# Git TODO:
+# Git
+
+## 基本觀念
+
+- 協同開發
+- 分散式版本控制
+  - 分散式: 每個協同開發者都會有一樣且完整的歷史紀錄，含： commit, branch ...etc
+  - 版本控制: 哆啦 A 夢的時光機，可以切換到任何歷史紀錄點的檔案狀態
+- 不用網路也能使用（若要協同交換 commit，需手動交換，如：匯出 commit 歷史紀錄到 USB 隨身碟）
+
+## 介面
+
+- 文字介面
+  - 終端機
+  - 程式碼內
+    - GitLens (VS Code 內的套件): 每一行會顯示誰更改了什麼內容
+- 圖形介面
+  - Git Graph (VS Code 內的套件): 把終端機的處理變成圖形介面來顯示與操作
+
+## 指令
+
+## 遠端存取平台（僅列出常見者）
+
+- GitHub
+- GitLab
+- Bitbucket
 
 # JaveScript
 
@@ -124,7 +161,7 @@
   - ==: 寬鬆相等（會轉換型別）
   - ===: 嚴格相等（不會轉換型別，date type 和 value 都要相等）
 
-## 關鍵字 TODO:
+## 關鍵字
 
 - continue: 直接進入下一輪迴圈。~~個人意見：翻譯上用 next 比較貼切，like 瓜哥：下面一位~~
 - break: 直接結束整個迴圈
@@ -480,7 +517,7 @@
       - [{JSON} Placeholder](https://jsonplaceholder.typicode.com/)
       - [Fake Store API](https://fakestoreapi.com/)
 
-# RWD TODO:
+# RWD
 
 # 終端機(Ternimal)使用
 
