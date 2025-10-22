@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
   const ul = document.querySelector("ul");
 
   button.addEventListener("click", (e) => {
-    // 取消 button 預設提交 form 行為，否則頁面會重整 ( URL 後面多一個問號)
+    // 取消 button 預設提交 form 行為，否則頁面會重整（URL 後面多一個問號）
     e.preventDefault();
 
     fetch(url)
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
           ul.innerHTML = "";
         }
 
-        // 取得符合搜尋條件的站點(陣列);
+        // 取得符合搜尋條件（限路名）的站點（陣列）;
         const value = input.value;
         const stationsMatch = stations.filter((station) => {
           return station.ar.includes(value);
