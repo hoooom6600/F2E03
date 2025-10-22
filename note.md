@@ -36,13 +36,108 @@
 - 圖形介面
   - Git Graph (VS Code 內的套件): 把終端機的處理變成圖形介面來顯示與操作
 
+## 狀態
+
+- 修改中（Modified）→ 工作目錄（Working Directory）
+- 已暫存（Staged）→ 暫存區（Staging Area）
+- 已提交（Committed）→ Git 倉庫（Repository）
+
 ## 指令
+
+### 設定
+
+- `git config --global`
+  - 必填，不然 commit 會被 blame
+    - username
+    - email
+  - 選填
+    - init.defaultBranch `<branch name>`
+- `git config list`
+
+### 本地操作
+
+- `q`: 終端機 Git 文末出現 `(END)` 或 `:` 字樣，按 `q` 離開
+- `.`: 代表 here，注意執行路徑謹慎使用
+- `git status`
+- `git add <file>`: 把工作目錄的檔案丟到暫存區
+  - 工作目錄是還沒 add 的狀態區域
+- `git commit -m <comment>`: 把暫存區的檔案丟到 Git 倉庫 (Repository)
+  - [Git 約定式提交](https://www.conventionalcommits.org/zh-hans/v1.0.0/)
+
+---
+
+- branch: 分支，可以想像成一張貼紙
+  - `git branch <new branch name>`: 在目前 HEAD 所在處加分支
+  - `git branch -d <branch name>`: 刪除分支
+  - `git branch <new branch name> <commit ID>`: 在特定位置開分支
+- HEAD `(*)`: 定位現在在哪個 commit，哪個 branch
+  - 當同一個 commit ID 位置有多個 branch，會以 HEAD 所指的 branch 長出新的斷點
+- `git switch <branch name / commit ID>` = `git checkout <branch name / commit ID>`
+  - 都是切換分支或斷點
+  - switch 是新版本 Git 才推出的
+- `git merge`
+  - 誰 merge 誰，以結果而言 ⮕ 沒差<br>
+    以過程而言，差異在於 HEAD 在哪個 branch 就是誰 fast-forward (快轉)
+- `git rebase`
+- `git reflog`: HEAD 的移動紀錄
+- merge VS rebase
+  | 項目 | merge | rebase |
+  | :------: | :---: | :----: |
+  | 歷史紀錄 | 詳細 | 簡潔 |
+  | 學習成本 | 低 | 高 |
+- `git reset`: 請把 reset 用 become 來理解
+- stash
+  - 應用場合: 正在處理某專案，但臨時被主管叫去做其他專案
+    - `git stash`: 藏
+  - 應用場合: 其他專案做好了，要回來把原本 stash 的檔案開出來繼續用
+  - `git stash pop`: 拿出來，但刪掉 stash
+  - `git stash apply`: 拿出來，但留著 stash
+- `git cherry-pick`
+- [操作練習](https://learngitbranching.js.org/?locale=zh_TW)
+
+### 遠端操作
+
+- git remote
+- git pull
+- git push = git getch + git merge
+  - 單純 fetch 不會有衝突，pull 才會，因為 pull 會自動 merge
+
+### 誰會移動 HEAD?
+
+- `git commit`
+- `git switch`
+- `git checkout`
+- `git checkout -b <new branch name>`: 建立新分支 + 移動 HEAD
+- `git branch -m <old branch name> <new branch name>`: 雖然是改分支名稱，但對 HEAD 而言，撕掉貼紙再貼上貼紙，有 HEAD 移動
+- `git reset`
+- `git rebase`
+- `git cherry-pick`
+
+## 忽略與偵測
+
+- `.gitignore`
+  - 檔案內列出不想要 Git 偵測的檔名包含副檔名
+  - 可以用 `*` 來概括指定副檔名的所有檔案，如： `*.html`
+  - 在建立 `.gitignore` 之前的檔案無法被忽略，只能刪除重建要被忽略的文件
+- `.keep` 或 `.gitkeep`: Git 不會偵測空資料夾，若要讓 Git 偵測到某空資料夾，則將此檔案放入即可
+- 檔案都是 `.` 開頭!!!
 
 ## 遠端存取平台（僅列出常見者）
 
 - GitHub
 - GitLab
 - Bitbucket
+
+## 其他專有名詞
+
+- PR (Pull Request) vs MR (Merge Request)
+  - 在網路上看到別人專案不錯，覺得自己還可以改得更好，把自己優化的 code 發 PR 給原始開法者
+  - 注意主被動!!
+  - PR = MR，只是意識型態不同，託管平台不同的稱呼
+- main VS master
+  - 也是一樣的東西，都是 branch name，只是意識型態不同
+  - 歷史原因出自佛洛伊德 BLM 事件
+  - 很早期的專案可能還是預設 branch name 為 master
 
 # JaveScript
 
