@@ -29,19 +29,20 @@ document.addEventListener("DOMContentLoaded", (e) => {
         });
 
         // 在頁面顯示搜尋結果
+        // 不允許空字串
+        if (value.trim().length == 0) {
+          const empty = document.createElement("p");
+          empty.className = "empty";
+          empty.textContent = "請輸入關鍵字";
+          ul.appendChild(empty);
+          return;
+        }
+
         // 沒有符合的搜尋條件
         if (stationsMatch.length == 0) {
           const empty = document.createElement("p");
           empty.className = "empty";
           empty.textContent = "查無搜尋結果";
-          ul.appendChild(empty);
-          return;
-        }
-        // 不允許空字串
-        if (value.trim() == "") {
-          const empty = document.createElement("p");
-          empty.className = "empty";
-          empty.textContent = "請輸入關鍵字";
           ul.appendChild(empty);
           return;
         }
