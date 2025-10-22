@@ -422,23 +422,27 @@
 ### 同步 (Synchronous)
 
 - 觀念概論
-  - call stack (呼叫堆疊)
-  - First In last Out (FILO)
+  - call stack (呼叫堆疊): 可以理解成表演舞台
+    - First In last Out (FILO)
   - JS 是單執行句
   - 一般逐行執行
+  - WEB API: 可以理解成後台著裝中
 
 ### 非同步 (Asynchronous)
 
 - 觀念概論
 
-  - First In First Out (FIFO)
-  - queue
+  - queue: 可以理解成著裝完，準備上台
 
-    - 一般
+    - First In First Out (FIFO)
+
+    - 一般 queue
       - 要上場表演的條件是: **_快速通關的 queue_** 沒有人
-    - 快速通關
+    - 快速通關 queue
       - 要上場表演的條件是: **_call stack_** 沒有人
       - 比較重要的動作會歸類在快速通關，如： `fetch`
+    - 不管一般還是快速通關，二種隊伍內的人，各別排隊順序是 WEB API 內誰先運行完誰先排隊。<br>
+      比如有三個 fetch，看哪個 fetch 先抓完資料就會先到快速通關 queue
 
   - 假如在 stack 放了一個無窮迴圈，則 queue 永遠不會執行
   - 優先序: callstack > 快速通關 queue > 一般 queue
