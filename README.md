@@ -7,4 +7,3 @@
 
 2. JavaScript
    - [Youbike API 串接與陣列綜合練習](https://hoooom6600.github.io/F2E03/HW/youbike/index.html)
-     - HTML 內的 `<style>`，另外建立到 style\.css，並在 css 檔案末端加上自己的設定
