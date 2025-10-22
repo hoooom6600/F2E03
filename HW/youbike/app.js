@@ -37,6 +37,15 @@ document.addEventListener("DOMContentLoaded", (e) => {
           ul.appendChild(empty);
           return;
         }
+        // 不允許空字串
+        if (value.trim() == "") {
+          const empty = document.createElement("p");
+          empty.className = "empty";
+          empty.textContent = "請輸入關鍵字";
+          ul.appendChild(empty);
+          return;
+        }
+
         // 關鍵字通過
         stationsMatch.forEach((stationMatch) => {
           // 站點名稱
