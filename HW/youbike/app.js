@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
       })
       .then((stations) => {
         // 如果 ul 內有東西，清空。 ul 內的元素來自前次的檢索
-        console.log(ul.childNodes.length);
         if (ul.childNodes.length > 0) {
           ul.innerHTML = "";
         }
