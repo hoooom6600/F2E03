@@ -839,6 +839,10 @@ TODO: ORIG_HEAD、remote 書籤
   - HTML 引用位置錯誤
 - Early Return: 提早結束，因為前面是在檢查，重點在最後
 
+## Visual Studio Code
+
+- insert 鍵: 切換光標模式
+
 # 演算法
 
 - 銀行家捨入法
