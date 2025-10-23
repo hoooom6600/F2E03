@@ -171,6 +171,9 @@ TODO: ORIG_HEAD、remote 書籤、 --force
 - git pull
 - git push = git getch + git merge
   - 單純 fetch 不會有衝突，pull 才會，因為 pull 會自動 merge
+  - `--foece` 或 `-f`: 將本機進度強制推送到遠端
+    - 沒事別用，因為會覆蓋協同專案的所有紀錄與狀態，除非你是專案管理者，或者有知會專案夥伴，或者是個人獨立開發
+    - GitHub 可以設定關閉強推的功能
 
 ### 誰會移動 HEAD?
 
@@ -201,13 +204,30 @@ TODO: ORIG_HEAD、remote 書籤、 --force
 ## 其他專有名詞
 
 - PR (Pull Request) vs MR (Merge Request)
-  - 在網路上看到別人專案不錯，覺得自己還可以改得更好，把自己優化的 code 發 PR 給原始開法者
-  - 注意主被動!!
+  - PR 是託管平台的功能，原生 Git 並沒有
   - PR = MR，只是意識型態不同，託管平台不同的稱呼
+  - 在網路上看到別人專案不錯，覺得自己還可以改得更好，把自己優化的 code 發 PR 給原始開發者
+  - 注意主被動!! 優化者發 PR 給原始開發者
+  - 接受 PR 的處理
+    - `merge`
+    - `rebase`
+    - `squash`: 把 PR 的所有 commit 濃縮成一個 commit
+      - PR 的 commit 來自於優化者
+    - 誰接受 PR?
+      - 團隊內先規劃好多少人看過才接受，通常是每個人都要看
+      - 按下接受的按鈕通常是最後閱覽的人，因為大家都看過表示沒問題
 - main VS master
   - 也是一樣的東西，都是 branch name，只是意識型態不同
   - 歷史原因出自佛洛伊德 BLM 事件
   - 很早期的專案可能還是預設 branch name 為 master
+- conflict (衝突)
+  - 修改了不相容的內容，
+    - 同一檔案有很多人都對第 N 行做修改
+      - 被修改的檔案原始碼會出現 Git 的註記
+      - 處理方式: 和開發夥伴討論
+  - 歷史紀錄不一樣 ≠ 衝突
+    - 歷史紀錄不一樣是分歧，衝突是改到**_同一個檔案_**
+    - 分歧: 假設現在有協同專案，甲在 A 分支，乙在 B 分支，各自 commit 且 push，這樣歷史記錄不同但不是衝突
 
 # JaveScript
 
