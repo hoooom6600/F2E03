@@ -63,7 +63,7 @@
 
 # Git
 
-TODO: ORIG_HEAD、remote 書籤、 --force
+TODO: ORIG_HEAD、remote 書籤
 
 ## 基本觀念
 
@@ -169,9 +169,11 @@ TODO: ORIG_HEAD、remote 書籤、 --force
 
 - git remote
 - git pull
+  - `--merge`: 預設值
+  - `--rebase`
 - git push = git getch + git merge
   - 單純 fetch 不會有衝突，pull 才會，因為 pull 會自動 merge
-  - `--foece` 或 `-f`: 將本機進度強制推送到遠端
+  - `--force` 或 `-f`: 將本機進度強制推送到遠端
     - 沒事別用，因為會覆蓋協同專案的所有紀錄與狀態，除非你是專案管理者，或者有知會專案夥伴，或者是個人獨立開發
     - GitHub 可以設定關閉強推的功能
 
