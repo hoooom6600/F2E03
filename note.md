@@ -19,6 +19,8 @@
 
 # Git
 
+TODO: ORIG_HEAD、remote 書籤、 --force
+
 ## 基本觀念
 
 - 協同開發
@@ -70,6 +72,7 @@
   - `git branch <new branch name>`: 在目前 HEAD 所在處加分支
   - `git branch -d <branch name>`: 刪除分支
   - `git branch <new branch name> <commit ID>`: 在特定位置開分支
+  - `git branch <old branch name> <commit ID>`: 把指定既有 branch 貼紙貼到特定位置
 - HEAD `(*)`: 定位現在在哪個 commit，哪個 branch
   - 當同一個 commit ID 位置有多個 branch，會以 HEAD 所指的 branch 長出新的斷點
 - `git switch <branch name / commit ID>` = `git checkout <branch name / commit ID>`
@@ -78,14 +81,37 @@
 - `git merge`
   - 誰 merge 誰，以結果而言 ⮕ 沒差<br>
     以過程而言，差異在於 HEAD 在哪個 branch 就是誰 fast-forward (快轉)
-- `git rebase`
+- `git rebase <branch A> <branch B>`: 以 A 為基底，將 B 接到 A 之後
 - `git reflog`: HEAD 的移動紀錄
+- `git reset`: 請把 reset 用 become 來理解
+
+  - 參數
+
+    - 從誰開始回推
+      - HEAD
+      - branch name
+      - commit ID
+    - 符號（回推多少）
+      - `^`: 回到 上 N 層。可以連續使用，有幾個 `^` 就可以回到前 N 層
+        - `^` 後通常會省略數字 (parent)，該數字預設為 1
+        - parent: 有時候某斷點的源頭不只一個斷點，比如 merge 之後。parent 是多少，看 Git Graph 的標示。Git Graph parent 第一行為 1，以此類推
+      - `~ N`: 退回 N 層
+      - `^` 和 `~` 可以搭配使用成為組合技，但通常使用情境很少
+    - 保留暫存區(git add)嗎?
+      - `-- mixed`: 預設值。暫存區清空（未 add 狀態），保留工作目錄
+      - `-- soft`: 回到有 add 的暫存區
+      - `-- hard`: 不管 add 暫存區，全部砍掉，但 reflog 不會消失
+        - 但其實不會真的砍掉，只是讓你看不到，<br>
+          因為 Git 只會新增紀錄，不會直接刪除。<br>
+          若要刪除 Git 紀錄，需手動處理，或者超過預設保存期限（通常是 90 天）。
+        - `reset --hard` 殘酷在「讓你看不見」，但 Git 的良心（reflog）讓你暫時還能回頭。
+
 - merge VS rebase
   | 項目 | merge | rebase |
   | :------: | :---: | :----: |
   | 歷史紀錄 | 詳細 | 簡潔 |
   | 學習成本 | 低 | 高 |
-- `git reset`: 請把 reset 用 become 來理解
+  |回到上一動|reset|要調 reflog|
 - stash
   - 應用場合: 正在處理某專案，但臨時被主管叫去做其他專案
     - `git stash`: 藏
