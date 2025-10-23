@@ -1,14 +1,19 @@
 # HTML
 
-## 表單提交
+## 標籤（僅列出個人不熟悉的）
 
-- `<input>` 和 `<button>` type 比較
-  - | input  |     |  button  |
-    | :----: | :-: | :------: |
-    | button |  =  | \*button |
-    | submit |  =  |  submit  |
-    | image  |  =  |  submit  |
-    | reset  |  =  |  reset   |
+- `<details>` 與 `<summary>`: HTML 內建區塊收合
+
+  - `<details>`: `open` 屬性
+
+- 表單提交
+  - `<input>` 和 `<button>` type 比較
+    - | input  |     |  button  |
+      | :----: | :-: | :------: |
+      | button |  =  | \*button |
+      | submit |  =  |  submit  |
+      | image  |  =  |  submit  |
+      | reset  |  =  |  reset   |
 
 # CSS
 
@@ -16,6 +21,45 @@
   - 比如複雜的表格，每格 rowspan 數量不一樣，高度會依不同瀏覽器設定而異，<br>
     以這個例子而言，CSS 規範並沒有對這種表格有明確的高度說明。
 - CSS reset
+- 瀏覽器預設
+  - 字體大小: 16px
+    - 但標籤的預設渲染是用 em
+- 單位
+
+  - 絕對單位
+
+    - 通常使用場景: 間距
+    - px
+    - pt
+    - pc
+
+  - 相對單位
+    - em: 以父層為基準，父層沒設定就會找祖父層
+    - rem: 以根元素為基準
+    - ex
+    - ch
+    - %: 通常使用在寬度
+    - vw: 如果有卷軸，也會算在 vh 內
+    - vh: 通常使用在側邊攔 (side bar)
+    - vmax
+    - vmin
+    - fr: grid 用
+
+- 寬度與高度
+  - 高度是根據內容撐開的
+    - 內容是純文字者，高度不會是`行數 x 字體大小`，因為還有行高的存在
+  - 訂寬不訂高
+  - 內外距
+    - padding: 百分比以**_父層 content 寬度_**為基準
+    - margin: 百分比以**_父層內容空間_**為基準
+      - 兄弟元素間的左右 margin 不會重疊
+      - 兄弟元素間的上下 margin 會重疊
+      - 父元素與長子元素間的上 margin 會重疊
+      - 父元素與次子元素間的下 margin 會重疊
+  - 容器計算
+    - `box-sizing`
+      - `content-box`: 預設值。設定 width 只給內容本體
+      - `border-box`
 
 # Git
 
