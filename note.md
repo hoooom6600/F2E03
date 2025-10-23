@@ -7,6 +7,7 @@
   - `<details>`: `open` 屬性
 
 - 表單提交
+  - `<input>`: `autocomplete` 屬性
   - `<input>` 和 `<button>` type 比較
     - | input  |     |  button  |
       | :----: | :-: | :------: |
@@ -52,14 +53,23 @@
   - 內外距
     - padding: 百分比以**_父層 content 寬度_**為基準
     - margin: 百分比以**_父層內容空間_**為基準
-      - 兄弟元素間的左右 margin 不會重疊
-      - 兄弟元素間的上下 margin 會重疊
-      - 父元素與長子元素間的上 margin 會重疊
-      - 父元素與次子元素間的下 margin 會重疊
+      - Block Formatting Context (BFC)
+        - 兄弟元素間的左右 margin 不會重疊
+        - 兄弟元素間的上下 margin 會重疊
+        - 父元素與長子元素間的上 margin 會重疊
+        - 父元素與次子元素間的下 margin 會重疊
   - 容器計算
     - `box-sizing`
       - `content-box`: 預設值。設定 width 只給內容本體
       - `border-box`
+- 圖片常用搭配技
+  - `width`
+  - `aspect-ratio`: 圖片比例（較新的 CSS，注意支援度）
+  - `object-fit`: 如何將圖片放入適應容器
+    - fill: 預設值
+    - cover: 最常用。等比例放大圖片，但不會改變圖片本身比例，但有可能看不到超出容器的區塊
+    - contain: 不改變原始圖片比例，當長邊碰到容器尺寸，則停止縮放
+    - none: 原本多大就顯示多大
 
 # Git
 
@@ -109,6 +119,9 @@ TODO: ORIG_HEAD、remote 書籤
   - 工作目錄是還沒 add 的狀態區域
 - `git commit -m <comment>`: 把暫存區的檔案丟到 Git 倉庫 (Repository)
   - [Git 約定式提交](https://www.conventionalcommits.org/zh-hans/v1.0.0/)
+- `git rm <file>`: 刪除檔案並被 Git 偵測到
+- `git mv <old file name> <new file name>`: 更改檔案名稱並被 Git 偵測到
+- 直接手動對檔案刪存與改名會造成 Git 以為是新檔案
 
 ---
 
