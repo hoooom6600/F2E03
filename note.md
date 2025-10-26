@@ -606,6 +606,8 @@ TODO: ORIG_HEAD、remote 書籤
 
 ### 選取
 
+#### 自己
+
 - getElement 系列
   - `document.getElementById()`
   - `document.getElementsByClassName()`: Element**_s_**
@@ -625,6 +627,36 @@ TODO: ORIG_HEAD、remote 書籤
   - 只會抓第一個符合該 id 的元素
   - 但沒事不要這樣做!!!!!
 
+#### 父層
+
+- `parentElement`
+- `parentNode`
+
+#### 子層
+
+- `childeNodes`
+  - 記得 s
+  - NodeList
+- `children`
+  - HTMLCollection
+
+#### 兄弟姊妹層
+
+- Element 系列
+  - `previousElementSibling`
+  - `nextElementSibling`
+- Node 系列
+  - `previousSibling`
+  - `nextSibling`
+
+### Node vs Element
+
+- Element 也是 Node 的一種
+- 註解也是一種 Node
+- Node 有的功能，基本上 Element 也會有
+- 選擇?
+  - 盡量用 Element
+
 ### 修改
 
 - `textContent`: 不會渲染 HTML 標籤，是純文字
@@ -633,6 +665,32 @@ TODO: ORIG_HEAD、remote 書籤
 - `innerHTML`因為會渲染 HTML，所以效能會比`.textContent`差。<br>
   但也不用太擔心，因為現在電腦科技效能過剩。
 - `value`: `<input>`的值。不管 type 是否為 number，在 JS 取用都會解析為**_字串_**。做運算時記得轉成數字型態
+
+### 新增
+
+- 尾端
+  - `createElement()`
+  - `appendChild()`: 加到某元素內成為子層，才會被渲染出來
+- 指定位置
+
+  - `insertAdjacentElement(<place>, <element>)`
+
+    - place
+      - `beforebegin`: 加到被定位的元素前的兄弟元素
+      - `afterbegin`: 加到被定位的元素內的第一個子層元素
+      - `beforeend`: 加到被定位的元素內的最後一個子層元素
+        - 類似 `appendChild()`
+      - `afterend`: 加到被定位的元素後的兄弟元素
+
+  - `insertAdjacentHTML(<place>, <HTML element>)`
+    - place 同上
+    - HTML element 必須寫成字串形式的 HTML 標籤
+    - 使用場合: 確定新增內容為靜態資料
+
+### 刪除
+
+- `removeChild()`: 把子層刪除
+- `remove()`: 從本體刪除
 
 ### 事件監聽器(event listener)
 
