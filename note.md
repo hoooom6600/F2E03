@@ -365,13 +365,15 @@ TODO: ORIG_HEAD、remote 書籤
     age
   }
   ```
-- 解構
+- 解構（承上 cat 例子）
 
-  - 物件（承上 cat 例子）
+  - ▼ 當 cat 物件剛好有 name 和 age 屬性，就訪問他們
 
   ```
   let { name, age } = cat
   ```
+
+  - 若沒有對應的屬性，結果為 `undefined`
 
   - 函數參數
 
