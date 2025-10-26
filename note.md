@@ -290,6 +290,7 @@ TODO: ORIG_HEAD、remote 書籤
   - 'hello'
   - "hello"
   - \`hello\` (backtick)
+    - ES6 新語法
     - ${變數}
   - **_唯讀，不能用陣列修改某定元素的文字_**
 - Number
@@ -347,6 +348,48 @@ TODO: ORIG_HEAD、remote 書籤
   - =: **_分配(assign)_**
   - ==: 寬鬆相等（會轉換型別）
   - ===: 嚴格相等（不會轉換型別，date type 和 value 都要相等）
+
+## ES6 新語法
+
+- `${}`: 字串與變量組合寫法
+  - backtick
+- 箭頭函數
+  - 不是一般 function 的簡寫，差異在 `this`，沒用到 `this` 的時候是沒有效果差異
+- 物件簡寫
+  - 當 key 的名字和 value 變量名稱是一樣時，可以直接寫 key，不用 key: value<br>
+  ```
+  let name = 'kitty';
+  let age = 18;
+  let cat = {
+    name
+    age
+  }
+  ```
+- 解構
+
+  - 物件（承上 cat 例子）
+
+  ```
+  let { name, age } = cat
+  ```
+
+  - 函數參數
+
+  ```
+  function printCats({ name, age }) {
+    console.log(name)
+    console.log(age)
+  }
+  ```
+
+- `...`
+  - 陣列
+    - 展開
+    - 解構
+    - 把剩下的全收
+  - 函數
+    - 把剩下的全收
+      - 通常用在參數數量不固定的場合
 
 ## 關鍵字
 
@@ -420,9 +463,10 @@ TODO: ORIG_HEAD、remote 書籤
     - 匿名函數
     - 箭頭函數: ES6 之後才推出的。不完全等同一般正規寫法，也不是一般函數的簡解。差異在於 `this` 的概念不同
       - 有多種寫法（前二效果相同）
-        - `(x, y) => { return 123}`
+        - `(x, y) => { return 123 }`
         - `(x, y) => 123`
-        - `x => 123` 當參數只有一個的時候才能這樣寫，且沒事不要這樣寫
+        - `x => 123` 當參數只有一個的時候才能這樣寫，不用寫出 return，且沒事不要這樣寫
+        - 如果友大括號，還是要手動寫 return
     - 回呼函數 (callback function): 當發生某事件，呼叫某函數
       - 一等公民 (First Class Citizen): 如何看待數字、字串、陣列...etc，就如何看待函數
       - 若 callback function 加上 ()，這樣實際上叫做 `callnow`
