@@ -823,11 +823,11 @@ TODO: ORIG_HEAD、remote 書籤
       - 瀏覽器提供的
       - 物件
       - `open(method, url)`: 用什麼 HTTP 方法對某網址發出請求
-      - `send`: 真的送出請求
-      - 監聽器 `load`:
-        - `load`：當伺服器回應完成後觸發，send 之後聽到的東西
+      - 監聽器 `load`
+        - `load`：當伺服器回應完成後觸發，send 之後聽到的東西，所以 `load` 不能放在 `send()` 之後，否則來不及監聽 `send()` 的回應。不過可以放在 `open()` 之前
         - `responseText`: 得到長很像 JSON 的**_字串_**
         - `JSON.parse()`: 將長得很像 JSON 的字串真的轉成 JS 物件
+      - `send()`: 真的送出請求，且立即執行
 
     - `fetch`
 
