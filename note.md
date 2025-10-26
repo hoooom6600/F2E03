@@ -761,7 +761,7 @@ TODO: ORIG_HEAD、remote 書籤
   - call stack (呼叫堆疊): 可以理解成表演舞台
     - First In last Out (FILO)
   - JS 是單執行句
-  - 一般逐行執行
+  - 一般逐行執行，所以如果中間有很大的檔案，程式碼就會塞車卡住動不了
   - WEB API: 可以理解成後台著裝中
 
 ### 非同步 (Asynchronous)
@@ -795,26 +795,83 @@ TODO: ORIG_HEAD、remote 書籤
     - WEB API (瀏覽器) 提供位置放等待發作的 callback
     - 等待發作的 callback 會排隊 (queue)，等到上台表演再到 call stack
 
-  - `fetch`
-    - 把資料拿回來，會是 JSON 格式
-    - JSON (JavaScript Object Notation)
-      - JSON ≠ 物件
-      - 先有 JS 物件才有 JSON 誕生，所以語法是: JSON 長得像 JS 物件
-      - JSON 是**_純文字_**，看起來是陣列裡面有物件，但它只是**_純文字_**
-    - Promise
-      - `then`
-        - 接 Promise 的回應
-        - 不是一個 then 就有一個新的 promise
-      - 內建方法
-        - `json()`: 將純文字的 JSON 格式轉換成 JSON 格式的檔案
-        - `text()`
-        - `catch()`: 處理 fetch 或 then 失敗問題
-          - 網址寫錯
-          - 轉不了 JSON
-          - 任何函數出錯
-    - 範例 API
-      - [{JSON} Placeholder](https://jsonplaceholder.typicode.com/)
-      - [Fake Store API](https://fakestoreapi.com/)
+  - 抓 RESTFul API，見後文筆記
+
+## 抓取資料
+
+- API (Application Programming Interface)
+  - 介面
+  - 多個軟體之間的互動，可進行呼叫或請求
+  - 本身並不是只有抓資料這個功能，是資料存取的介面
+- HTTP 資料存取方法
+
+  - `GET`: 取得
+  - `POST`: 替換做更新
+  - `PUT`: 建立、新增、修改
+  - `PATCH`: 修改
+  - `DELETE`: 刪除
+
+- RESTFul API
+
+  - 每個 URI, URL 都是資源，可以透過上述 HTTP 方法來存取資料
+  - 發送請求
+
+    - `XMLHttpRequest`
+
+      - 瀏覽器提供的
+      - 物件
+      - `open(method, url)`: 用什麼 HTTP 方法對某網址發出請求
+      - `send`: 真的送出請求
+      - 監聽器 `load`:
+        - `load`：當伺服器回應完成後觸發，send 之後聽到的東西
+        - `responseText`: 得到長很像 JSON 的**_字串_**
+        - `JSON.parse()`: 將長得很像 JSON 的字串真的轉成 JS 物件
+
+    - `fetch`
+
+      - 也是瀏覽器提供的方法，不是 JS 的
+      - 把資料拿回來，會是 JSON 格式
+      - JSON (JavaScript Object Notation)
+        - JSON ≠ 物件
+        - 先有 JS 物件才有 JSON 誕生，所以語法是: JSON 長得像 JS 物件
+        - JSON 是**_純文字_**，看起來是陣列裡面有物件，但它只是**_純文字_**
+      - Promise 物件
+        - `then`
+          - 接 Promise 的回應
+          - 不是一個 then 就有一個新的 promise
+        - 內建方法
+          - `json()`: 將純文字的 JSON 格式轉換成 JSON 格式的檔案
+          - `text()`
+          - `catch()`: 處理 fetch 或 then 失敗問題
+            - 網址寫錯
+            - 轉不了 JSON
+            - 任何函數出錯
+
+    - async / await
+      - async 本身就是個非同步
+      - await 只能在 async function 內使用
+
+  - CORS (Cross-origin resource sharing)
+
+    - 為了資安考量，限制權限，防範惡意人士用 JS 去存取不該存取的東西
+    - CORS 本身只擋瀏覽器 JS，所以可以用後端爬蟲寫 API 抓資料。不過最單純的方法就是請對方開權限
+
+  - 範例 API
+    - [{JSON} Placeholder](https://jsonplaceholder.typicode.com/)
+    - [Fake Store API](https://fakestoreapi.com/)
+  - API 試用工具
+    - [Postman](https://www.postman.com/)
+
+- 常見資料傳輸格式
+
+  - 早年
+    - XML
+    - CSV
+  - 現代
+    - JSON
+    - AJAX (Asynchronous JavaScript and XML) 非同步 JavaScript 與 XML
+      - 非同步
+      - 不是程式語言，不是單一技術，是技術綜合體
 
 # RWD
 
