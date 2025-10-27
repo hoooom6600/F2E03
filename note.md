@@ -508,16 +508,32 @@ TODO: ORIG_HEAD、remote 書籤
 ## 物件 = 屬性 + 行為
 
 - 物件在電腦裡，是一小塊記憶體
-- 建立物件: {key: value}
+- 建立物件: {key: value} 或者用 `new`
 
-  - 取用屬性: 有二種寫法
+  - 大量製造可以用 function 或者 new
+    - new
+      1. new 出來的 this 會首先指向空物件
+      2. `this.__proto__` 會指向 new 物件的 prototype 屬性
+         1. 在 mdn 看到的 prototype 就是這個主題說的 prototype
+      3. 個人開發的設定
+      4. 不用特別寫 return，會自動 return 空物件，手動 return 反而會出錯
+         1. 自動 return 的 this 經過中間處理，就不會是空物件
 
-    - `object.key`
-    - `object["key"]`
+- 取用屬性: 有二種寫法
 
-  - 建立物件之後，增刪屬性
-    - 新增: 直接 `object.newKey = newValue`
-    - 刪除: delete `object.oldKey`
+  - `object.key`
+  - `object["key"]`
+
+- 建立物件之後，增刪屬性
+  - 新增: 直接 `object.newKey = newValue`
+  - 刪除: `delete object.oldKey`
+- 所有東西（物件）都有 `.__proto__` 屬性
+- 函數也有 `.__proto__` ，但只有函數才有 prototype
+
+  - 針對數字，要用 () 包起來
+  - 階層路線，往父層找，父層沒有就往父層的父層找，以此類推
+  - 要找某屬性，路線都是走 `.__proto__` 去找，所以沒有某屬性的 `undefined` 並不是馬上回傳，而是經過好幾層 `.__proto__` 的查找
+  - 放在物件內，等於共享屬性與其值，可以精簡程式碼與降低電腦記憶體的壓力
 
   ### 陣列
 
@@ -980,7 +996,46 @@ TODO: ORIG_HEAD、remote 書籤
   - 輸入 `set-ExecutionPolicy RemoteSigned` 然後確認
 - 指令
   - `npm i` = `npm install`
-  - `--save` 是預設值
+    - `--save` 是預設值
+  - `-D`: 會跑到 `devDependencies`，不會被打包給一般使用者
+
+#### 套件
+
+- dayjs
+- axios
+- node_modules
+  - 所有安裝的套件資料都會在這個資料夾，所以開發到最後的專案會很胖
+  - 開發結束可以把這個資料夾刪掉，之後有要運用相關套件，在專案路徑輸入 `npm i`，電腦會自動看 package.json 裡面的 `dependencies` 把套件載回來
+  - [node_modules meme](https://i.imgur.com/rpR4yVl.jpg)
+  - 網站上線之後，通常不會要打包 node_modules，反而要上傳 dist 內的檔案
+- dependencies: 指套件需要依附其他文件
+- 路徑
+  - 當 HTML 引入有 `type="module"`，相對路徑要往 node_modules 走
+  - `type="module"` 本身帶有 ESM 功能
+- package.json
+  - `dependencies`: 使用者需要用到的套件依附
+  - `devDependencies`: 開發者需要的套件依附
+  - `scripts`: 腳本
+    - 可以透過 `npm run <scirpt name>` 在終端執行
+    - `<script name>` 可以自己手刻名字，不過通常套件會提供名稱。
+      - `<script name>` 背後真正執行的動作，是來自於安裝的套件被放在 node_modules 裡
+
+#### 打包
+
+前端的打包圈已經快要統一
+
+- 打包
+  - tree-shaking: 去掉換行、變量名稱縮短、丟掉宣告但沒用到的變數、把好幾個檔案整理成一個(import 的整理)... etc → 壓縮檔案
+  - 以結果來說，不用擔心 import 的路徑
+- 打包工具 (Bundler)
+  - esbuild
+  - webpack: 功能很多，最老牌，但設定需求很多
+  - Vite: 目前主流。和 Vue 是同一個作者，新專案建議用 Vite 打包
+    - **_`npm run dev` 要有 index.html 檔案_**
+    - Vite vs Go Live
+      |項目|Vite|Go Live|
+      |:--:|:--:|:--:|
+      |打包|O|X|
 
 # RWD
 
@@ -1126,3 +1181,7 @@ TODO: ORIG_HEAD、remote 書籤
 - 開錯檔案，改到其他專案一樣的檔名
 - 沒存檔
 - 註解不乾淨
+
+# 題外話
+
+不同程式語言的運行速度不一樣
