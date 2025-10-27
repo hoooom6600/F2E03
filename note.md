@@ -873,11 +873,16 @@ TODO: ORIG_HEAD、remote 書籤
         - 先有 JS 物件才有 JSON 誕生，所以語法是: JSON 長得像 JS 物件
         - JSON 是**_純文字_**，看起來是陣列裡面有物件，但它只是**_純文字_**
       - Promise 物件
+        - 現在告訴你未來我會做的事 → 一種承諾，所以 promise 需要等待，但結果不一定是成功的
+        - 三狀態
+          - `pending`: 等待中
+          - `fulfilled`: 完成（成功）
+          - `rejected`: 失敗（出錯）
         - `then`
           - 接 Promise 的回應
           - 不是一個 then 就有一個新的 promise
         - 內建方法
-          - `json()`: 將純文字的 JSON 格式轉換成 JSON 格式的檔案
+          - `json()`: 將純文字的 JSON 格式轉換成 JSON 格式的檔案，剛好也會產生一個新的 promise
           - `text()`
           - `catch()`: 處理 fetch 或 then 失敗問題
             - 網址寫錯
@@ -888,8 +893,21 @@ TODO: ORIG_HEAD、remote 書籤
 
       - async 本身就是個非同步
       - await 只能在 async function 內使用
+        - 若 await 不在 async function 內用，則 HTML 改成 `<script type="module">`
+        - `type="module"` 內建 `defer`
+      - try... catch
 
     - `async / await` VS `then` 的差異：只在語法不同，頂多 `then` 效能好一點點點點
+    - axios (套件)
+      - CDN (Content Delivery Network)
+        - 內容分發網路，代表不是單一連結
+        - 能架 CDN 的都是大公司，當 CDN 壞掉，幾乎世界的網站都壞掉
+      - 跨環境，以前的 node 不能用 fetch
+      - 類似螺絲墊片的存在功能
+      - `axios.get(<url>)`
+        - 不用自己轉 `json()`
+        - 一樣接 `then` 和 `catch`
+    - jQuery: JS 界的 reset
 
   - CORS (Cross-origin resource sharing)
 
@@ -912,6 +930,36 @@ TODO: ORIG_HEAD、remote 書籤
     - AJAX (Asynchronous JavaScript and XML) 非同步 JavaScript 與 XML
       - 非同步
       - 不是程式語言，不是單一技術，是技術綜合體
+
+## Modules
+
+### 為何要模組化？
+
+為了避免團隊一直改到同一檔案造成 Git 衝突
+
+### 使用
+
+- 更改 HTML &lt;script&gt;
+  - 擺放順序
+  - 加上 defer
+  - type="module"，不過內建已經有 defer
+  - CJS vs ESM
+- `import <function name> from <filename>`
+  - ESM 的用法
+  - 不是標準 JS 寫法，不是 JS 內建
+  - filename 記得要雙引號（字串）
+  - import 的檔案在 HTML 必須有 type="module"
+  - 被 import 的檔案要手動寫 export
+    - `export { <function name> }`: 帶名字的匯出 (named export)
+      - 可以一次匯出多個 function
+      - 匯出有大括號，則引入也要大括號
+      - 引入同一模組，可以分行寫
+    - `export function()`
+      - 將 export 放在要匯出的函數之前
+  - 若 export 的 function name 和 import 的檔案內有一樣的變量名稱
+    - 改名
+      - 改 import 檔案的變數，但缺點是專案越大越難維護
+      - 將匯入的函數改名字 `<export function> as <new function name>`
 
 # RWD
 
