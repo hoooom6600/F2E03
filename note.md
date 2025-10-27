@@ -935,7 +935,8 @@ TODO: ORIG_HEAD、remote 書籤
 
 ### 為何要模組化？
 
-為了避免團隊一直改到同一檔案造成 Git 衝突
+- 為了避免團隊一直改到同一檔案造成 Git 衝突
+- 以使用套件為例，CDN 檔案很大，安裝之後自己打包成模組可以精簡很多
 
 ### 使用
 
@@ -944,26 +945,42 @@ TODO: ORIG_HEAD、remote 書籤
   - 加上 defer
   - type="module"，不過內建已經有 defer
   - CJS vs ESM
-- `import <變量> from <filename>`
-  - ESM 的用法
-  - 不是標準 JS 寫法，不是 JS 內建
-  - filename 記得要雙引號（字串）
-  - import 的檔案在 HTML 必須有 type="module"
-  - 被 import 的檔案要手動寫 export
-    - `export { <變量> }`: 帶名字的匯出 (named export)
-      - 可以一次匯出多個 function
-      - 匯出有大括號，則引入也要大括號
-      - 引入同一模組，可以分行寫
-    - `export function()`
-      - 將 export 放在要匯出的函數之前
-    - 預設匯出 `export default`
-      - 一個檔案只能匯出一個
-      - 匯出匯入的時候不用大括號
-    - `export default` 和 `export { <變量> }` 可以指定匯出同一個變量
-  - 若 export 的 function name 和 import 的檔案內有一樣的變量名稱
-    - 改名
-      - 改 import 檔案的變數，但缺點是專案越大越難維護
-      - 將匯入的函數改名字 `<export 變量> as <new name>`
+    - CJS
+      - `const axios = require('axios');` 的 `require`
+    - ESM
+      - `import <變量> from <filename>`
+        - ESM 的用法
+        - 不是標準 JS 寫法，不是 JS 內建
+        - filename 記得要雙引號（字串）
+        - import 的檔案在 HTML 必須有 type="module"
+        - 被 import 的檔案要手動寫 export
+          - `export { <變量> }`: 帶名字的匯出 (named export)
+            - 可以一次匯出多個 function
+            - 匯出有大括號，則引入也要大括號
+            - 大括號是名字的意思
+            - 引入同一模組，可以分行寫
+            - 可以 `import { default as <new name> } from ...`，但通常很少用，這等同 `import <something> from ...`
+          - `export function()`
+            - 將 export 放在要匯出的函數之前
+          - 預設匯出 `export default`
+            - 一個檔案只能匯出一個
+            - 匯出匯入的時候不用大括號
+            - 預設匯出的 import 可以隨便命名，但通常會跟 export default 一樣
+          - `export default` 和 `export { <變量> }` 可以指定匯出同一個變量
+        - 若 export 的 function name 和 import 的檔案內有一樣的變量名稱
+          - 改名
+            - 改 import 檔案的變數，但缺點是專案越大越難維護
+            - 將匯入的函數改名字 `<export 變量> as <new name>`
+      - 封裝: 只想給內部使用，不想給一般人接觸到
+
+### NPM: 套件管理工具
+
+- 運作權限不足
+  - powerShell 以系統管理員身分開啟
+  - 輸入 `set-ExecutionPolicy RemoteSigned` 然後確認
+- 指令
+  - `npm i` = `npm install`
+  - `--save` 是預設值
 
 # RWD
 
