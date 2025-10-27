@@ -75,6 +75,11 @@ document.addEventListener("DOMContentLoaded", (e) => {
           list.appendChild(addressBox);
           ul.appendChild(list);
         });
+      })
+      // 錯誤訊息
+      .catch((err) => {
+        alert("系統發生錯誤，請稍後再試");
+        console.log(err);
       });
   });
 });
