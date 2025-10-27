@@ -419,11 +419,12 @@ TODO: ORIG_HEAD、remote 書籤
     - 把剩下的全收
       - 通常用在參數數量不固定的場合
 
-## 關鍵字
+## 關鍵字 / 保留字
 
 - continue: 直接進入下一輪迴圈。~~個人意見：翻譯上用 next 比較貼切，like 瓜哥：下面一位~~
 - break: 直接結束整個迴圈
 - delete
+- class
 
 ## JaveScript 的 Runtime (執行環境)
 
@@ -693,6 +694,14 @@ TODO: ORIG_HEAD、remote 書籤
 - `innerHTML`因為會渲染 HTML，所以效能會比`.textContent`差。<br>
   但也不用太擔心，因為現在電腦科技效能過剩。
 - `value`: `<input>`的值。不管 type 是否為 number，在 JS 取用都會解析為**_字串_**。做運算時記得轉成數字型態
+- `id`
+- `className`: 可以一次增加好幾個 class，彼此之間插入一個空白字元即可
+- `classList`: 像陣列但不是陣列的東西，它只是一個列表
+  - `add(<class name>)`
+  - `remove(<class name>)`
+    - 檢查 `class` 用 `classList.contains` 比較輕準，`className.includes` 會有風險<br>
+      比如： `<div class="red backgroundcolor-red">` 用 `className.includes` 就會選到兩個 class
+  - `toggle(<class name>)`: 快速切換指定 class，有則刪，無則增
 
 ### 新增
 
