@@ -303,6 +303,7 @@ TODO: ORIG_HEAD、remote 書籤
   - 'hello'
   - "hello"
   - \`hello\` (backtick)
+    - ES6 新語法
     - ${變數}
   - **_唯讀，不能用陣列修改某定元素的文字_**
 - Number
@@ -360,6 +361,50 @@ TODO: ORIG_HEAD、remote 書籤
   - =: **_分配(assign)_**
   - ==: 寬鬆相等（會轉換型別）
   - ===: 嚴格相等（不會轉換型別，date type 和 value 都要相等）
+
+## ES6 新語法
+
+- `${}`: 字串與變量組合寫法
+  - backtick
+- 箭頭函數
+  - 不是一般 function 的簡寫，差異在 `this`，沒用到 `this` 的時候是沒有效果差異
+- 物件簡寫
+  - 當 key 的名字和 value 變量名稱是一樣時，可以直接寫 key，不用 key: value<br>
+  ```
+  let name = 'kitty';
+  let age = 18;
+  let cat = {
+    name
+    age
+  }
+  ```
+- 解構（承上 cat 例子）
+
+  - ▼ 當 cat 物件剛好有 name 和 age 屬性，就訪問他們
+
+  ```
+  let { name, age } = cat
+  ```
+
+  - 若沒有對應的屬性，結果為 `undefined`
+
+  - 函數參數
+
+  ```
+  function printCats({ name, age }) {
+    console.log(name)
+    console.log(age)
+  }
+  ```
+
+- `...`
+  - 陣列
+    - 展開
+    - 解構
+    - 把剩下的全收
+  - 函數
+    - 把剩下的全收
+      - 通常用在參數數量不固定的場合
 
 ## 關鍵字
 
@@ -433,9 +478,10 @@ TODO: ORIG_HEAD、remote 書籤
     - 匿名函數
     - 箭頭函數: ES6 之後才推出的。不完全等同一般正規寫法，也不是一般函數的簡解。差異在於 `this` 的概念不同
       - 有多種寫法（前二效果相同）
-        - `(x, y) => { return 123}`
+        - `(x, y) => { return 123 }`
         - `(x, y) => 123`
-        - `x => 123` 當參數只有一個的時候才能這樣寫，且沒事不要這樣寫
+        - `x => 123` 當參數只有一個的時候才能這樣寫，不用寫出 return，且沒事不要這樣寫
+        - 如果友大括號，還是要手動寫 return
     - 回呼函數 (callback function): 當發生某事件，呼叫某函數
       - 一等公民 (First Class Citizen): 如何看待數字、字串、陣列...etc，就如何看待函數
       - 若 callback function 加上 ()，這樣實際上叫做 `callnow`
@@ -575,6 +621,8 @@ TODO: ORIG_HEAD、remote 書籤
 
 ### 選取
 
+#### 自己
+
 - getElement 系列
   - `document.getElementById()`
   - `document.getElementsByClassName()`: Element**_s_**
@@ -594,6 +642,36 @@ TODO: ORIG_HEAD、remote 書籤
   - 只會抓第一個符合該 id 的元素
   - 但沒事不要這樣做!!!!!
 
+#### 父層
+
+- `parentElement`
+- `parentNode`
+
+#### 子層
+
+- `childeNodes`
+  - 記得 s
+  - NodeList
+- `children`
+  - HTMLCollection
+
+#### 兄弟姊妹層
+
+- Element 系列
+  - `previousElementSibling`
+  - `nextElementSibling`
+- Node 系列
+  - `previousSibling`
+  - `nextSibling`
+
+### Node vs Element
+
+- Element 也是 Node 的一種
+- 註解也是一種 Node
+- Node 有的功能，基本上 Element 也會有
+- 選擇?
+  - 盡量用 Element
+
 ### 修改
 
 - `textContent`: 不會渲染 HTML 標籤，是純文字
@@ -602,6 +680,32 @@ TODO: ORIG_HEAD、remote 書籤
 - `innerHTML`因為會渲染 HTML，所以效能會比`.textContent`差。<br>
   但也不用太擔心，因為現在電腦科技效能過剩。
 - `value`: `<input>`的值。不管 type 是否為 number，在 JS 取用都會解析為**_字串_**。做運算時記得轉成數字型態
+
+### 新增
+
+- 尾端
+  - `createElement()`
+  - `appendChild()`: 加到某元素內成為子層，才會被渲染出來
+- 指定位置
+
+  - `insertAdjacentElement(<place>, <element>)`
+
+    - place
+      - `beforebegin`: 加到被定位的元素前的兄弟元素
+      - `afterbegin`: 加到被定位的元素內的第一個子層元素
+      - `beforeend`: 加到被定位的元素內的最後一個子層元素
+        - 類似 `appendChild()`
+      - `afterend`: 加到被定位的元素後的兄弟元素
+
+  - `insertAdjacentHTML(<place>, <HTML element>)`
+    - place 同上
+    - HTML element 必須寫成字串形式的 HTML 標籤
+    - 使用場合: 確定新增內容為靜態資料
+
+### 刪除
+
+- `removeChild()`: 把子層刪除
+- `remove()`: 從本體刪除
 
 ### 事件監聽器(event listener)
 
@@ -629,6 +733,7 @@ TODO: ORIG_HEAD、remote 書籤
   - 事件流
     - 監聽器的第三個參數
       - 預設是 false (Bubbling)
+      - 很少有情境會更改事件流預設值
     - 捕捉 / 捕獲期 (Capturing)
     - 冒泡期 (Bubbling)
     - 目標期 (Targeting): 轉彎的地方
@@ -636,12 +741,21 @@ TODO: ORIG_HEAD、remote 書籤
     - | Capturing | Bubbling |
       | :-------: | :------: |
       |   true    |  false   |
-    - `stopPropagation`: 暫停事件的傳遞（包含捕捉和冒泡期）
-      - 防止捕捉: 在捕捉期調用，則後續的冒泡期也不會執行
-      - 防止冒泡: 在子元素呼叫 `.stopPropagation` ，避免父元素監聽器被觸發
-    - `target`: **_在哪裡轉彎_**，不是指稱一個物件元素
-    - `currentTarget`: 事件在哪裡發生
-      - 使用情境之一: 在一堆撲克牌抽取中間的卡牌
+    - 監聽器本身觸發之後，也會拋出一個東西給 callback function
+      - 通常命名接收的參數為 `e` 或 `event`，印出來是 `(PointerEvent)`
+      - `e` 的常見方法
+        - `stopPropagation`: 以**_滑鼠活動位置為起始點_**，暫停事件傳播（包含捕捉和冒泡期）
+          - 防止捕捉: 在捕捉期調用，則後續的冒泡期也不會執行
+          - 防止冒泡: 在子元素呼叫 `.stopPropagation` ，避免父元素監聽器被觸發
+          - 如果還是想要可以點擊到子層，則需修改子層 CSS，將子層的範圍超出父元素
+        - `target`: **_在哪裡轉彎_**，不是指稱一個物件元素
+        - `currentTarget`: 事件在哪裡，哪個元素身上發生、註冊
+          - 平常很少用到
+          - 使用情境（非盡舉）
+            - 在一堆撲克牌抽取中間的卡牌
+            - 蓋板廣告的 X
+              - 題外話： 蓋板廣告的 X 很難按是故意設計的，且可能 X 上再蓋一層透明超連結的遮罩將使用者導到廣告網頁，經過點擊後，透明層才消失，使 X 可以正確被觸發
+    - 想弄清楚事件發生點就畫圖
   - 預設行為
 
     - 比如 `<a>` 標籤的超連結、`<form>` + `<button>` 的送出表單
@@ -662,7 +776,7 @@ TODO: ORIG_HEAD、remote 書籤
   - call stack (呼叫堆疊): 可以理解成表演舞台
     - First In last Out (FILO)
   - JS 是單執行句
-  - 一般逐行執行
+  - 一般逐行執行，所以如果中間有很大的檔案，程式碼就會塞車卡住動不了
   - WEB API: 可以理解成後台著裝中
 
 ### 非同步 (Asynchronous)
@@ -696,26 +810,83 @@ TODO: ORIG_HEAD、remote 書籤
     - WEB API (瀏覽器) 提供位置放等待發作的 callback
     - 等待發作的 callback 會排隊 (queue)，等到上台表演再到 call stack
 
-  - `fetch`
-    - 把資料拿回來，會是 JSON 格式
-    - JSON (JavaScript Object Notation)
-      - JSON ≠ 物件
-      - 先有 JS 物件才有 JSON 誕生，所以語法是: JSON 長得像 JS 物件
-      - JSON 是**_純文字_**，看起來是陣列裡面有物件，但它只是**_純文字_**
-    - Promise
-      - `then`
-        - 接 Promise 的回應
-        - 不是一個 then 就有一個新的 promise
-      - 內建方法
-        - `json()`: 將純文字的 JSON 格式轉換成 JSON 格式的檔案
-        - `text()`
-        - `catch()`: 處理 fetch 或 then 失敗問題
-          - 網址寫錯
-          - 轉不了 JSON
-          - 任何函數出錯
-    - 範例 API
-      - [{JSON} Placeholder](https://jsonplaceholder.typicode.com/)
-      - [Fake Store API](https://fakestoreapi.com/)
+  - 抓 RESTFul API，見後文筆記
+
+## 抓取資料
+
+- API (Application Programming Interface)
+  - 介面
+  - 多個軟體之間的互動，可進行呼叫或請求
+  - 本身並不是只有抓資料這個功能，是資料存取的介面
+- HTTP 資料存取方法
+
+  - `GET`: 取得
+  - `POST`: 替換做更新
+  - `PUT`: 建立、新增、修改
+  - `PATCH`: 修改
+  - `DELETE`: 刪除
+
+- RESTFul API
+
+  - 每個 URI, URL 都是資源，可以透過上述 HTTP 方法來存取資料
+  - 發送請求
+
+    - `XMLHttpRequest`
+
+      - 瀏覽器提供的
+      - 物件
+      - `open(method, url)`: 用什麼 HTTP 方法對某網址發出請求
+      - 監聽器 `load`
+        - `load`：當伺服器回應完成後觸發，send 之後聽到的東西，所以 `load` 不能放在 `send()` 之後，否則來不及監聽 `send()` 的回應。不過可以放在 `open()` 之前
+        - `responseText`: 得到長很像 JSON 的**_字串_**
+        - `JSON.parse()`: 將長得很像 JSON 的字串真的轉成 JS 物件
+      - `send()`: 真的送出請求，且立即執行
+
+    - `fetch`
+
+      - 也是瀏覽器提供的方法，不是 JS 的
+      - 把資料拿回來，會是 JSON 格式
+      - JSON (JavaScript Object Notation)
+        - JSON ≠ 物件
+        - 先有 JS 物件才有 JSON 誕生，所以語法是: JSON 長得像 JS 物件
+        - JSON 是**_純文字_**，看起來是陣列裡面有物件，但它只是**_純文字_**
+      - Promise 物件
+        - `then`
+          - 接 Promise 的回應
+          - 不是一個 then 就有一個新的 promise
+        - 內建方法
+          - `json()`: 將純文字的 JSON 格式轉換成 JSON 格式的檔案
+          - `text()`
+          - `catch()`: 處理 fetch 或 then 失敗問題
+            - 網址寫錯
+            - 轉不了 JSON
+            - 任何函數出錯
+
+    - async / await
+      - async 本身就是個非同步
+      - await 只能在 async function 內使用
+
+  - CORS (Cross-origin resource sharing)
+
+    - 為了資安考量，限制權限，防範惡意人士用 JS 去存取不該存取的東西
+    - CORS 本身只擋瀏覽器 JS，所以可以用後端爬蟲寫 API 抓資料。不過最單純的方法就是請對方開權限
+
+  - 範例 API
+    - [{JSON} Placeholder](https://jsonplaceholder.typicode.com/)
+    - [Fake Store API](https://fakestoreapi.com/)
+  - API 試用工具
+    - [Postman](https://www.postman.com/)
+
+- 常見資料傳輸格式
+
+  - 早年
+    - XML
+    - CSV
+  - 現代
+    - JSON
+    - AJAX (Asynchronous JavaScript and XML) 非同步 JavaScript 與 XML
+      - 非同步
+      - 不是程式語言，不是單一技術，是技術綜合體
 
 # RWD
 
