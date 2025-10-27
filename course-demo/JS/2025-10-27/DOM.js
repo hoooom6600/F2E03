@@ -29,3 +29,11 @@ btnAdd.addEventListener("click", (e) => {
   div.classList.remove("string");
   body.appendChild(div);
 });
+
+const ul = document.createElement("ul");
+for (let i = 1; i <= 10; i++) {
+  const li = document.createElement("li");
+  li.textContent = `I'm li create by for loop ${String(i)}`;
+  ul.appendChild(li);
+}
+body.appendChild(ul);
