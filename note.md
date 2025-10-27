@@ -380,13 +380,26 @@ TODO: ORIG_HEAD、remote 書籤
   ```
 - 解構（承上 cat 例子）
 
-  - ▼ 當 cat 物件剛好有 name 和 age 屬性，就訪問他們
+  - 把物件裡的東西拿出來用
+
+  ▼ 當 cat 物件剛好有 name 和 age 屬性，就訪問他們
 
   ```
-  let { name, age } = cat
+  const { name, age } = catㄤ
   ```
 
-  - 若沒有對應的屬性，結果為 `undefined`
+  若沒有對應的屬性，結果為 `undefined`。<br>
+  接冒號可以變成宣告一個新變數
+
+  ```
+  const { name: username, age } = cat;
+  ```
+
+  上方 `name: username` 等同
+
+  ```
+  const username = cat.name
+  ```
 
   - 函數參數
 
@@ -863,8 +876,11 @@ TODO: ORIG_HEAD、remote 書籤
             - 任何函數出錯
 
     - async / await
+
       - async 本身就是個非同步
       - await 只能在 async function 內使用
+
+    - `async / await` VS `then` 的差異：只在語法不同，頂多 `then` 效能好一點點點點
 
   - CORS (Cross-origin resource sharing)
 
