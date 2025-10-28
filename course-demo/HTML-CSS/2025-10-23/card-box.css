@@ -1,16 +1,8 @@
-.card-box1 {
-  width: 1000px;
-  margin: 40px auto;
-  background-color: #ccc;
-  padding: 20px;
-}
-
-.card-box1 .card {
-  width: 168px;
-  border: 1px solid blue;
-  margin: 20px;
-  padding: 20px;
+.card {
   float: left;
+  border: 1px solid blue;
+  padding: 20px;
+  margin: 20px;
 }
 
 .card-img {
@@ -19,24 +11,39 @@
   object-fit: cover;
 }
 
-.card-box1::after,
-.card-box2::after {
-  content: "";
-  display: block;
-  clear: both;
+.card-box0,
+.card-box1,
+.card-box2,
+.card-box3 {
+  width: 1000px;
+  margin: 40px auto;
+  background-color: #ccc;
+  overflow: hidden;
 }
 
 .card-box2 {
-  width: 1020px;
-  margin: 40px auto;
-  background-color: #ccc;
-  padding: 10px;
+  width: 980px;
+  padding: 0 10px;
+}
+
+.card-box0 .card {
+  box-sizing: border-box;
+  width: 210px;
+}
+
+.card-box1 .card {
+  width: 168px;
 }
 
 .card-box2 .card {
-  width: 193px;
-  border: 1px solid blue;
-  margin: 10px;
-  padding: 20px;
-  float: left;
+  width: 183px;
+  margin: 20px 10px;
+}
+
+.card-box3 .card {
+  width: 183px;
+}
+
+.card-box3 .ml-0 {
+  margin-left: 0;
 }
