@@ -418,6 +418,8 @@ TODO: ORIG_HEAD、remote 書籤
   - 函數
     - 把剩下的全收
       - 通常用在參數數量不固定的場合
+  - 在 ES6 之前，全收下的功能要用 `arguments`，是一個隱藏變數
+    - 但是箭頭函數沒有 `aruguments`
 
 ## 關鍵字 / 保留字
 
@@ -519,8 +521,8 @@ TODO: ORIG_HEAD、remote 書籤
       4. 不用特別寫 return，會自動 return 空物件，手動 return 反而會出錯
          - 自動 return 的 this 經過中間處理，就不會是空物件
     - new 模板建立新物件的過程叫做: 實體化、具象化
-      - 這個模板在其他程式語言叫做 class
-      - 題外話: JS 沒有 class 的語言設計
+      - 這個模板在其他程式語言叫做 class (類別)
+      - 早期 JS 沒有 class 的語言設計
     - 透過 new 模板建立的新物件叫做: 實體 (instance)
 
 - 取用屬性: 有二種寫法
@@ -547,9 +549,73 @@ TODO: ORIG_HEAD、remote 書籤
   - 要找某屬性，路線都是走 `.__proto__` 去找，所以沒有某屬性的 `undefined` 並不是馬上回傳，而是經過好幾層 `.__proto__` 的查找
   - 放在物件內，等於共享屬性與其值，可以精簡程式碼與降低電腦記憶體的壓力
 
-### 物件導向設計 (Object-Oriented Programming / OOP) TODO:
+### 物件導向設計 (Object-Oriented Programming / OOP)
 
 - 物件導向縮寫: OO
+
+1. 類別
+2. 實體化 / 具象化: new 的過程
+3. 實體
+
+- new
+
+  - 模板製作
+
+    - function
+    - `class`
+      - `constructor`: 建構子
+        - new 下去之後，會立刻執行的 function
+      - 比較不會汙染到外面程式碼
+      - class 是語法糖，本質上是 function。背後還是 `__proto__` 和 `prototype` 的關係
+        - ES6 之後推出的
+        - JS 的 class 不是真的 class，因為它是糖衣
+        - 糖衣用途: 想要掩蓋什麼東西
+
+- `this`
+
+  1. 誰呼叫，誰就是 this。無人呼叫，則 this 為全域變數(window/global)
+     - 不同執行環境的全域變數不一樣
+     - 無人呼叫就是沒有 `.`
+     - 瀏覽器全域變數是 window
+     - Node.js 全域變數是 global
+  2. 是否使用箭頭函數，箭頭函數沒有 this 和 `arguments`，這時 this 為全域變數(window/global)
+     - 沒有 this 沒有 arguments，所以箭頭函數和一般函數不等同。但如果箭頭函數沒用到這二者，則與一般函數相同
+     - `arguments` 類似 ES6 `...`，是在 ES6 之前全收下的意思
+  3. 是否有使用 `new`，有用 `new` 則為空物件
+     - 因為 `new` 會先將 `this` 指向空物件
+     - 和箭頭函數混用，則箭頭函數會被視為 `constuctor`，所以報錯
+       - `new` 要搭配 `constuctor`
+  4. 是否有用 `apply` 或 `call` 或 `bind`
+     - `apply` 和 `call` 可以綁架 this，強迫把 this 轉向成參數
+     - 可以用遊戲中的法師幫戰士補血
+     - 所有東西都有 `apply` 和 `call`
+     - `apply` 和 `call` 的差異只在接受的參數多寡
+     - 若 function 本身帶有參數
+       - `call` 的第一個參數會被綁去 this，其他就一般型態
+       - `apply` 的第一個參數會被綁去 this，其他必須以單一陣列形式作為參數
+     - 和箭頭函數混用，this 為全域變數(window/global)。等於箭頭函數綁架不了 this
+     - `bind` 會回傳一個 function，也可以綁架 this
+  5. 是否開啟嚴格模式 (Strict Mode)
+     - 嚴格模式語法
+       - 對整份文件: 檔案開頭 `"use strict"`
+       - 指定 function: function 內第一行 `"use strict"`
+       - 為了維持相容性，所以是字串 `"use strict"`，避免老牌瀏覽器跑不動。老瀏覽器看到這句只會視為字串，然後就沒有然後
+       - `type="module"` 內建 defer 也內建開啟嚴格模式
+     - this 指向 `undefined`
+
+  - **_JS 的 this 和寫在哪裡無關係，重點是如何呼叫、被執行_**
+  - this 本來不是參數，除非被 `apply` 或 `call` 綁架
+  - 優先序: 2. > 1.
+  - this 的好處
+    - 指稱彈性，比如交過好幾任男女朋友，怕叫錯名字，統一叫寶貝
+
+- 物件導向想要解決的事
+  - 真正目的: 用人類容易理解的方式來組織、管理程式碼，把程式碼擬人化
+  - 附加好處: 可讀性高，容易維護
+- 類別繼承 (inhteritance)
+  - `extends`: 擴充
+    - 可透過生物分類法來比擬，如: 靈長目的人和猩猩都有抓握能力
+    - 用法: 擴充其他 class 的設定。好處是若多個 class 有共同功能，可以將該功能另外寫一個 class 來被 extends，類似 `__proto__` 往上找的感覺
 
 ### 陣列
 
@@ -926,7 +992,7 @@ TODO: ORIG_HEAD、remote 書籤
       - async 本身就是個非同步
       - await 只能在 async function 內使用
         - 若 await 不在 async function 內用，則 HTML 改成 `<script type="module">`
-        - `type="module"` 內建 `defer`
+        - `type="module"` 內建 `defer` 和 `"use strict"`
       - try... catch
 
     - `async / await` VS `then` 的差異：只在語法不同，頂多 `then` 效能好一點點點點
@@ -1206,4 +1272,5 @@ TODO: ORIG_HEAD、remote 書籤
 
 # 題外話
 
-不同程式語言的運行速度不一樣
+- 不同程式語言的運行速度不一樣
+- JS 很努力在進步，但瀏覽器沒跟上
