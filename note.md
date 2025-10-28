@@ -73,8 +73,6 @@
 
 # Git
 
-TODO: ORIG_HEAD、remote 書籤
-
 ## 基本觀念
 
 - 協同開發
@@ -162,6 +160,8 @@ TODO: ORIG_HEAD、remote 書籤
           因為 Git 只會新增紀錄，不會直接刪除。<br>
           若要刪除 Git 紀錄，需手動處理，或者超過預設保存期限（通常是 90 天）。
         - `reset --hard` 殘酷在「讓你看不見」，但 Git 的良心（reflog）讓你暫時還能回頭。
+    - ORIG_HEAD: 只記錄 merge / rebase 之前的 HEAD，記憶前一動的 HEAD，而且只會記憶一個。所以可以搭配 reset 撤銷 merge / rebase
+      - ORIG_HEAD 會移動的常見指令只有 merge/ rebase / reset，**_commit 不會_**
 
 - merge VS rebase
   | 項目 | merge | rebase |
@@ -175,20 +175,31 @@ TODO: ORIG_HEAD、remote 書籤
   - 應用場合: 其他專案做好了，要回來把原本 stash 的檔案開出來繼續用
   - `git stash pop`: 拿出來，但刪掉 stash
   - `git stash apply`: 拿出來，但留著 stash
-- `git cherry-pick`
+- `git cherry-pick <commit ID>`: 從某分支挑選特定 commit 複製到目前所在分支上，不用再 merge
 - [操作練習](https://learngitbranching.js.org/?locale=zh_TW)
 
 ### 遠端操作
 
 - git remote
-- git pull
-  - `--merge`: 預設值
-  - `--rebase`
-- git push = git getch + git merge
+  - `add <bookmark name> <URL>`
+    - bookmark name 就是以後在本機對 URL 的代名詞，所以不是遠端倉庫有個 bookmark name 分支
+    - bookmark name 可以隨機取名，但通常會取 origin
+- git pull = git fetch + git merg
   - 單純 fetch 不會有衝突，pull 才會，因為 pull 會自動 merge
+  - 參數
+    - `--merge`: 預設值
+    - `--rebase`
+- git push
   - `--force` 或 `-f`: 將本機進度強制推送到遠端
     - 沒事別用，因為會覆蓋協同專案的所有紀錄與狀態，除非你是專案管理者，或者有知會專案夥伴，或者是個人獨立開發
     - GitHub 可以設定關閉強推的功能
+  - `git remote origin main`
+    - origin: 遠端倉庫代名詞，可自行隨意命名，只要對應當時 remote add 的 bookmark 就好
+    - main: 本機分支
+      - `<local branch name>:<remote branch name>`
+      - 注意冒號
+      - 當本機分支和遠端分支名字相同時，可以不用特別完整寫出
+      - git push origin `<empty>:<remote branch name>`: 刪除線上分支。冒號前不寫本機分支
 
 ### 誰會移動 HEAD?
 
