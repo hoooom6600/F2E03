@@ -514,10 +514,10 @@ TODO: ORIG_HEAD、remote 書籤
     - new
       1. new 出來的 this 會首先指向空物件
       2. `this.__proto__` 會指向 new 物件的 prototype 屬性
-         1. 在 mdn 看到的 prototype 就是這個主題說的 prototype
+         - 在 mdn 看到的 prototype 就是這個主題說的 prototype
       3. 個人開發的設定
       4. 不用特別寫 return，會自動 return 空物件，手動 return 反而會出錯
-         1. 自動 return 的 this 經過中間處理，就不會是空物件
+         - 自動 return 的 this 經過中間處理，就不會是空物件
 
 - 取用屬性: 有二種寫法
 
@@ -529,6 +529,14 @@ TODO: ORIG_HEAD、remote 書籤
   - 刪除: `delete object.oldKey`
 - 所有東西（物件）都有 `.__proto__` 屬性
 - 函數也有 `.__proto__` ，但只有函數才有 prototype
+
+  - 函數包含
+
+    - 用 `new` 建立出來的東西
+    - Array: 注意首字大寫，不等同全小寫的資料型態
+    - String: 注意首字大寫，不等同全小寫的資料型態
+    - Number: 注意首字大寫，不等同全小寫的資料型態
+    - Boolean: 注意首字大寫，不等同全小寫的資料型態
 
   - 針對數字，要用 () 包起來
   - 階層路線，往父層找，父層沒有就往父層的父層找，以此類推
