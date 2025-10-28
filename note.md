@@ -161,7 +161,7 @@
           若要刪除 Git 紀錄，需手動處理，或者超過預設保存期限（通常是 90 天）。
         - `reset --hard` 殘酷在「讓你看不見」，但 Git 的良心（reflog）讓你暫時還能回頭。
     - ORIG_HEAD: 只記錄 merge / rebase 之前的 HEAD，記憶前一動的 HEAD，而且只會記憶一個。所以可以搭配 reset 撤銷 merge / rebase
-      - ORIG_HEAD 會移動的常見指令只有 merge/ rebase / reset，**_commit 不會_**
+      - ORIG\*HEAD 會移動的常見指令只有 merge/ rebase / reset，**_commit 不會_**
 
 - merge VS rebase
   | 項目 | merge | rebase |
@@ -175,6 +175,7 @@
   - 應用場合: 其他專案做好了，要回來把原本 stash 的檔案開出來繼續用
   - `git stash pop`: 拿出來，但刪掉 stash
   - `git stash apply`: 拿出來，但留著 stash
+  - stash 只能在本機存取，無法被 push
 - `git cherry-pick <commit ID>`: 從某分支挑選特定 commit 複製到目前所在分支上，不用再 merge
 - [操作練習](https://learngitbranching.js.org/?locale=zh_TW)
 
