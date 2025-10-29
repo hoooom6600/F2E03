@@ -29,3 +29,74 @@ section .news-list li#li1 {
 h1 ~ p {
   color: rgb(190, 130, 185);
 }
+
+/* 偽類 */
+
+/* first */
+/* div:first-child {
+  background-color: blueviolet;
+}
+
+div p:first-child {
+  background-color: brown;
+} */
+
+/* div:first-of-type {
+  background-color: blueviolet;
+} */
+
+/* div :first-of-type {
+  background-color: hotpink;
+} */
+
+/* div p:first-of-type {
+  background-color: brown;
+} */
+
+/* last */
+/* div:last-child {
+  background-color: aqua;
+} */
+
+/* div:last-of-type {
+  background-color: aqua;
+} */
+
+/* nth */
+/* div :nth-child(even) {
+  background-color: lightsalmon;
+}
+
+div:nth-child(even) {
+  background-color: lightsalmon;
+} */
+
+/* div :nth-of-type(odd) {
+  background-color: lightgreen;
+} */
+
+/* div:nth-of-type(odd) {
+  background-color: lightgreen;
+} */
+
+section:not(.container) {
+  border: 1px solid saddlebrown;
+}
+
+.a-box a {
+  background-color: #fa0;
+  display: inline-block;
+  padding: 20px;
+}
+.a-box a[href="#1"]:visited {
+  background-color: lightblue;
+}
+.a-box a[href="#2"]:focus {
+  background-color: lightcoral;
+}
+.a-box a[href="#3"]:hover {
+  background-color: lightyellow;
+}
+.a-box a[href="#4"]:active {
+  background-color: lightpink;
+}
