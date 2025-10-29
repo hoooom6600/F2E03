@@ -94,10 +94,44 @@
   - 字體系列設定 inherit
 - 命名規則
 - 選取器
+
   - 各種符號搭配
+  - 偽類
+
+    - child 系列: 以每個同層級來判斷，**_以順序為主_**
+
+      - :fitst-child:
+      - :last-child: 透過 Live Server 選不到 <body\> 內最後一個元素，因為套件自動插入 <script\>
+      - :nth-child()
+
+    - type 系列: 每個同層的第一個同型。**_先看類型再看順序_**
+      - :first-of-type
+      - :last-of-type
+      - :nth-of-type()
+    - nth 參數
+      - `n`: 任意整數
+      - `odd`: 奇數 = `2n+1`
+      - `even`: 偶數 = `2n`
+      - 自寫公式
+    - 互動
+      - :visited
+        - 清除快取就可以取消這個偽類
+      - :focus
+        - 通常用在 input, button, a 標籤，其中以 input 最最最常見
+        - tab 鍵來 focus，或者無障礙閱讀器
+      - :hover
+      - :active: 相當於 JS mousedown 的時機
+
   - 優先級
     - 分數計算
+      - 標籤: 1
+      - class、屬性、偽類: 10
+      - id: 100
+      - inline CSS: 1000
+      - !important: 10000
       - 同分時，看編輯位置誰排序較後。後者覆蓋前者。
+      - `+`, `~`, `>` 不用計分
+
 - 單位
 
   - 絕對單位
@@ -144,6 +178,7 @@
     - cover: 最常用。等比例放大圖片，但不會改變圖片本身比例，但有可能看不到超出容器的區塊
     - contain: 不改變原始圖片比例，當長邊碰到容器尺寸，則停止縮放
     - none: 原本多大就顯示多大
+- [CSS 選取小遊戲](https://flukeout.github.io/)
 
 # Git
 
