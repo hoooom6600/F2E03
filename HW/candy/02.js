@@ -7,13 +7,10 @@ const chars2 = ["O", "Q", "R", "S"];
 
 function missingChar(chars) {
   // 實作寫在這裡
-  // 整理字母順序，由A至z，然後轉成UTF碼
-  const charsToUTF = [];
-  chars.sort().forEach((char) => {
-    charsToUTF.push(char.charCodeAt(char));
-  });
+  // 整理字母順序，由 A 至 z，然後轉成 UTF 碼
+  const charsToUTF = chars.sort().map((char) => char.charCodeAt(0));
 
-  // 收集缺字的UTF碼，可能不只一個缺漏，依題目而定
+  // 收集缺字的 UTF 碼，可能不只一個缺漏，依題目而定
   const missingsUTF = [];
   for (let i = 0, j = 1; j < charsToUTF.length; i++, j++) {
     let distance = charsToUTF[j] - charsToUTF[i];
@@ -23,16 +20,16 @@ function missingChar(chars) {
     }
   }
 
-  let result = "";
-  // 從UTF轉回字符
-  missingsUTF.forEach((missing) => {
-    if (result.length > 0) {
-      result += `, ${String.fromCharCode(missing)}`;
-    } else {
-      result += String.fromCharCode(missing);
-    }
-  });
-  return result;
+  // 從 UTF 轉回字符
+  const missingChars = missingsUTF.map((missingUTF) =>
+    String.fromCharCode(missingUTF)
+  );
+
+  // 若缺少多個字母，彼此用', '隔開，單一字母則無需逗號相隔
+  if (missingChars.length <= 1) {
+    return missingChars[0] || "";
+  }
+  return missingChars.join(", ");
 }
 
 console.log(missingChar(chars1)); // 印出 e
