@@ -15,6 +15,26 @@
       | submit |  =  |  submit  |
       | image  |  =  |  submit  |
       | reset  |  =  |  reset   |
+- `<svg>`: 文字程式碼的向量圖
+  - 優點
+    - 增加 SEO
+    - 檔案小
+    - 可以做透明，有透明度
+    - 可做動畫
+    - 可以直接放在程式碼上
+    - 也可以製作成一個 svg 檔案然後在 HTML 以 `<img>` 帶入
+  - 常見 svg 內的**_子元素_**
+    - `rect`: 矩形
+    - `circle`: 圓形
+    - `line`: 線條
+    - `path`: 複雜圖形
+    - `polyon`: 多邊形
+  - 常見屬性
+    - `stroke`: 邊框色
+    - `stroke-width`: 邊框寬度
+    - `fill`: 圖形顏色
+- `<canvas>`: 動態內容、互動處理，要用 JS 繪製內容
+  -
 
 # CSS
 
