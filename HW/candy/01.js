@@ -10,9 +10,7 @@ function sumOfSmallestValues(arr) {
   const count = 2; // 即可依題目要求的相加數量做改變
 
   // 型別轉換，確認只有number elements
-  const numberArr = arr.filter((n) => {
-    return typeof n == "number" && !isNaN(n);
-  });
+  const numberArr = arr.filter((n) => typeof n == "number" && !isNaN(n));
 
   // 確認數字陣列有東西
   if (numberArr.length <= 0) {
@@ -20,9 +18,7 @@ function sumOfSmallestValues(arr) {
   }
 
   // 有序整理陣列
-  numberArr.sort(function ascend(pre, next) {
-    return pre - next;
-  });
+  numberArr.sort((pre, next) => pre - next);
 
   // 最小值相加
   let result = 0; // 加總初始化
