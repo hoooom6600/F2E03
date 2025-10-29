@@ -1,20 +1,62 @@
 # HTML
 
-## 標籤（僅列出個人不熟悉的）
+## 標籤（僅列出主題重點與個人不熟悉的）
+
+- Block vs Inline elements
+- 語意化
+  - 提升 SEO
+  - 程式碼維護與可讀性高
+  - 代碼更加有結構
+  - 使用者可及性高（無障礙體驗）
+    - 也能提升 SEO
+    - 螢幕閱讀器
+- `<address>`: 聯絡資訊地址
+- `<blockquote>` vs `<q>`
+- `<code>`
+- `<time>`: 內有 datetime 屬性。機器可以解析的標籤，提升 SEO
+- `<mark>`: 螢光筆效果
+- `<figure>` vs `<figcaption>`
+- 多媒體嵌入
+  - `<video>` vs `<audio>`
+    - `<source>`: 用於 `<video>`和 `<audio>` 內
+      - type 屬性標示檔案格式
+  - `<track>`: 影片字幕
+  - `<object>`
+    - type 屬性為內容類型，如：圖片、影片、**_PDF_** 文件...etc
+  - `<picture>`
+    - 螢幕不同大小時,顯示不同大小的圖片
+    - 支持不同圖片格式
+  - `<iframe>`: 在當前頁面內嵌入另一個 HTML 頁面
+- 圖片標籤比較
+
+|      項目      |             <img\>              |             <figure\>             |             <picture\>              |
+| :------------: | :-----------------------------: | :-------------------------------: | :---------------------------------: |
+|      語意      |                X                | ∆ 有語意（與 <figcaption\> 搭配） |    O 功能性語意（用於多來源圖片     |
+|    結尾標籤    |           ∆（自閉合）           |                 O                 |                  O                  |
+|    display     |             inline              |               block               |               inline                |
+|      目的      |          插入單一圖片           |        包含圖片與說明文字         |        響應式圖片、格式切換         |
+|   無障礙支援   | 使用 alt 屬性（圖片損毀時顯示） |     可搭配 <figcaption\> 說明     | 可與 <figure\> + <figcaption\> 搭配 |
+| 是否支援多來源 |                X                |                 X                 |         O（透過 <source\>）         |
+|    常見用途    |            靜態圖片             |     圖片附說明、插圖、表格等      |    響應式設計、不同螢幕大小支援     |
 
 - `<details>` 與 `<summary>`: HTML 內建區塊收合
 
   - `<details>`: `open` 屬性
 
-- 表單提交
-  - `<input>`: `autocomplete` 屬性
-  - `<input>` 和 `<button>` type 比較
-    - | input  |     |  button  |
-      | :----: | :-: | :------: |
-      | button |  =  | \*button |
-      | submit |  =  |  submit  |
-      | image  |  =  |  submit  |
-      | reset  |  =  |  reset   |
+- 表單
+  - `<fieldset>`
+  - `<legend>`
+  - `<progress>`: 進度條
+  - `<output>`
+  - 提交
+    - `<input>`: `autocomplete` 屬性
+    - `<input>` 和 `<button>` type 比較
+      - | input  |     |  button  |
+        | :----: | :-: | :------: |
+        | button |  =  | \*button |
+        | submit |  =  |  submit  |
+        | image  |  =  |  submit  |
+        | reset  |  =  |  reset   |
 - `<svg>`: 文字程式碼的向量圖
   - 優點
     - 增加 SEO
@@ -34,17 +76,21 @@
     - `stroke-width`: 邊框寬度
     - `fill`: 圖形顏色
 - `<canvas>`: 動態內容、互動處理，要用 JS 繪製內容
-  -
 
-# CSS
+# CSS（僅列出主題重點與個人不熟悉的）
 
 - 各家瀏覽器預設樣式不同
-  - 比如複雜的表格，每格 rowspan 數量不一樣，高度會依不同瀏覽器設定而異，<br>
-    以這個例子而言，CSS 規範並沒有對這種表格有明確的高度說明。
+  - 比如複雜的表格，每格 rowspan 數量不一樣，高度會依不同瀏覽器設定而異，以這個例子而言，CSS 規範並沒有對這種表格有明確的高度說明。
 - CSS reset
+  - [Tailwind](https://tailwindcss.com/docs/preflight): 根據需要的元素，自己複製做重置
+  - [Eric Meyer](https://meyerweb.com/eric/tools/css/reset/): 全面重置
 - 瀏覽器預設
   - 字體大小: 16px
     - 但標籤的預設渲染是用 em
+- 命名規則
+- 選取器
+  - 各種符號搭配
+  - 優先級
 - 單位
 
   - 絕對單位
