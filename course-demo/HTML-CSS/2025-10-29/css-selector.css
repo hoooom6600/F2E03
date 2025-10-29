@@ -1,0 +1,31 @@
+section {
+  margin: 100px;
+}
+
+.box1 {
+  background-color: red;
+}
+
+div.box2 {
+  background-color: bisque;
+}
+
+section .box3 {
+  background-color: aqua;
+}
+
+#li1 {
+  background-color: rgb(231, 223, 199);
+}
+
+section .news-list li#li1 {
+  color: orange;
+}
+
+.news-list-item + .news-list-item {
+  border-top: 1px solid purple;
+}
+
+h1 ~ p {
+  color: rgb(190, 130, 185);
+}
