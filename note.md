@@ -525,7 +525,7 @@
   ▼ 當 cat 物件剛好有 name 和 age 屬性，就訪問他們
 
   ```
-  const { name, age } = catㄤ
+  const { name, age } = cat
   ```
 
   若沒有對應的屬性，結果為 `undefined`。<br>
