@@ -7,11 +7,11 @@ let list = [false, 1, 0, -1, 2, 0, 1, 3, "a"];
 function moveZerosToEnd(arr) {
   // 程式碼寫在這裡
   const target = 0; // 定義標的，依題目要求而異。本題為 0
-  const validGroup = arr.filter((element) => element !== target); // 嚴格相等，否則 false 會視為 0
-  const targetGroup = arr.filter((element) => element === target); // 嚴格相等，否則 false 會視為 0
+  const targets = arr.filter((element) => element === target); // 嚴格相等，否則 false 會視為 0
+  const others = arr.filter((element) => element !== target); // 嚴格相等，否則 false 會視為 0
 
-  // 把 validGroup 和 targetGroup 陣列展開然後串接，變成單層陣列
-  return [...validGroup, ...targetGroup];
+  // 把 others 和 targetGroup 陣列展開然後串接，變成單層陣列
+  return [...others, ...targets];
 }
 
 let result = moveZerosToEnd(list);
