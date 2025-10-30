@@ -10,16 +10,9 @@ function humanReadableTimer(seconds) {
   let hr = Math.floor(min / 60);
 
   // 每單位欄位若為個位數，則補上前綴 0
-  if (sec < 10) {
-    sec = `0${sec.toString()}`;
-  }
-  if (fullMin < 10) {
-    fullMin = `0${fullMin.toString()}`;
-  }
-  if (hr < 10) {
-    hr = `0${hr.toString()}`;
-  }
-  return `${hr}:${fullMin}:${sec}`;
+  const pad = (num) => num.toString().padStart(2, "0");
+
+  return `${pad(hr)}:${pad(fullMin)}:${pad(sec)}`;
 }
 
 console.log(humanReadableTimer(0)); // 印出 00:00:00
