@@ -12,7 +12,8 @@
    - [Youbike API 串接與陣列綜合練習 (youbike)](https://hoooom6600.github.io/F2E03/HW/youbike/index.html)
 
 3. 糖果題
-   1. 👌
+   1. 👌 → 👌
    2. 🍬
-   3. 👌
-   4. 👌
+   3. 👌 → 🍬
+   4. 👌 → 🍬
+   5. 👌
