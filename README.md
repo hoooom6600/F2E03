@@ -8,4 +8,11 @@
    - [Google 表單 (form)](https://hoooom6600.github.io/F2E03/HW/form/form.html)
 
 2. JavaScript
+
    - [Youbike API 串接與陣列綜合練習 (youbike)](https://hoooom6600.github.io/F2E03/HW/youbike/index.html)
+
+3. 糖果題
+   1. 👌
+   2. 🍬
+   3. 👌
+   4. 👌
