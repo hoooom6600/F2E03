@@ -4,10 +4,10 @@
 
 function humanReadableTimer(seconds) {
   // 實作在這裡
-  let sec = seconds % 60;
-  let min = Math.floor(seconds / 60); // 每 60 分鐘進位給分鐘之後的分鐘數
-  let fullMin = min % 60; // 每 60 分鐘進位給小時之後的分鐘數
-  let hr = Math.floor(min / 60);
+  const sec = seconds % 60;
+  const min = Math.floor(seconds / 60); // 每 60 分鐘進位給分鐘之後的分鐘數
+  const fullMin = min % 60; // 每 60 分鐘進位給小時之後的分鐘數
+  const hr = Math.floor(min / 60);
 
   // 每單位欄位若為個位數，則補上前綴 0
   const pad = (num) => num.toString().padStart(2, "0");
