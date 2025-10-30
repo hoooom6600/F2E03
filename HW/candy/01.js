@@ -7,25 +7,23 @@
 
 function sumOfSmallestValues(arr) {
   // 實作程式碼寫在這裡
-  const count = 2; // 即可依題目要求的相加數量做改變
+  const count = 2; // 可依題目要求的相加數量做改變
 
-  // 型別轉換，確認只有number elements
-  const numberArr = arr.filter((n) => typeof n == "number" && !isNaN(n));
+  // 型別轉換，確認只有number elements，並做遞增有序整理
+  const numberArr = arr
+    .filter((n) => typeof n == "number" && !isNaN(n))
+    .sort((prev, next) => prev - next);
 
-  // 確認數字陣列有東西
-  if (numberArr.length <= 0) {
-    return "空陣列，沒有東西可以相加";
+  // 確認數字陣列有達要求數量可以做相加
+  if (numberArr.length < count) {
+    return `陣列不足要求相加的數量（需要 ${count} 個數值）。只接受 number 型態數字`;
   }
 
-  // 有序整理陣列
-  numberArr.sort((pre, next) => pre - next);
-
-  // 最小值相加
-  let result = 0; // 加總初始化
-  for (let i = 0; i < count; i++) {
-    result += numberArr[i];
-  }
-  return result;
+  // 最小值加總
+  const init = 0; // 加總初始化，可依題目要求更改
+  return numberArr
+    .slice(0, count) // 因為已經做遞增有序整理，所以可以直接砍掉超過題目要求數量 (count 變數) 的 elements
+    .reduce((accumulator, currentValue) => accumulator + currentValue, init);
 }
 
 const list1 = [19, 5, 42, 2, 77];
