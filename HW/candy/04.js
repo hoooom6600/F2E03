@@ -4,6 +4,22 @@
 
 function humanReadableTimer(seconds) {
   // 實作在這裡
+  let sec = seconds % 60;
+  let min = Math.floor(seconds / 60); // 每 60 分鐘進位給分鐘之後的分鐘數
+  let fullMin = min % 60; // 每 60 分鐘進位給小時之後的分鐘數
+  let hr = Math.floor(min / 60);
+
+  // 每單位欄位若為個位數，則補上前綴 0
+  if (sec < 10) {
+    sec = `0${sec.toString()}`;
+  }
+  if (fullMin < 10) {
+    fullMin = `0${fullMin.toString()}`;
+  }
+  if (hr < 10) {
+    hr = `0${hr.toString()}`;
+  }
+  return `${hr}:${fullMin}:${sec}`;
 }
 
 console.log(humanReadableTimer(0)); // 印出 00:00:00
