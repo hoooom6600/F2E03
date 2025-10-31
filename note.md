@@ -212,16 +212,23 @@
     - text-align
     - vertical-align
 - 背景
+
   - 顏色
   - 圖片
+
+    - 可以疊很多張圖，前者蓋住後者
     - repeat: 填滿
       - X 軸
       - Y 軸
-    - 漸層
+    - 漸層: linear-gradient(to <目標方向>, <起始色彩>, <結束色彩>);
+    - 尺寸
+      - cover: 裁切
+      - contain: 不裁切
+    - 一行屬性可以設定多張圖片，記得用 `,` 隔開
+    - 簡寫: `background: <image> <repeat> <background-position> / <size> <color>;`
+
   - 層級: 背景圖 = 漸層 > 背景色
-  - 尺寸
-    - cover: 裁切
-    - contain: 不裁切
+
 - 圖片常用搭配技
   - `width`
   - `aspect-ratio`: 圖片比例（較新的 CSS，注意支援度）
