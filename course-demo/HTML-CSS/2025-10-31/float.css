@@ -1,0 +1,70 @@
+section {
+  margin: 100px;
+}
+
+img {
+  width: 30%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+.card {
+  background-color: #ccc;
+  padding: 30px;
+}
+
+.title {
+  background-color: #fac;
+  font-size: 26px;
+}
+
+.content {
+  background-color: #caf;
+}
+
+.card:nth-child(odd) img {
+  float: left;
+  margin-right: 40px;
+}
+
+.card:nth-child(even) img {
+  float: right;
+  margin-left: 40px;
+}
+
+.card:nth-child(odd) .title,
+.card:nth-child(odd) .content {
+  text-align: left;
+}
+
+.card:nth-child(even) .title,
+.card:nth-child(even) .content {
+  text-align: right;
+}
+
+.clear-fix {
+  clear: both;
+}
+
+.box-wrap {
+  background-color: #ccc;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.box {
+  background-color: #fa0;
+  width: 80px;
+  height: 80px;
+  margin: 10px;
+  float: right;
+}
+.box:nth-child(3n + 1) {
+  width: 180px;
+  height: 180px;
+  float: left;
+}
+
+.box:nth-child(6n + 1) {
+  float: right;
+}
