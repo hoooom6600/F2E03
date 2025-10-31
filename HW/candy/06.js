@@ -4,6 +4,33 @@
 
 function findDifferent(numbers) {
   // 實作寫在這裡
+  const first = {
+    num: null,
+    count: 0,
+  };
+  const second = {
+    num: null,
+    count: 0,
+  };
+
+  numbers.forEach((number) => {
+    if (first.count === 0) {
+      first.num = number;
+      first.count++;
+    } else if (number !== first.num) {
+      second.num = number;
+      second.count++;
+    } else if (number === first.num) {
+      first.count++;
+    } else {
+      second.count++;
+    }
+  });
+
+  if (first.count === 1) {
+    return first.num;
+  }
+  return second.num;
 }
 
 console.log(findDifferent([1, 1, 1, 1, 3, 1, 1, 1])); // 印出 3
