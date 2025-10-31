@@ -208,8 +208,20 @@
     - letter-spacing: 字元之間，包含空白字元，**_換行會被解析為空白字元_**
     - word-sapcing: 空白字元寬度，中文無感，因為中文單字常見顯示方式不是用空白字元
   - 對齊
+    - direction: 影響的是**_元素內_**的靠左或靠右
     - text-align
     - vertical-align
+- 背景
+  - 顏色
+  - 圖片
+    - repeat: 填滿
+      - X 軸
+      - Y 軸
+    - 漸層
+  - 層級: 背景圖 = 漸層 > 背景色
+  - 尺寸
+    - cover: 裁切
+    - contain: 不裁切
 - 圖片常用搭配技
   - `width`
   - `aspect-ratio`: 圖片比例（較新的 CSS，注意支援度）
