@@ -5,5 +5,8 @@ section {
 div {
   height: 600px;
   background-color: #cac;
-  background-image: url(../../usagi.webp);
+  background-image: url(../../usagi.webp), url(../../usagi.webp);
+  background-repeat: no-repeat, no-repeat;
+  background-size: 100px 100px, 300px 200px;
+  background-position: 20px center, right 100px bottom 40px;
 }
