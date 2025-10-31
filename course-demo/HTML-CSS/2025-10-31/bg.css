@@ -1,0 +1,9 @@
+section {
+  margin: 100px;
+}
+
+div {
+  height: 600px;
+  background-color: #cac;
+  background-image: url(../../usagi.webp);
+}
