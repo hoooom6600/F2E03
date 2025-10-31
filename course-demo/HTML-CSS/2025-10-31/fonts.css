@@ -1,0 +1,63 @@
+section {
+  margin: 100px;
+}
+
+h1 {
+  text-decoration: red line-through dashed;
+  background-color: #ccc;
+  line-height: 5;
+}
+
+nav {
+  height: 64px;
+  background-color: #fa0;
+  margin: 10px;
+}
+
+nav a {
+  display: inline-block;
+  padding: 0 15px;
+  line-height: 64px;
+}
+
+.shadows-into-light-regular {
+  font-family: "Shadows Into Light", cursive;
+  font-size: 90px;
+  font-weight: 900;
+  font-style: normal;
+  color: rgb(165, 2, 187);
+}
+
+.center {
+  text-align: center;
+}
+
+.end {
+  text-align: end;
+}
+
+.a1 {
+  background-color: bisque;
+}
+
+.a2 {
+  background-color: #aca;
+}
+
+.a3 {
+  background-color: #cac;
+}
+
+.a4 {
+  background-color: #ffa;
+}
+
+.zh {
+  letter-spacing: 50px;
+  word-spacing: 20px;
+}
+
+.en {
+  letter-spacing: 50px;
+  word-spacing: 20px;
+}

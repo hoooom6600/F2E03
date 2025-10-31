@@ -150,6 +150,7 @@
       - !important: 10000
       - 同分時，看編輯位置誰排序較後。後者覆蓋前者。
       - `+`, `~`, `>` 不用計分
+  - [CSS 選取小遊戲](https://flukeout.github.io/)
 
 - 單位
 
@@ -176,7 +177,7 @@
 - 寬度與高度
   - 高度是根據內容撐開的
     - 內容是純文字者，高度不會是`行數 x 字體大小`，因為還有行高的存在
-  - 訂寬不訂高
+  - 訂寬不訂高，不過 <header\> 可以考慮訂高
   - 內外距
     - padding: 百分比以**_父層 content 寬度_**為基準
     - margin: 百分比以**_父層內容空間_**為基準
@@ -189,6 +190,26 @@
     - `box-sizing`
       - `content-box`: 預設值。設定 width 只給內容本體
       - `border-box`
+- 文字
+  - 字體
+    - [字型](https://fonts.google.com/)
+      - 通常開發專案不太會用引入的 font-family，因為樣式是設計師創作的，會請他提供字型檔案
+    - font-size 有關鍵字可以用，但實務很少用到
+    - font-weight: 預設 400 = 關鍵字 normal
+  - 底線
+    - text-decoration = text-decoration-line + text-decoration-color + text-decoration-style
+      - 參數順序沒有固定
+  - line-height: 行高
+    - 垂直置中好方法之一
+  - text-indent: **_首行_**縮排
+    - 正數: 內推
+    - 負數: 外擠
+  - 間距
+    - letter-spacing: 字元之間，包含空白字元，**_換行會被解析為空白字元_**
+    - word-sapcing: 空白字元寬度，中文無感，因為中文單字常見顯示方式不是用空白字元
+  - 對齊
+    - text-align
+    - vertical-align
 - 圖片常用搭配技
   - `width`
   - `aspect-ratio`: 圖片比例（較新的 CSS，注意支援度）
@@ -197,7 +218,11 @@
     - cover: 最常用。等比例放大圖片，但不會改變圖片本身比例，但有可能看不到超出容器的區塊
     - contain: 不改變原始圖片比例，當長邊碰到容器尺寸，則停止縮放
     - none: 原本多大就顯示多大
-- [CSS 選取小遊戲](https://flukeout.github.io/)
+- 瀏覽器兼容: 不同瀏覽器的 CSS 支援進度不一致，有這些前綴就可以在該瀏覽器實驗階段提前試用
+  - `-webki`: Chrome, Safari
+  - `-moz`: Firefox
+  - `ms`: IE, Edge
+  - `o`: Opera
 
 # Git
 
