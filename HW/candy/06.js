@@ -4,33 +4,14 @@
 
 function findDifferent(numbers) {
   // 實作寫在這裡
-  const first = {
-    num: null,
-    count: 0,
-  };
-  const second = {
-    num: null,
-    count: 0,
-  };
+  // 有序排列（小至大）
+  const ordered = numbers.sort((prev, next) => prev - next);
 
-  numbers.forEach((number) => {
-    if (first.count === 0) {
-      first.num = number;
-      first.count++;
-    } else if (number !== first.num) {
-      second.num = number;
-      second.count++;
-    } else if (number === first.num) {
-      first.count++;
-    } else {
-      second.count++;
-    }
-  });
-
-  if (first.count === 1) {
-    return first.num;
+  // 因已排序，若前二個元素相同，則代表異者在陣列末端，反之
+  if (ordered[0] === ordered[1]) {
+    return ordered[ordered.length - 1];
   }
-  return second.num;
+  return ordered[0];
 }
 
 console.log(findDifferent([1, 1, 1, 1, 3, 1, 1, 1])); // 印出 3
