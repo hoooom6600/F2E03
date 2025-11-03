@@ -12,13 +12,11 @@ function highestScoreWord(input) {
   let highestWord = "";
   words.forEach((word) => {
     for (let i = 0; i < word.length; i++) {
-      currentScore += word.charCodeAt(word[i]) - 97;
-      if (currentScore > highestScore) {
-        highestScore = currentScore;
-      }
-      if (i == word.length && currentScore > highestScore) {
-        highestWord = word;
-      }
+      currentScore += word.charCodeAt(i);
+    }
+    if (currentScore > highestScore) {
+      highestScore = currentScore;
+      highestWord = word;
     }
     currentScore = 0;
   });
@@ -26,5 +24,5 @@ function highestScoreWord(input) {
 }
 
 console.log(highestScoreWord("lorem ipsum dolor sit amet")); // 印出 ipsum
-// console.log(highestScoreWord("heyn i need a rubygem up to build this")); // 印出 rubygem
-// console.log(highestScoreWord("in time machine there are some bugs")); // 印出 there
+console.log(highestScoreWord("heyn i need a rubygem up to build this")); // 印出 rubygem
+console.log(highestScoreWord("in time machine there are some bugs")); // 印出 there
