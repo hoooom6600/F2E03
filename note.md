@@ -1208,7 +1208,7 @@
     - async / await
 
       - async 本身就是個非同步
-      - await 只能在 async function 內使用
+      - await 只能在 async function 內使用，或者最頂層
         - 若 await 不在 async function 內用，則 HTML 改成 `<script type="module">`
         - `type="module"` 內建 `defer` 和 `"use strict"`
       - try... catch
@@ -1309,6 +1309,7 @@
 
 - dayjs
 - axios
+  - 註冊 token → JWT
 - node_modules
   - 所有安裝的套件資料都會在這個資料夾，所以開發到最後的專案會很胖
   - 開發結束可以把這個資料夾刪掉，之後有要運用相關套件，在專案路徑輸入 `npm i`，電腦會自動看 package.json 裡面的 `dependencies` 把套件載回來
