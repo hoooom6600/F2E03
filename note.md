@@ -1325,6 +1325,7 @@
     - 可以透過 `npm run <scirpt name>` 在終端執行
     - `<script name>` 可以自己手刻名字，不過通常套件會提供名稱。
       - `<script name>` 背後真正執行的動作，是來自於安裝的套件被放在 node_modules 裡
+- [alpine](https://alpinejs.dev/)
 
 #### 打包
 
