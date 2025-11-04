@@ -58,6 +58,19 @@
 
 - 表單
 
+  - `<form>`
+
+    - action 屬性: 要把表單送去哪裡
+      - 若為空值，則代表將表單送至表單所屬頁面
+    - method 屬性方法
+      - get
+      - post
+      - dialog
+      - 目前 HTML 只支援以上三種（未來更新說不定會跟上進度）
+      - 若後端格式用其他 REST，前端只能在 HTML 表單藏一個隱藏，以 patch 為例: `<input type="hidden" name="_method" value="_patch">`
+      - REST 有很多方法，但 HTML 只支援幾種，這是 HTML 的限制與缺點，並不是 REST 設計太多，因為其他程式語言是可以使用的，比如 JS
+    - 傳遞敏感資料通常是放在 headers，比較不容易被看到，但有心人士要翻還是能找到
+
   - `<fieldset>`: 將表單群組化，有語意
     - `<legend>`: 替群組化的表格定標題
   - `<progress>`: 進度條
@@ -1305,11 +1318,20 @@
     - `--save` 是預設值
   - `-D`: 會跑到 `devDependencies`，不會被打包給一般使用者
 
+#### 儲存資料
+
+- cookie
+- localStorage
+  - setItem(key, value)
+  - getItem
+  - removeItem
+- 儲存的資料都會被轉成字串
+
 #### 套件
 
 - dayjs
 - axios
-  - 註冊 token → JWT
+  - 註冊 token → JWT(JSON Web Token)
 - node_modules
   - 所有安裝的套件資料都會在這個資料夾，所以開發到最後的專案會很胖
   - 開發結束可以把這個資料夾刪掉，之後有要運用相關套件，在專案路徑輸入 `npm i`，電腦會自動看 package.json 裡面的 `dependencies` 把套件載回來
@@ -1327,6 +1349,7 @@
     - `<script name>` 可以自己手刻名字，不過通常套件會提供名稱。
       - `<script name>` 背後真正執行的動作，是來自於安裝的套件被放在 node_modules 裡
 - [alpine](https://alpinejs.dev/)
+  - 啟動元素之前，記得先放`x-data`屬性，若沒有要賦值可以單純標示即可
 
 #### 打包
 
