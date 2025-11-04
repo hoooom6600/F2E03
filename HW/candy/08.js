@@ -8,7 +8,6 @@ function highestScoreWord(input) {
   // 實作寫在這裡
   const words = input.split(" ");
   let highestScore = 0;
-  let currentScore = 0;
   let highestWord = "";
 
   const hasUppercase = words.some((word) => {
@@ -26,14 +25,14 @@ function highestScoreWord(input) {
   }
 
   words.forEach((word) => {
-    for (let i = 0; i < word.length; i++) {
-      currentScore += word.charCodeAt(i) - 96;
-    }
+    const currentScore = [...word].reduce(
+      (sum, letter) => sum + letter.charCodeAt(0) - 96,
+      0
+    );
     if (currentScore > highestScore) {
       highestScore = currentScore;
       highestWord = word;
     }
-    currentScore = 0;
   });
   return highestWord;
 }
