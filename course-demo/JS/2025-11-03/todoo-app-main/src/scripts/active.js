@@ -1,7 +1,5 @@
 import axios from "axios"
 
-const url = "待補"
-
 function active() {
   return {
     active: "login",
@@ -15,15 +13,17 @@ function active() {
         // 註冊 API，axois 用法
         const newUser = {
           // 前後相同，ES6 簡寫語法
-          email,
-          nickname,
-          password,
+          user: {
+            email,
+            nickname,
+            password,
+          },
         }
         try {
-          const resp = await axios.post(url, newUser)
+          const resp = await axios.post("https://todoo.5xcamp.us/users", newUser)
           console.log(resp)
         } catch (err) {
-          alert(err.response.data.message)
+          alert(`${err.response.data.message}: ${err.response.data.error}`)
         }
       }
     },
