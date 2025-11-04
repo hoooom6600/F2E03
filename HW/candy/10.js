@@ -5,6 +5,26 @@
 
 function expandedForm(num) {
   // 實作寫在這裡
+  if (num <= 0 || parseInt(num) != num) {
+    return "數字需為大於 0 的正整數";
+  }
+  const digits = [...String(num)];
+  let currentPow = digits.length - 1;
+  let result = "";
+  digits.forEach((digit) => {
+    if (currentPow == 0 && Number(digit) == 0) {
+      return result;
+    } else if (currentPow == 0) {
+      result += digit;
+    } else if (Number(digit) == 0) {
+      currentPow--;
+    } else {
+      result += `${Math.pow(10, currentPow)} x ${digit} + `;
+      currentPow--;
+    }
+  });
+
+  return result;
 }
 
 console.log(expandedForm(8)); // 印出 8
