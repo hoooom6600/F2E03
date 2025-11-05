@@ -242,6 +242,26 @@
 
   - 層級: 背景圖 = 漸層 > 背景色
 
+- 邊線
+
+  - border (邊框線)
+    - 參數沒有固定順序，依照自己 coding style 就好
+    - border-style: 瀏覽器預設 none
+    - border-collapse
+      - collapse
+      - separate
+    - border-spacing: 僅適用於 border-collapse: separate 狀況
+    - border-radius
+      - 水平半徑 / 垂直半徑
+  - outline (外框線 / 輪廓線)
+    - outline-offset
+      - 正數往外走，負數往內縮
+  - |   項目   |     border     |                outline                |
+    | :------: | :------------: | :-----------------------------------: |
+    | 空間佔據 |       O        |           X<br>算在 margin            |
+    | 單邊設計 |       O        |                   X                   |
+    | 常見用途 | 邊界和布局排版 | input, button 之類的聚焦 (focus) 互動 |
+
 - 圖片常用搭配技
   - `width`
   - `aspect-ratio`: 圖片比例（較新的 CSS，注意支援度）
