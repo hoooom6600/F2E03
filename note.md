@@ -256,11 +256,18 @@
   - outline (外框線 / 輪廓線)
     - outline-offset
       - 正數往外走，負數往內縮
-  - |   項目   |     border     |                outline                |
-    | :------: | :------------: | :-----------------------------------: |
-    | 空間佔據 |       O        |           X<br>算在 margin            |
-    | 單邊設計 |       O        |                   X                   |
-    | 常見用途 | 邊界和布局排版 | input, button 之類的聚焦 (focus) 互動 |
+  - |   項目   |     border     |                     outline                      |
+    | :------: | :------------: | :----------------------------------------------: |
+    | 空間佔據 |       O        |                 X<br>算在 margin                 |
+    | 單邊設計 |       O        |                        X                         |
+    | 常見用途 | 邊界和布局排版 | 元素的聚焦 (focus) 互動<br>常見於: input, button |
+
+- 列表
+
+  - list-style-image
+    - 不能透過 CSS 改變圖片大小
+  - list-style-type
+  - 樣式優先級: list-style-image > list-style-type
 
 - 圖片常用搭配技
   - `width`
@@ -280,6 +287,12 @@
     - float
     - clear
     - 文繞圖
+  - display
+    - inline-block
+      - 注意空白字元問題
+    - flex
+  - 排版演變史
+    - table → float → inline-block → flex
 
 # Git
 
