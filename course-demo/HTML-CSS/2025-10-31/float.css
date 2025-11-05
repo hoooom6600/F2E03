@@ -57,14 +57,13 @@ img {
   width: 80px;
   height: 80px;
   margin: 10px;
-  float: right;
-}
-.box:nth-child(3n + 1) {
-  width: 180px;
-  height: 180px;
   float: left;
 }
+.box:nth-child(3n - 2) {
+  width: 180px;
+  height: 180px;
+}
 
-.box:nth-child(6n + 1) {
+.box:nth-child(6n - 2) {
   float: right;
 }
