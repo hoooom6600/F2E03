@@ -1,0 +1,154 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-size: 80px;
+}
+
+section {
+  margin: 100px;
+}
+
+.box-wrap {
+  /* word-spacing: -200px; */
+  font-size: 0;
+}
+
+.box {
+  display: inline-block;
+  width: 300px;
+  /* word-spacing: normal; */
+  font-size: 16px;
+}
+
+.box1 {
+  background-color: #fa0;
+}
+.box2 {
+  background-color: #0af;
+}
+.box3 {
+  background-color: #a0f;
+}
+
+.card-box {
+  width: 960px;
+  margin: 0 auto;
+  font-size: 0;
+  /* word-spacing: -5px; */
+}
+
+.hot-title,
+.card-title,
+.price,
+.tags {
+  text-align: center;
+}
+
+.hot-title {
+  font-size: 60px;
+  font-weight: 900;
+}
+
+.card {
+  width: 300px;
+  border-radius: 8px;
+  display: inline-block;
+  margin: 10px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  vertical-align: top; /* 齊頭 */
+  font-size: 16px;
+  /* word-spacing: normal; */
+  /* max-height: 500px; */
+}
+
+.card-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content > * + * {
+  margin-top: 10px;
+}
+
+.card-title,
+.price {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.description {
+  color: #666;
+
+  /* 商品介紹只顯示 2 行 */
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.price {
+  color: #f00;
+}
+
+.tag {
+  font-size: 14px;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #ccc;
+}
+
+.card-btn {
+  display: block;
+  width: 100%;
+  background-color: #0af;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  flex-direction: row-reverse;
+}
+
+.item {
+  width: 300px;
+}
+
+.item1 {
+  background-color: #ffa;
+}
+.item2 {
+  background-color: #aaf;
+}
+.item3 {
+  background-color: #faa;
+}
+
+.pyramid {
+  background-color: #ccc;
+}
+
+.pyramid .row {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.pyramid .row-item {
+  width: 100%;
+  height: 200px;
+  background-color: #aaf;
+}
