@@ -1,0 +1,63 @@
+nav {
+  background-color: #ccc;
+  text-align: end;
+}
+
+section {
+  margin: 100px;
+}
+
+.link {
+  display: inline-block;
+  background-color: #fa0;
+  padding: 5px;
+  line-height: 64px;
+}
+
+.link:hover {
+  border-bottom-width: 4px;
+  border-bottom-style: solid;
+  border-bottom-color: red;
+}
+
+.box {
+  width: 300px;
+  height: 300px;
+  background-color: #fa0;
+  border-top: 10px solid #aaa;
+  border-right: 15px dotted #dad;
+  border-bottom: 20px double #ada;
+  border-left: 25px dashed #aad;
+}
+
+.border-radius {
+  border: 4px solid red;
+  border-radius: 100%;
+}
+
+.outline-input {
+  outline: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+.outline-input:focus {
+  outline: 2px solid red;
+}
+
+.border-input {
+  outline: none;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+.border-input:focus {
+  border: 2px solid red;
+}
+
+.list {
+  /* margin-left: 500px; */
+  font-size: 60px;
+  list-style-position: inside;
+  list-style-type: "🐱";
+  list-style-image: url("../../web-awesome-brands-solid-full.svg");
+}
