@@ -14,8 +14,8 @@ function expandedForm(num) {
     digits
       .map((digit, index) => `${Math.pow(10, currentPow - index)} x ${digit}`)
       // 位數為 0 者，去除
-      .filter((noZeroEnd) => {
-        return Number(noZeroEnd[noZeroEnd.length - 1]) != 0;
+      .filter((noZeroDigit) => {
+        return Number(noZeroDigit[noZeroDigit.length - 1]) != 0;
       })
       // 陣列文字串接
       .join(" + ")
