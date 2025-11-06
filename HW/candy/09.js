@@ -4,11 +4,7 @@
 
 function removeAnchor(url) {
   // 實作寫在這裡
-  const hashIndex = url.indexOf("#");
-  if (hashIndex == -1) {
-    return url;
-  }
-  return url.slice(0, hashIndex);
+  return url.split("#")[0];
 }
 
 console.log(removeAnchor("5xcampus.com")); // 印出 5xcampus.com
