@@ -6,6 +6,25 @@
 
 function findOddElm(numbers) {
   // 實作寫在這裡
+  if (numbers.length == 0) {
+    return "不可為空陣列";
+  }
+
+  const ordered = numbers.sort((prev, next) => prev - next);
+  const oddTimesNum = [];
+  let count = 1; // 非空陣列，所以第一元素絕對存在，故數量從 1 開始計算
+  for (let i = 0; i < ordered.length; i++) {
+    if (ordered[i] == ordered[i + 1]) {
+      count++;
+    } else {
+      ordered[i] != ordered[i + 1];
+      if (count % 2 != 0) {
+        oddTimesNum.push(ordered[i]);
+      }
+      count = 1;
+    }
+  }
+  return oddTimesNum.join(", ");
 }
 
 console.log(findOddElm([1, 1, 2])); // 印出 2
