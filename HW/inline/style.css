@@ -1,0 +1,114 @@
+* {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+header {
+  box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.16);
+}
+
+nav {
+  margin: 0 70px;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.designer {
+  float: left;
+}
+
+.menu a {
+  padding: 15px 20px;
+  font-size: 15px;
+  color: #505563;
+}
+
+a.menu-btn {
+  background-color: #da3743;
+  border: none;
+  font-size: 18px;
+  font-weight: 900;
+  color: white;
+
+  padding: 5px 25px;
+  border-radius: 25px;
+  line-height: 1.5;
+}
+
+a.menu-btn::before {
+  content: "";
+  display: inline-block;
+  height: 20px;
+  width: 27px;
+  background: url(https://inline.imgix.net/images/ot-logo-white.png);
+  background-size: 100%;
+  margin-bottom: -4px;
+  margin-right: 10px;
+}
+
+.info {
+  padding: 60px 150px;
+  background-color: #252932;
+  color: #e3e6ed;
+  font-size: 12px;
+  display: flex;
+  gap: 50px;
+}
+
+.info img {
+  width: 30%;
+}
+
+.info > div {
+  width: 25%;
+}
+
+.info address {
+  margin-top: 20px;
+}
+
+.info .title {
+  margin-bottom: 10px;
+}
+
+.info .sitemap li {
+  padding: 20px 10px 20px 0;
+  border-bottom: 1px solid #384044;
+}
+
+.info .sitemap a {
+  display: inline-block;
+  width: 100%;
+  font-size: 16px;
+}
+
+.country {
+  font-weight: 700;
+}
+
+.copyright {
+  padding: 30px 150px;
+  background: #191c23;
+  color: #9ea6b7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.copyright a {
+  color: #9ea6b7;
+}
+
+.info a:hover,
+.copyright a:hover {
+  color: #ff6e06;
+}
+
+.copyright i {
+  font-size: 26px;
+}
