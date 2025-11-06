@@ -24,7 +24,7 @@ function expandedForm(num) {
     }
   });
 
-  return result;
+  return result.endsWith(" + ") ? result.slice(0, -3) : result;
 }
 
 console.log(expandedForm(8)); // 印出 8
