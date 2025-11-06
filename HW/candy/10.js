@@ -10,21 +10,18 @@ function expandedForm(num) {
   }
   const digits = [...String(num)];
   let currentPow = digits.length - 1;
-  let result = "";
-  digits.forEach((digit) => {
-    if (currentPow == 0 && Number(digit) == 0) {
-      return result;
-    } else if (currentPow == 0) {
-      result += digit;
-    } else if (Number(digit) == 0) {
-      currentPow--;
-    } else {
-      result += `${Math.pow(10, currentPow)} x ${digit} + `;
-      currentPow--;
-    }
-  });
-
-  return result.endsWith(" + ") ? result.slice(0, -3) : result;
+  return (
+    digits
+      .map((digit, index) => `${Math.pow(10, currentPow - index)} x ${digit}`)
+      // 位數為 0 者，去除
+      .filter((noZeroEnd) => {
+        return Number(noZeroEnd[noZeroEnd.length - 1]) != 0;
+      })
+      // 陣列文字串接
+      .join(" + ")
+      // 個位數不做乘法，用替代文字方法處理
+      .replace("1 x ", "")
+  );
 }
 
 console.log(expandedForm(8)); // 印出 8
