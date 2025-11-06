@@ -1,4 +1,5 @@
 /* 目前這個選取器有錯誤，請修正 */
-.news-list .info-list {
-    color: red;
+.news-list,
+.info-list {
+  color: red;
 }

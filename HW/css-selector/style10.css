@@ -1,4 +1,4 @@
 /* 目前這個選取器有錯誤，請修正 */
-.menu li:not-special {
-    color: gray;
+.menu li:not(.special) {
+  color: gray;
 }

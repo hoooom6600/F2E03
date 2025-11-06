@@ -1,4 +1,4 @@
 /* 目前這個選取器有錯誤，請修正 */
-.container p:last-child {
-    color: brown;
+.container p:last-of-type {
+  color: brown;
 }
