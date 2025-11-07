@@ -203,6 +203,7 @@
     - `box-sizing`
       - `content-box`: 預設值。設定 width 只給內容本體
       - `border-box`
+  - 衝突時: min > max > 一般
 - 文字
   - 字體
     - [字型](https://fonts.google.com/)
@@ -290,7 +291,11 @@
   - display
     - inline-block
       - 注意空白字元問題
+      - 當元素沒有寫死寬度時，同層內其中一個元素超出剩餘寬度，則不會自適應縮窄以並排
     - flex
+      - justify-content
+        - star, end 是依據文字走向 (CSS 的 direction，或者 HTML 的 dir 屬性) 而論
+        - flex-star, flex-end 才是依據 justify-content 的主軸去走
   - 排版演變史
     - table → float → inline-block → flex
 
