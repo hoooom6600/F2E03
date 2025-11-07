@@ -1,0 +1,63 @@
+section {
+  margin: 100px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  flex-direction: row;
+}
+
+.item {
+  width: 300px;
+}
+
+.item1 {
+  background-color: #ffa;
+  order: 3;
+}
+.item2 {
+  background-color: #aaf;
+  order: 2;
+}
+.item3 {
+  background-color: #faa;
+  order: 1;
+}
+
+.card-wrap {
+  display: flex;
+  background-color: #ccc;
+  height: 100px;
+}
+
+.card1 {
+  background-color: #ffa;
+}
+.card2 {
+  background-color: #aaf;
+}
+.card3 {
+  background-color: #faa;
+}
+
+.card-wrap1 .card {
+  flex-grow: 1;
+}
+
+.card-wrap1 .card1 {
+  flex-grow: 2;
+}
+
+.card-wrap2 .card {
+  flex-shrink: 1;
+}
+
+.card-wrap2 .card1 {
+  flex-grow: 0;
+}
+
+.card-wrap3 .card {
+  flex-basis: 33.33%;
+}
