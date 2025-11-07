@@ -293,9 +293,21 @@
       - 注意空白字元問題
       - 當元素沒有寫死寬度時，同層內其中一個元素超出剩餘寬度，則不會自適應縮窄以並排
     - flex
-      - justify-content
-        - star, end 是依據文字走向 (CSS 的 direction，或者 HTML 的 dir 屬性) 而論
-        - flex-star, flex-end 才是依據 justify-content 的主軸去走
+      - 父層
+        - justify-content
+          - star, end 是依據文字走向 (CSS 的 direction，或者 HTML 的 dir 屬性) 而論
+          - flex-star, flex-end 才是依據 justify-content 的主軸去走
+        - align-content 預設值: normal，效果等同 stretch
+      - 子層
+        - order
+          - 預設值為 0，不是 1
+          - 數值相同時，看 HTML 結構順序如何
+        - flex-grow: 預設值 0
+        - flex-shrink: 預設值 1
+          - 實務上，要改變 shrink 的值，通常是改成 0，表示不要收縮
+        - flex-basis
+          - 優先序: flex-basis > width / height (是寬還高，依主軸而定)
+    - [青蛙遊戲](https://flexboxfroggy.com/)
   - 排版演變史
     - table → float → inline-block → flex
 
