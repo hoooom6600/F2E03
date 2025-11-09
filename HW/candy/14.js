@@ -5,6 +5,22 @@
 
 function uniqueOrder(sequence) {
   // 實作寫在這裡
+  if (sequence.length == 0) {
+    return "空陣列，無法整理";
+  }
+
+  let element = null;
+  const result = [];
+  for (let i = 0; i < sequence.length; i++) {
+    // 與前次元素相同，則跳過
+    if (element == sequence[i]) {
+      continue;
+    }
+    // 與前次相異的元素，收集
+    element = sequence[i];
+    result.push(element);
+  }
+  return result;
 }
 
 console.log(uniqueOrder("AABCC")); // [ 'A', 'B', 'C']
