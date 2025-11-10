@@ -553,6 +553,14 @@
 - {} 是一個區域
 - 在迴圈裡面，每一回合都是新的宣告，所以對於 let 和 const 而言，不會有重複宣告的問題
 - var 變數只有被 function 內包住才不會游出去
+- Closure (閉包)
+  - 函數內還有函數，則呼叫外層函數時，JS 會幫你把內層函數需要的變數打包帶走，讓它游出函數
+  - 通常用法: 知道待會會有東西消失，所以先帶走
+  - 閉包變形
+    - 迴圈內有 setTimeout，則迴圈初始值會繼續跑
+      - let 不會活著離開 for loop，所以 setTimeout 的參數仍會把 let 一起抓走跑
+      - var 離開 for loop 還會在，所以 setTimeout 的參數仍會更新迴圈值，因為 var 會等待我回來
+    - setTimeout 要搭配閉包和 IIFE，則注意 setTimeout 的參數是 callback function
 
 ## 執行環境上下文(Execution Context)
 
@@ -734,6 +742,9 @@
 ## 迴圈(loop)
 
 - for
+  - for ... in: 得到物件 index，後續可以搭配 `[index]` 來取物件
+  - for ... of: 直接取陣列物件
+  - 以上效能較差，但很早以前就有這種語法了
 - while
 - 陣列迭代
 - 常搭配 continue, break
@@ -773,6 +784,10 @@
 
     - 函數宣告（一般正規寫法）
     - 匿名函數
+      - IIFE (Immediately Invoked Function Expression, 立即啟動執行函數)
+        - 無法單獨存在，除非賦值給一個變數，或者用一個小括號包起來，執行方法則為 `(<function()...>)()` 或者 `(() =>...)()`
+        - 後者()就是一般函數的呼叫，所以後者()也可以傳入參數
+        - IIFE 的使用場景很少不傳入參數
     - 箭頭函數: ES6 之後才推出的。不完全等同一般正規寫法，也不是一般函數的簡解。差異在於 `this` 的概念不同
       - 有多種寫法（前二效果相同）
         - `(x, y) => { return 123 }`
@@ -1539,6 +1554,7 @@
   - 拼寫錯誤
   - HTML 引用位置錯誤
 - Early Return: 提早結束，因為前面是在檢查，重點在最後
+- breakpoint(中斷點): F12 → 原始碼 → 找對應 js 檔案 → 在指定行設定中斷點
 
 ## Visual Studio Code
 
