@@ -149,6 +149,16 @@ function active() {
         },
       }
     },
+    async taskToggle(id) {
+      console.log(id)
+      const config = this.getConfig()
+
+      const targetIndex = this.tasks.findIndex((task) => task.id === id)
+      if (targetIndex >= 0) {
+        const resp = await axios.patch(`https://todoo.5xcamp.us/todos/${id}/toggle`, null, config)
+        console.log(resp)
+      }
+    },
     deleteTask(id) {
       const config = this.getConfig()
 
