@@ -5,6 +5,14 @@
 
 function toCamelCase(str) {
   // 實作寫在這裡
+  const result = [...str];
+  for (let i = 0; i < result.length; i++) {
+    if (result[i] == "_") {
+      result[i] = "";
+      result[i + 1] = result[i + 1].toUpperCase();
+    }
+  }
+  return result.join("");
 }
 
 console.log(toCamelCase("book")); // book
