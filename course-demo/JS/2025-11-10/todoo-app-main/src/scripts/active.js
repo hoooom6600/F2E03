@@ -5,6 +5,7 @@ function active() {
     nickname: "",
     password: "",
     newTask: "",
+    tasks: [],
     isLogin: false,
     init() {
       const token = localStorage.getItem("todoToken")
@@ -92,9 +93,26 @@ function active() {
           },
         }
         const config = this.getConfig()
-        const resp = await axios.post("https://todoo.5xcamp.us/todos", taskData, config)
 
-        console.log(resp)
+        // 假發，為了配合後端處理演戲，假設後端伺服器很慢，先提升使用者體驗，讓人覺得有發
+        // 如果出錯，再像網路不穩時發 LINE 一樣，之後再給一個提示紅色驚嘆號之類
+        const fakeTask = {
+          id: crypto.randomUUID(),
+          content: this.newTask,
+          completed_at: null,
+        }
+        this.tasks.unshift(fakeTask)
+
+        // 真發
+        try {
+          const resp = await axios.post("https://todoo.5xcamp.us/todos", taskData, config)
+          // 以假換真，必須更新資料庫的 ID，否則未來要刪除 TODO 會出錯
+          const newTask = resp.data
+          const targetIndex = this.tasks.findIndex((task) => task.id == fakeTask.id)
+          this.tasks.splice(targetIndex, 1, newTask)
+        } catch (err) {
+          console.log(err)
+        }
 
         // 新增之後，將輸入框文字清除
         this.newTask = ""
@@ -115,6 +133,7 @@ function active() {
       try {
         const config = this.getConfig()
         const resp = await axios.get("https://todoo.5xcamp.us/todos", config)
+        this.tasks = resp.data.todos
         console.log(resp)
       } catch (err) {
         console.log(err)
@@ -128,6 +147,16 @@ function active() {
           accept: "application/json",
           Authorization: token,
         },
+      }
+    },
+    async deleteTask(id) {
+      const config = this.getConfig()
+      try {
+        const resp = await axios.delete(`https://todoo.5xcamp.us/todos/${id}`, config)
+        console.log(resp)
+        console.log(id)
+      } catch (err) {
+        console.log(err)
       }
     },
     async logout() {
