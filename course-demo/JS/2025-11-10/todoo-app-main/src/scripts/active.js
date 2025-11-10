@@ -149,14 +149,21 @@ function active() {
         },
       }
     },
-    async deleteTask(id) {
+    deleteTask(id) {
       const config = this.getConfig()
-      try {
-        const resp = await axios.delete(`https://todoo.5xcamp.us/todos/${id}`, config)
-        console.log(resp)
-        console.log(id)
-      } catch (err) {
-        console.log(err)
+
+      const targetIndex = this.tasks.findIndex((task) => task.id === id)
+      if (targetIndex >= 0) {
+        // 假戲
+        this.tasks.splice(targetIndex, 1)
+
+        // 沒有要透過 delete 再處理什麼資料，且為最後一步驟，其實可以不用 async / await
+        // 真做
+        try {
+          axios.delete(`https://todoo.5xcamp.us/todos/${id}`, config)
+        } catch (err) {
+          console.log(err)
+        }
       }
     },
     async logout() {
