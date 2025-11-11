@@ -1405,6 +1405,7 @@
   - 所有安裝的套件資料都會在這個資料夾，所以開發到最後的專案會很胖
   - 開發結束可以把這個資料夾刪掉，之後有要運用相關套件，在專案路徑輸入 `npm i`，電腦會自動看 package.json 裡面的 `dependencies` 把套件載回來
   - [node_modules meme](https://i.imgur.com/rpR4yVl.jpg)
+    ![node_modules meme](https://i.imgur.com/rpR4yVl.jpeg)
   - 網站上線之後，通常不會要打包 node_modules，反而要上傳 dist 內的檔案
 - dependencies: 指套件需要依附其他文件
 - 路徑
@@ -1560,10 +1561,13 @@
   - HTML 引用位置錯誤
 - Early Return: 提早結束，因為前面是在檢查，重點在最後
 - breakpoint(中斷點): F12 → 原始碼 → 找對應 js 檔案 → 在指定行設定中斷點
-- [debounce / throttle](https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F6k7zkf7jt4gndp8pi3ky.png)
+- [debounce / throttle](https://media.licdn.com/dms/image/v2/D5622AQGM90Aax5vAUw/feedshare-shrink_800/feedshare-shrink_800/0/1697525824362?e=2147483647&v=beta&t=oZ84nUXePrsKVmqJoWT6K96OvDN0QiwCrAatzjhun4A)
+  ![debounce / throttle圖像化](https://media.licdn.com/dms/image/v2/D5622AQGM90Aax5vAUw/feedshare-shrink_800/feedshare-shrink_800/0/1697525824362?e=2147483647&v=beta&t=oZ84nUXePrsKVmqJoWT6K96OvDN0QiwCrAatzjhun4A)
   - 不是語法，是一個效能處理的概念
-  - debounce: 確定要執行才做事（比如連點之後放手不點），不是也沒有 CD 時間
+  - debounce: 確定要執行才做事（比如連點之後放手不點），不是也沒有 CD 時間，是不斷 reset 開始執行的時間點
+    - 節省 API 流量成本與效能
   - throttle: 開始執行就要 CD 時間，不能動作
+  - 忘記密碼發送的簡訊，那是資訊攻擊的防範，和 debounce / throttle 無關。而且簡訊要錢，也比較偏向是後端要開發的阻擋
 
 ## Visual Studio Code
 
