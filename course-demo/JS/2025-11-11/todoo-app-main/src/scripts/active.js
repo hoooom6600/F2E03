@@ -1,4 +1,6 @@
 import axios from "axios"
+import { debounce } from "throttle-debounce"
+
 function active() {
   return {
     email: "",
@@ -60,8 +62,7 @@ function active() {
           },
         }
         try {
-          const resp = await axios.post("https://todoo.5xcamp.us/users", newUser)
-          console.log(resp)
+          await axios.post("https://todoo.5xcamp.us/users", newUser)
           this.resetForm()
           this.goToLogin()
         } catch (err) {
@@ -134,7 +135,6 @@ function active() {
         const config = this.getConfig()
         const resp = await axios.get("https://todoo.5xcamp.us/todos", config)
         this.tasks = resp.data.todos
-        console.log(resp)
       } catch (err) {
         console.log(err)
       }
@@ -149,22 +149,35 @@ function active() {
         },
       }
     },
+    toggleDebounce: debounce(1000, function (id, count) {
+      const config = this.getConfig() // 套件手冊用箭頭函數，但箭頭函數沒有 this，所以更改 debounce callback
+      if (count % 2 != 0) {
+        console.log(count + " GO!")
+        axios.patch(`https://todoo.5xcamp.us/todos/${id}/toggle`, null, config)
+      }
+    }),
     async taskToggle(id) {
       const config = this.getConfig()
 
       // 假做
       const targetToggle = this.tasks.find((task) => task.id == id)
-      console.log(targetToggle)
+
+      // tasks 裡各個物件沒有 count 屬性，所以這邊手動加上
+      // JS 新屬性不用宣告變數
+      // 未初始化的屬性為 undefined
+      if (targetToggle.count == undefined) {
+        targetToggle.count = 0
+      }
+      targetToggle.count++
+
       if (targetToggle.completed_at) {
         targetToggle.completed_at = null
       } else {
         targetToggle.completed_at = new Date()
       }
+
       // 真做
-      // if (targetToggle) {
-      //   const resp = await axios.patch(`https://todoo.5xcamp.us/todos/${id}/toggle`, null, config)
-      //   console.log(resp)
-      // }
+      this.toggleDebounce(id, targetToggle.count)
     },
     deleteTask(id) {
       const config = this.getConfig()
@@ -189,7 +202,7 @@ function active() {
         const config = this.getConfig()
 
         try {
-          const resp = await axios.delete("https://todoo.5xcamp.us/users/sign_out", config)
+          await axios.delete("https://todoo.5xcamp.us/users/sign_out", config)
           localStorage.removeItem("todoToken")
           this.isLogin = false
           this.goToLogin()
