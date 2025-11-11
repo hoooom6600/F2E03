@@ -8,16 +8,18 @@
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
   </head>
   <body>
-    <p class="designer">25_李怡潔_inline 仿切</p>
+    <p class="designer">
+      25_李怡潔_inline 仿切（這行 position: absolute; 脫離文檔流）
+    </p>
     <header>
-      <nav>
+      <nav class="max1200">
         <div class="logo">
           <a href="#">
             <img
@@ -39,77 +41,126 @@
     </header>
     <main></main>
     <footer>
-      <div class="info">
-        <div class="about">
-          <img
-            src="https://inline.app/wp-content/uploads/2020/04/logo.png"
-            alt="inline-logo"
-          />
-          <address>
-            <p class="country">台灣｜統編 52384127</p>
-            <p>100009</p>
-            <p>台北市中正區北平東路30-1號5樓</p>
-          </address>
-          <address>
-            <p class="country">香港｜統編 2303318</p>
-            <p>香港上環皇后大道中181號</p>
-            <p>新紀元廣場低座24樓2406B室</p>
-          </address>
-          <address>
-            <p class="country">新加坡｜統編 201900515R</p>
-            <p>
-              160 Robinson Road, #14-04 Singapore Business Federation Centre,
-              Singapore 068914
-            </p>
-          </address>
-          <address>
-            <p class="country">澳洲｜統編 648 810 600</p>
-            <p>Level 1/580 Church St, Richmond VIC 3121</p>
-          </address>
-          <address>
-            <p class="country">日本</p>
-            <p>〒105-6009</p>
-            <p>
-              東京都港区虎ノ門4丁目3番1号 城山トラストタワー9階
-              東京赤坂法律事務所内
-            </p>
-          </address>
-        </div>
-        <div class="sitemap">
-          <h3 class="title">inline Sitemap</h3>
-          <ul>
-            <li><a href="#">首頁</a></li>
-            <li><a href="#">訂位管理</a></li>
-            <li><a href="#">立即試用</a></li>
-            <li><a href="#">客戶推薦</a></li>
-            <li><a href="#">為何使用 inline</a></li>
-            <li><a href="#">線上外帶/外送服務</a></li>
-            <li><a href="#">候位管理</a></li>
-            <li><a href="#">顧客管理 CRM</a></li>
-            <li><a href="#">Cookies</a></li>
-            <li><a href="#">免費開通 Google 訂位</a></li>
-            <li><a href="#">消費者常見問題</a></li>
-            <li><a href="#">Mozrest x 米其林指南</a></li>
-          </ul>
-        </div>
-        <div class="contact">
-          <h3 class="title">Contact us</h3>
-        </div>
-        <div class="media-window">
-          <h3 class="title">Instagram</h3>
-          <h3 class="title"><a href="#">Facebook Page</a></h3>
+      <div class="max1200">
+        <div class="info">
+          <div class="about">
+            <img
+              src="https://inline.app/wp-content/uploads/2020/04/logo.png"
+              alt="inline-logo"
+            />
+            <address>
+              <p class="country">台灣｜統編 52384127</p>
+              <p>100009<br />台北市中正區北平東路30-1號5樓</p>
+            </address>
+            <address>
+              <p class="country">香港｜統編 2303318</p>
+              <p>香港上環皇后大道中181號<br />新紀元廣場低座24樓2406B室</p>
+            </address>
+            <address>
+              <p class="country">新加坡｜統編 201900515R</p>
+              <p>
+                160 Robinson Road, #14-04<br />Singapore Business<br />Federation
+                Centre, Singapore<br />068914
+              </p>
+            </address>
+            <address>
+              <p class="country">澳洲｜統編 648 810 600</p>
+              <p>Level 1/580 Church St, Richmond<br />VIC 3121</p>
+            </address>
+            <address>
+              <p class="country">日本</p>
+              <p class="jp-postal-code">〒105-6009</p>
+              <p>
+                東京都港区虎ノ門4丁目3番1号<br />城山トラストタワー9階<br />
+                東京赤坂法律事務所内
+              </p>
+            </address>
+          </div>
+          <div class="sitemap">
+            <h3 class="title">inline Sitemap</h3>
+            <ul>
+              <li><a href="#">首頁</a></li>
+              <li><a href="#">訂位管理</a></li>
+              <li><a href="#">立即試用</a></li>
+              <li><a href="#">客戶推薦</a></li>
+              <li><a href="#">為何使用 inline</a></li>
+              <li><a href="#">線上外帶/外送服務</a></li>
+              <li><a href="#">候位管理</a></li>
+              <li><a href="#">顧客管理 CRM</a></li>
+              <li><a href="#">Cookies</a></li>
+              <li><a href="#">免費開通 Google 訂位</a></li>
+              <li><a href="#">消費者常見問題</a></li>
+              <li><a href="#">Mozrest x 米其林指南</a></li>
+            </ul>
+          </div>
+          <div class="else">
+            <div class="contact">
+              <h3 class="title">Contact us</h3>
+              <p>
+                聯絡電話：+886 (02) 2322-3414
+                <br />
+                服務時間：週一至週五 10:00–19:00
+              </p>
+              <p>
+                潛在合作或既有店家支援<a href="mailto:support@inline.app"
+                  >support@inline.app</a
+                >
+              </p>
+              <p>
+                消費者訂候位／外帶外送相關問題
+                <a href="mailto:patron-help@inline.app"
+                  >patron-help@inline.app</a
+                >
+              </p>
+              <p>
+                異業合作洽談或餐飲新聞稿聯繫
+                <a href="mailto:marketing@inline.tw">marketing@inline.tw</a>
+              </p>
+            </div>
+            <div class="lang">
+              <h3 class="title">語言</h3>
+              <ul>
+                <li><a href="#">English (US)</a></li>
+                <li><a class="active">繁體中文</a></li>
+                <li><a href="#">日本語</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="media-window">
+            <div class="instagram">
+              <h3 class="title">Instagram</h3>
+            </div>
+            <div class="facebook">
+              <h3 class="title">
+                <a href="#">Facebook Page</a>
+              </h3>
+              <iframe
+                class="facebook-item"
+                src="https://www.youtube.com/embed/3GQY80jyysQ?si=UlbY1iemGH71VGJR"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
         </div>
       </div>
       <div class="copyright">
-        <p>
-          © 2024 inline All rights reserved. <a href="#">Terms of service</a> ｜
-          <a href="#">Privacy policy</a>
-        </p>
-        <div class="media">
-          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#"><i class="fa-brands fa-youtube"></i></a>
-          <a href="#"><i class="fa-solid fa-m"></i></a>
+        <div class="max1200">
+          <p>
+            © 2024 inline All rights reserved.
+            <a href="#">Terms of service</a> ｜
+            <a href="#">Privacy policy</a>
+          </p>
+          <div class="media">
+            <!-- FIXME: icon 顯示  -->
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-solid fa-m"></i></a>
+          </div>
         </div>
       </div>
     </footer>

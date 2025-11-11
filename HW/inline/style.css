@@ -7,11 +7,19 @@ header {
 }
 
 nav {
-  margin: 0 70px;
   padding: 20px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+footer {
+  background-color: #252932;
+}
+
+footer,
+footer a {
+  color: #e3e6ed;
 }
 
 a {
@@ -20,11 +28,23 @@ a {
 }
 
 .designer {
-  float: left;
+  position: absolute;
 }
 
+.max1200 {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+nav.max1200 > :first-child {
+  margin-left: 20px;
+}
+
+nav.max1200 > :last-child {
+  margin-right: 20px;
+}
 .menu a {
-  padding: 15px 20px;
+  padding: 15px;
   font-size: 15px;
   color: #505563;
 }
@@ -53,58 +73,113 @@ a.menu-btn::before {
 }
 
 .info {
-  padding: 60px 150px;
-  background-color: #252932;
-  color: #e3e6ed;
   font-size: 12px;
   display: flex;
-  gap: 50px;
+  padding: 60px 0 20px 0;
 }
 
 .info img {
-  width: 30%;
+  width: 90px;
 }
 
 .info > div {
   width: 25%;
+  margin: 0 20px;
 }
 
 .info address {
   margin-top: 20px;
 }
 
-.info .title {
-  margin-bottom: 10px;
+.info address:not(:last-child) {
+  margin-bottom: 12px;
 }
 
-.info .sitemap li {
-  padding: 20px 10px 20px 0;
+.info .title {
+  margin-bottom: 20px;
+}
+
+.info .sitemap {
+  margin-bottom: 40px;
+}
+
+.info .sitemap li,
+.else li {
   border-bottom: 1px solid #384044;
 }
 
-.info .sitemap a {
+.info .sitemap a,
+.else a {
   display: inline-block;
+  padding: 20px 10px 20px 0;
   width: 100%;
   font-size: 16px;
 }
 
 .country {
   font-weight: 700;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+.jp-postal-code {
+  margin: 14px 0 13px 0;
+}
+
+.else .active {
+  color: #000;
+}
+
+.else p,
+.else a {
+  font-size: 16px;
+}
+
+.else p {
+  margin-bottom: 16px;
+}
+
+.else p:first-of-type {
+  line-height: 1.75;
+}
+
+.media-window > div {
+  margin-bottom: 40px;
+}
+
+.facebook-item {
+  width: 100%;
+  aspect-ratio: 2/1;
+  object-fit: cover;
 }
 
 .copyright {
-  padding: 30px 150px;
   background: #191c23;
+}
+
+.copyright .max1200 {
+  padding: 15px 0;
+  width: 100%;
   color: #9ea6b7;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 15px;
 }
+
+.copyright .max1200 > :first-child {
+  margin-left: 20px;
+}
+
+.copyright .max1200 > :last-child {
+  margin-right: 20px;
+}
+
 .copyright a {
   color: #9ea6b7;
 }
 
-.info a:hover,
+.info a:hover:not(.active),
 .copyright a:hover {
   color: #ff6e06;
 }
