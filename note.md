@@ -652,7 +652,9 @@
 - 等號系列
   - =: **_分配(assign)_**
   - ==: 寬鬆相等（會轉換型別）
+    - undefined == null (O)
   - ===: 嚴格相等（不會轉換型別，date type 和 value 都要相等）
+    - undefined === null (X)
 
 ## ES6 新語法
 
@@ -831,6 +833,7 @@
 
 - 建立物件之後，增刪屬性
   - 新增: 直接 `object.newKey = newValue`
+    - 若新增屬性但未賦值(初始化)，則其值為 undefined
   - 刪除: `delete object.oldKey`
 - 所有東西（物件）都有 `.__proto__` 屬性
 - 函數也有 `.__proto__` ，但只有函數才有 prototype
