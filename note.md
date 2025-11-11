@@ -1562,8 +1562,8 @@
 - breakpoint(中斷點): F12 → 原始碼 → 找對應 js 檔案 → 在指定行設定中斷點
 - [debounce / throttle](https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F6k7zkf7jt4gndp8pi3ky.png)
   - 不是語法，是一個效能處理的概念
-  - debounce: 開始執行就要 CD 時間，不能動作
-  - throttle: 確定要執行才做事（比如連點之後放手不點），不是也沒有 CD 時間
+  - debounce: 確定要執行才做事（比如連點之後放手不點），不是也沒有 CD 時間
+  - throttle: 開始執行就要 CD 時間，不能動作
 
 ## Visual Studio Code
 
