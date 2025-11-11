@@ -170,6 +170,14 @@ a.menu-btn:hover {
   line-height: 2;
 }
 
+.order0 {
+  order: 0;
+}
+
+.order2 {
+  order: 2;
+}
+
 .reservation {
   height: 900px;
   background-image: url("https://inline.company/wp-content/uploads/2024/07/New-official-website_v2_hp_background1.png");
@@ -192,17 +200,26 @@ a.menu-btn:hover {
   font-size: 32px;
 }
 
-.reservation-content {
+.reservation-content,
+.waiting-content,
+.customer-content {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-.reservation-content img {
+.feature img {
   width: 560px;
   aspect-ratio: auto;
   margin-right: 26px;
+}
+
+.waiting,
+.customer {
+  background-image: url("  https://inline.company/wp-content/uploads/2024/07/New-official-website_v2_hp_background2.png");
+  /* height: 1750px; */
+  background-position: center center;
 }
 
 .feature-title {
