@@ -103,19 +103,19 @@ function active() {
         }
         this.tasks.unshift(fakeTask)
 
+        // (演戲演完) 新增之後，將輸入框文字清除
+        this.newTask = ""
+
         // 真發
         try {
           const resp = await axios.post("https://todoo.5xcamp.us/todos", taskData, config)
-          // 以假換真，必須更新資料庫的 ID，否則未來要刪除 TODO 會出錯
+          // 以真換假，必須更新資料庫的 ID，否則未來要刪除 TODO 會出錯
           const newTask = resp.data
           const targetIndex = this.tasks.findIndex((task) => task.id == fakeTask.id)
           this.tasks.splice(targetIndex, 1, newTask)
         } catch (err) {
           console.log(err)
         }
-
-        // 新增之後，將輸入框文字清除
-        this.newTask = ""
       }
     },
 
@@ -150,14 +150,21 @@ function active() {
       }
     },
     async taskToggle(id) {
-      console.log(id)
       const config = this.getConfig()
 
-      const targetIndex = this.tasks.findIndex((task) => task.id === id)
-      if (targetIndex >= 0) {
-        const resp = await axios.patch(`https://todoo.5xcamp.us/todos/${id}/toggle`, null, config)
-        console.log(resp)
+      // 假做
+      const targetToggle = this.tasks.find((task) => task.id == id)
+      console.log(targetToggle)
+      if (targetToggle.completed_at) {
+        targetToggle.completed_at = null
+      } else {
+        targetToggle.completed_at = new Date()
       }
+      // 真做
+      // if (targetToggle) {
+      //   const resp = await axios.patch(`https://todoo.5xcamp.us/todos/${id}/toggle`, null, config)
+      //   console.log(resp)
+      // }
     },
     deleteTask(id) {
       const config = this.getConfig()
