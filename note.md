@@ -1591,6 +1591,9 @@
 ## CSS
 
 - 建議純 HTML 標籤往開頭擺
+- 同樣是 chrome 瀏覽器，如果用 macOS 和微軟系統分別打開，會有細微差異，如：卷軸是否包含在 vw 內
+  - macOS: 覆蓋式捲軸（overlay scrollbar），100vw = 實際可視區域的寬度
+  - 微軟: 佔位式捲軸（classic scrollbar），100vw = 包含捲軸的整個視窗寬度
 
 ## JavaScript
 
