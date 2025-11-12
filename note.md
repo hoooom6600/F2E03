@@ -264,7 +264,7 @@
     | :------: | :------------: | :----------------------------------------------: |
     | 空間佔據 |       O        |                 X<br>算在 margin                 |
     | 單邊設計 |       O        |                        X                         |
-    | 常見用途 | 邊界和布局排版 | 元素的聚焦 (focus) 互動<br>常見於: input, button |
+    | 常見用途 | 邊界和佈局排版 | 元素的聚焦 (focus) 互動<br>常見於: input, button |
 
 - 列表
 
@@ -286,7 +286,7 @@
   - `-moz`: Firefox
   - `ms`: IE, Edge
   - `o`: Opera
-- 排版
+- 佈局排版
   - 浮動 (float)
     - float
     - clear
@@ -313,6 +313,16 @@
     - [青蛙遊戲](https://flexboxfroggy.com/)
   - 排版演變史
     - table → float → inline-block → flex
+  - 定位 (position)
+    - 上右下左偏移 == inset 簡寫
+      - 某側不偏移時，在 inset 為 `auto`，非 0
+    - z-index: 預設值為 auto，**_0 ≠ auto_**
+      - `-1` 容易出意外，實務上通常以正數表達
+      - 被遮蓋的元素**_高機率_**點擊不了（不是完全無法觸發），所以很少這樣設計
+    - 絕對定位的祖先層沒有非 static 者，則以**瀏覽器視窗**為基準
+      - 最祖先不是 <html\>，而是瀏覽器視窗
+      - 純絕對定位，沒有給定偏移，則是從原始位置浮起來。有偏移但祖父沒定位，則依據瀏覽器視窗
+      - 依據祖先的 **_content box_**
 - 函數
 
   - calc()
@@ -336,6 +346,10 @@
   |子元素可見|X|O，子元素要再各自設定 visible|X|
   |漸進動畫|X|∆|X|
   |SEO|O|∆|X|
+
+- 好朋友 CSS (粗體為後續 CSS 屬性的啟動者)
+  - **flex** + justify-content + align-item +
+  - **position** + inset (top, right, bottom, left) + z-index
 
 # Git
 
