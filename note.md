@@ -314,6 +314,7 @@
   - 排版演變史
     - table → float → inline-block → flex
 - 函數
+
   - calc()
   - var()
     - 也有作用域問題，外層元素定義的 CSS 變數可以被內層訪問到
@@ -325,6 +326,16 @@
       |   繼承   | O，把<html\>的變數繼承給所有物件 | X，直接賦值給所有元素，非繼承  |
       |   意義   |             繼承變數             |    每個標籤都有某 CSS 變數     |
       |   取用   |              var()               | var()，不會像一般 CSS 自動套用 |
+
+- 顯示
+  |項目|opacity: 0|visibility: hidden|display: none|
+  |:--:|:--:|:--:|:--:|
+  |占據文檔流|O|O|X|
+  |可見性|X|X|X|
+  |互動|O|X|X|
+  |子元素可見|X|O，子元素要再各自設定 visible|X|
+  |漸進動畫|X|∆|X|
+  |SEO|O|∆|X|
 
 # Git
 
