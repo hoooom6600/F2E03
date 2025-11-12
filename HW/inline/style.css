@@ -85,7 +85,7 @@ a.menu-btn:hover {
 
 .hero,
 .world-scale,
-.feature,
+.features,
 .self-recommend {
   background-size: cover;
 }
@@ -179,7 +179,6 @@ a.menu-btn:hover {
 }
 
 .reservation {
-  height: 900px;
   background-image: url("https://inline.company/wp-content/uploads/2024/07/New-official-website_v2_hp_background1.png");
   background-position: center center;
 }
@@ -215,11 +214,10 @@ a.menu-btn:hover {
   margin-right: 26px;
 }
 
-.waiting,
-.customer {
-  background-image: url("  https://inline.company/wp-content/uploads/2024/07/New-official-website_v2_hp_background2.png");
-  /* height: 1750px; */
+.features {
+  background-image: url("https://inline.company/wp-content/uploads/2024/07/New-official-website_v2_hp_background2.png");
   background-position: center center;
+  padding-bottom: 160px;
 }
 
 .feature-title {
