@@ -1,0 +1,97 @@
+:root {
+  --main-color: #94d3c8;
+}
+
+* {
+  --main-font: red;
+  color: yellow;
+}
+
+address {
+  font-style: normal;
+}
+
+.fit {
+  max-width: 1200px;
+  padding: 16px 32px;
+  margin: 0 auto;
+}
+
+.card-wrap {
+  max-width: 1152px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card,
+.tag {
+  border: 1px solid #ccc;
+}
+
+.card {
+  /* width: 269px; */
+  width: calc(25% - 15px); /* 60px 的 gap 均分給 4 張卡片 = 15px */
+  padding: 16px;
+  border-radius: 10px;
+  background-color: var(--main-color);
+}
+
+.card-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #1654b9;
+}
+
+.card-img {
+  width: 50px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  margin-right: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
+.company-name:hover {
+  color: #4e91ff;
+}
+
+.card-content {
+  font-weight: 350;
+  font-size: 14px;
+}
+
+.fa {
+  margin-right: 5px;
+}
+
+.tag {
+  padding: 5px;
+  border-radius: 5px;
+  color: #7e7e7e;
+  font-size: 14px;
+}
+
+.tag:hover {
+  color: #ff9100;
+  border-color: #ff9100;
+  cursor: pointer;
+}
+
+.tag + .tag {
+  margin-left: 8px;
+}
+
+.card-more {
+  text-align: center;
+  color: #ff9100;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 450;
+}
+
+.card > div + div {
+  margin-top: 16px;
+}
