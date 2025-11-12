@@ -1,0 +1,60 @@
+section {
+  margin: 100px;
+}
+
+.box {
+  width: 300px;
+  height: 300px;
+  background-color: antiquewhite;
+  display: inline-block;
+  margin: 0 20px;
+  vertical-align: top;
+}
+
+.hidden {
+  overflow: hidden;
+}
+
+.scroll {
+  overflow: scroll;
+}
+
+.scroll-x {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.scroll-y {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  visibility: inherit;
+}
+
+.box-shadow {
+  width: 300px;
+  background-color: wheat;
+  margin: 0 20px;
+  display: inline-block;
+  border-radius: 3%;
+}
+
+.pseudo-shadow {
+  position: relative;
+}
+
+.pseudo-shadow::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 20px;
+  left: 20px;
+  border-radius: 3%;
+  border: 1px solid red;
+  z-index: -1;
+}
+
+.shadow {
+  box-shadow: 20px 20px 10px 0px red;
+}
