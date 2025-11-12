@@ -6,6 +6,7 @@
 
    - [課表 (course-schedule)](https://hoooom6600.github.io/F2E03/HW/course-schedule/course-schedule.html)
    - [Google 表單 (form)](https://hoooom6600.github.io/F2E03/HW/form/form.html)
+   - [inline 官網首頁仿切 (inline)](https://hoooom6600.github.io/F2E03/HW/inline/index.html)
 
 2. JavaScript
 
