@@ -214,6 +214,9 @@
   - 字體
     - [字型](https://fonts.google.com/)
       - 通常開發專案不太會用引入的 font-family，因為樣式是設計師創作的，會請他提供字型檔案
+    - [icon - Font Awesome](https://fontawesome.com/)
+      - 注意語法及版本號要相符
+      - **_不可更改字型!!!!!_**
     - font-size 有關鍵字可以用，但實務很少用到
     - font-weight: 預設 400 = 關鍵字 normal
   - 底線
