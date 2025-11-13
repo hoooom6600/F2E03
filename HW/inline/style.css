@@ -1,4 +1,4 @@
-* {
+*:not(.fontawesome) {
   font-family: "Noto Sans Japanese-Normal", sans-serif !important;
 }
 
@@ -704,6 +704,11 @@ blockquote .quote {
   color: #ff6e06;
 }
 
-.copyright i {
-  font-size: 26px;
+.copyright .fontawesome {
+  font-size: 22px;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
 }
