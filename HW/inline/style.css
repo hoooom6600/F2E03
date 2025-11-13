@@ -287,18 +287,18 @@ a.menu-btn:hover {
   margin-bottom: 120px;
 }
 
-.cooperation-company .tab {
+.panel {
   text-align: center;
   font-size: 0;
 }
 
-.cooperation-company .tab label:has(input[type="radio"]:checked) {
+.panel input[type="radio"]:checked + label {
   color: #252932;
   border-bottom: 4px solid #ff6e06;
   cursor: default;
 }
 
-.cooperation-company .tab label {
+.panel label {
   display: inline-block;
   padding: 14px 20px;
   cursor: pointer;
@@ -306,8 +306,61 @@ a.menu-btn:hover {
   color: #666666;
 }
 
-.cooperation-company .tab label input {
+.panel input {
   display: none;
+}
+
+.panel-body {
+  position: relative;
+  font-size: 16px;
+}
+
+.panel-body::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: #f0f2f7;
+}
+
+.panel-body .chain-brands,
+.panel-body .five-stars-brands,
+.panel-body .mall-brands,
+.panel-body .Michelin-brands,
+.panel-body .famous-brands,
+.panel-body .overseas-brands {
+  display: none;
+}
+
+#chain:checked ~ .panel-body .chain-brands,
+#five-stars:checked ~ .panel-body .five-stars-brands,
+#mall:checked ~ .panel-body .mall-brands,
+#Michelin:checked ~ .panel-body .Michelin-brands,
+#famous:checked ~ .panel-body .famous-brands,
+#overseas:checked ~ .panel-body .overseas-brands {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 14px 20px;
+}
+
+.panel-body .brand {
+  width: calc(100% / 6);
+}
+
+.panel-body .brand img {
+  width: 100%;
+  object-fit: cover;
+  transition: 0.5s;
+}
+
+.panel-body .brand:hover img {
+  transform: scale(1.1);
 }
 
 .self-recommend {
