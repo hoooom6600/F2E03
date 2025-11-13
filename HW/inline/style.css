@@ -1,6 +1,5 @@
 * {
-  font-family: Arial, Helvetica, sans-serif !important;
-  /* font-family: "arial black", sans-serif !important; */
+  font-family: "Noto Sans Japanese-Normal", sans-serif !important;
 }
 
 *::selection {
@@ -35,6 +34,12 @@ footer a {
 a {
   display: inline-block;
   text-decoration: none;
+}
+
+button {
+  border: none;
+  padding: 0;
+  background-color: transparent;
 }
 
 .max1200 {
@@ -139,10 +144,10 @@ a.menu-btn:hover {
   line-height: 2;
 }
 
-.hero .try-btn {
+/* .hero .try-btn {
   border: none;
   padding: 0;
-}
+} */
 
 .hero .try-btn a {
   background-color: #064c8c;
@@ -263,6 +268,167 @@ a.menu-btn:hover {
   font-size: 16px;
   color: #252932;
   text-align: justify;
+}
+
+.self-recommend {
+  background-image: url("https://inline.company/wp-content/uploads/2024/07/New-official-website_v2_form_background.png");
+  background-position: center center;
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+
+blockquote {
+  text-align: center;
+}
+
+blockquote .quote {
+  font-size: 29px;
+  color: #ff6600;
+  font-weight: 700;
+  line-height: 1.75;
+}
+
+.quote-source {
+  font-size: 18px;
+  color: #252932;
+  display: inline-block;
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+.test-form {
+  text-align: center;
+  padding: 50px 0;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  max-width: 800px;
+  border-radius: 20px;
+}
+
+.hello {
+  font-weight: 700;
+  font-size: 26px;
+  color: #064c8c;
+}
+
+.form-caption {
+  font-size: 16px;
+  color: #252932;
+  font-weight: 700;
+  margin: 20px 0;
+  line-height: 2;
+}
+
+.form-caption span {
+  color: #ff0000;
+}
+
+.form-caption a {
+  color: #000080;
+}
+
+.test-form form {
+  margin-top: 35px;
+}
+
+.test-form legend {
+  font-size: 16px;
+  color: #252932;
+  line-height: 1.5;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.form-notice {
+  font-size: 10px;
+  color: #252932;
+}
+
+.contact-trial {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.read-more {
+  font-size: 32px;
+  font-weight: 700;
+  color: #252932;
+  text-align: center;
+}
+
+.read-more h3 {
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+
+.read-more-btn a {
+  display: inline-block;
+  background-color: #064c8c;
+  color: #fff;
+  border: 1px solid #064c8c;
+  border-radius: 10px;
+  padding: 20px 30px;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 85px;
+}
+
+.tel-contact,
+.free-try {
+  padding: 0 20px;
+  width: 30%;
+  position: relative;
+}
+
+.contact-trial-title {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  font-weight: 700;
+  color: #333333;
+  font-size: 21px;
+}
+
+.contact-trial-content {
+  font-size: 14px;
+  color: #252932;
+  margin: 30px 0;
+  font-weight: 400;
+  line-height: 2;
+}
+
+.tel-number {
+  font-weight: 700;
+  font-size: 24px;
+  color: #252932;
+}
+
+.tel-number:hover {
+  color: #ff9800;
+}
+
+.tel-contact::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 1px;
+  height: calc(100% - 40px);
+  top: 40px;
+  right: 0;
+  background-color: #cbd1dc;
+}
+
+.free-try-btn a {
+  background-color: #ec6337;
+  border-color: #ec6337;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  padding: 12px 20px 12px 20px;
 }
 
 .intercom {
