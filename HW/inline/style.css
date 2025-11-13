@@ -144,11 +144,6 @@ a.menu-btn:hover {
   line-height: 2;
 }
 
-/* .hero .try-btn {
-  border: none;
-  padding: 0;
-} */
-
 .hero .try-btn a {
   background-color: #064c8c;
   color: #fff;
@@ -330,15 +325,67 @@ blockquote .quote {
 }
 
 .test-form form {
-  margin-top: 35px;
+  margin: 35px 130px 0;
 }
 
 .test-form legend {
   font-size: 16px;
   color: #252932;
   line-height: 1.5;
-  display: inline-block;
-  margin-bottom: 30px;
+  margin-bottom: calc(2em + 30px);
+}
+
+.test-form label,
+.test-form input,
+.test-form select {
+  display: block;
+  width: 100%;
+}
+
+.test-form input,
+.test-form select {
+  margin-top: 8px;
+  margin-bottom: 18px;
+  padding: 10px 12px;
+  font-size: 16px;
+  box-sizing: border-box;
+  outline: none;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+
+.test-form select {
+  text-align: center;
+}
+
+.test-form input:focus,
+.test-form select:focus {
+  border-color: #999999;
+}
+
+.test-form label {
+  cursor: pointer;
+  color: #252932;
+}
+
+.test-form .captcha {
+  width: 300px;
+  height: 75px;
+  line-height: 75px;
+  border-radius: 3px;
+  background-color: #f9f9f9;
+}
+
+.test-form input[type="submit"] {
+  width: 120px;
+  height: 40px;
+  margin: 25px auto 15px;
+  padding: 0;
+  background-color: #ec6337;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 .form-notice {
@@ -441,6 +488,7 @@ blockquote .quote {
   position: fixed;
   bottom: 20px;
   right: 20px;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.06), 0 2px 32px 0 rgba(0, 0, 0, 0.16);
 }
 
 .intercom img {
