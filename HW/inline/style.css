@@ -55,6 +55,10 @@ nav.max1200 > :last-child {
   margin-right: 20px;
 }
 
+.menu {
+  font-size: 0;
+}
+
 .menu a {
   padding: 15px;
   font-size: 15px;
@@ -267,6 +271,43 @@ a.menu-btn:hover {
   font-size: 16px;
   color: #252932;
   text-align: justify;
+}
+
+.cooperation-company .max1200 {
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.cooperation-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 28px;
+  color: #252932;
+  margin-top: 60px;
+  margin-bottom: 120px;
+}
+
+.cooperation-company .tab {
+  text-align: center;
+  font-size: 0;
+}
+
+.cooperation-company .tab label:has(input[type="radio"]:checked) {
+  color: #252932;
+  border-bottom: 4px solid #ff6e06;
+  cursor: default;
+}
+
+.cooperation-company .tab label {
+  display: inline-block;
+  padding: 14px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #666666;
+}
+
+.cooperation-company .tab label input {
+  display: none;
 }
 
 .self-recommend {
