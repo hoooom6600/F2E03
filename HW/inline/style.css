@@ -61,6 +61,10 @@ nav.max1200 > :last-child {
   color: #505563;
 }
 
+.menu a:hover {
+  color: #ff6e06;
+}
+
 a.menu-btn {
   background-color: #da3743;
   border: none;
