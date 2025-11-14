@@ -340,6 +340,12 @@
     - sticky
       - 偏移表示 viewport 距離多少時就黏住，滑動到超出其父層元素時則流走，即作用範圍被父層限制
 
+- 多邊形製作
+
+  - HTML: svg, ~~偷懶用特殊符號~~
+  - CSS: clip-path, border (僅限三角形)
+  - [clip-path 工具](https://bennettfeely.com/clippy/)
+
 - 函數
 
   - calc()

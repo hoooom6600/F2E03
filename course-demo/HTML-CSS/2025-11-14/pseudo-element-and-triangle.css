@@ -1,0 +1,84 @@
+.online-course-title {
+  text-align: center;
+  font-size: 48px;
+  position: relative;
+  line-height: 1;
+}
+
+.online-course-title::after {
+  content: "";
+  width: 80px;
+  height: 2px;
+  background-color: red;
+  position: absolute;
+  left: 50%;
+  bottom: -20px;
+  transform: translateX(-50%);
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 15px;
+  position: relative;
+  border: none;
+  border-radius: 5px;
+  background-color: #faa;
+}
+
+.btn:hover::before {
+  content: "點擊按鈕即代表同意隱私權政策";
+  background-color: #fa0;
+  border-radius: 100px;
+  padding: 10px 15px;
+  text-wrap: nowrap;
+  position: absolute;
+  left: 50%;
+  top: -54px;
+  transform: translateX(-50%);
+}
+.btn:hover::after {
+  content: "";
+  border: 8px solid transparent;
+  border-top-color: #fa0;
+  position: absolute;
+  left: 50%;
+  top: -15px;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.title-before::before {
+  content: "▶";
+  color: #fa0;
+}
+
+.title-after::after {
+  content: "";
+  display: inline-block;
+  border: 25px solid transparent;
+  border-left-width: 15px; /* 當作間距 */
+  border-right: 43.3px solid #fa0;
+}
+
+.box {
+  width: 0;
+  border: 100px solid transparent;
+}
+
+.box1 {
+  border-left-color: #afa;
+}
+
+.box2 {
+  border-top-width: 200px;
+  border-bottom-width: 200px;
+  border-right-color: #faa;
+  border-bottom-color: #faa;
+}
+
+.clip {
+  width: 150px;
+  height: 150px;
+  background-color: #aaf;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
