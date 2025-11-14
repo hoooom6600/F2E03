@@ -1,0 +1,35 @@
+* {
+  font-size: 30px;
+}
+
+header {
+  padding: 32px;
+  background-color: #ccc;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.banner {
+  display: inline-block;
+  margin-top: 109px;
+  width: 100%;
+  aspect-ratio: 9/3;
+  object-fit: cover;
+}
+
+.sticky {
+  padding: 32px;
+  position: sticky;
+  top: 109px;
+}
+
+.sticky1 {
+  background-color: #ff0;
+}
+
+.sticky2 {
+  background-color: #0ff;
+}
