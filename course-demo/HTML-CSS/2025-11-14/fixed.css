@@ -1,0 +1,81 @@
+header {
+  height: 96px;
+  background-color: rgba(200, 200, 200, 0.8);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  text-align: center;
+  line-height: 96px;
+  font-size: 50px;
+}
+
+section {
+  margin: 100px;
+  margin-top: 96px;
+}
+
+.box {
+  width: 300px;
+  height: 300px;
+  background-color: rgba(255, 170, 0, 0.5);
+  position: fixed;
+  text-align: center;
+  line-height: 300px;
+  font-size: 20px;
+}
+
+p {
+  font-size: 40px;
+}
+
+.box1 {
+  left: 0;
+  top: 0;
+  line-height: 150px;
+}
+
+.box3 {
+  left: calc(50% - 150px);
+  top: calc(50% - 150px);
+
+  text-align: left;
+}
+
+.box4 {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  text-align: right;
+}
+
+.box5 {
+  line-height: 150px;
+}
+
+.box5:hover {
+  transform: scale(2);
+}
+
+.mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.box6 {
+  width: 750px;
+  height: 450px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 225px;
+  font-size: 80px;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.6);
+}
