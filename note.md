@@ -1446,9 +1446,11 @@
   - powerShell 以系統管理員身分開啟
   - 輸入 `set-ExecutionPolicy RemoteSigned` 然後確認
 - 指令
+  - `npm init -y`: 產生 package.json，`npm init`的懶人版，省略很多自訂步驟
   - `npm i` = `npm install`
     - `--save` 是預設值
   - `-D`: 會跑到 `devDependencies`，不會被打包給一般使用者
+    - `-D` == `--save-dev`
 
 #### 儲存資料
 
@@ -1650,6 +1652,18 @@
     | 1 - N - 2 |  2   |
 
   - 結果不一定是偶數
+
+# TDD 測試驅動開發（Test-Driven Development）
+
+- TDD 是一種開發方法
+- 重點在開發，測試是手段
+- 先寫測試(規格)，再寫實作。和一般工程師開發思維相反
+- 再寫測試的時候就在寫說明書的思維
+- 還沒實作要怎模測試?
+  - 天馬行空，假設它存在，就像設計師或漫畫家。**大膽假設**
+- 寫測試的人員角色偏向 PM、企劃
+- 先測試失敗(故意的失敗，有失敗才是正確的)，再修正
+- [jest JS 測試框架](https://jestjs.io/)
 
 # 執行不理想的常見原因
 
