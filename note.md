@@ -1504,6 +1504,19 @@
       |:--:|:--:|:--:|
       |打包|O|X|
 
+## Regex (Regular Expression)
+
+- `\d` == `[0-9]`
+  - d: digit
+- `{}`: 根據前一個條件重複幾個字元判斷
+  - `{<number1>, `: 至少重複 n 次
+  - `{<number1>, {number2}`:重複 n 到 m 次
+- `-`: 0 或 1 個
+- `*`: 0 或多個
+- `+`: 一個以上
+- [RFC email 格式規範](https://stackoverflow.com/questions/201323/how-can-i-validate-an-email-address-using-a-regular-expression)
+- [regex101](https://regex101.com/)
+
 # RWD
 
 # 終端機(Ternimal)使用
@@ -1659,8 +1672,9 @@
 - 重點在開發，測試是手段
 - 先寫測試(規格)，再寫實作。和一般工程師開發思維相反
 - 再寫測試的時候就在寫說明書的思維
-- 還沒實作要怎模測試?
+- 還沒實作要怎麼測試?
   - 天馬行空，假設它存在，就像設計師或漫畫家。**大膽假設**
+  - 就像倒敘法電影的模式
 - 寫測試的人員角色偏向 PM、企劃
 - 先測試失敗(故意的失敗，有失敗才是正確的)，再修正
 - [jest JS 測試框架](https://jestjs.io/)
