@@ -4,6 +4,20 @@
 
 class Stack {
   // 實作寫在這裡
+  constructor() {
+    this.items = [];
+    this.size = this.items.length;
+  }
+  push(value) {
+    if (value != undefined) {
+      this.items.push(value);
+      this.size++;
+    }
+  }
+  pop() {
+    this.size--;
+    return this.items.pop();
+  }
 }
 
 const stack = new Stack();
