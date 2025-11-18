@@ -1451,6 +1451,10 @@
     - `--save` 是預設值
   - `-D`: 會跑到 `devDependencies`，不會被打包給一般使用者
     - `-D` == `--save-dev`
+- npx vs npm install
+  |項目|npx|npm install|
+  |:--:|:--:|:--:|
+  |安裝|不會真的把東西安裝在專案裡，<br>即 package.json 不會看到相關字眼|真的要下載|
 
 #### 儲存資料
 
@@ -1516,6 +1520,44 @@
 - `+`: 一個以上
 - [RFC email 格式規範](https://stackoverflow.com/questions/201323/how-can-i-validate-an-email-address-using-a-regular-expression)
 - [regex101](https://regex101.com/)
+
+# TypeScript (TS)
+
+- 微軟推出的規格，想處理 JS 初始設計太隨便，太多妥協的問題
+- 在 AI 時代可以讓程式碼更精準更嚴謹。缺點是很囉唆，但優點是在上線前就能知道錯誤在哪，還有開發時會有更正確的提示
+- JS 沒有很強烈的型別概念
+- TS 是 JS 的超集合(Superset)，所有在 JS 有效的程式碼，在 TS 就是有效的語法
+- TS = JS + 明確型別概念
+- 目前瀏覽器還是無法看懂 TS 但 node 也能執行 TS
+- TS 和 JS 的關係就像，前者是方言，後者是普通話
+- 記得用 npm 安裝
+- tsc: TS 編譯器，編譯成 JS
+  - `npx tsc <TS filename>`
+- `--noEmitOnError`: 若在 TS 語法有錯誤，就不要通過並編譯。通常是型別異常，TS 不會自動轉換
+- ES6 語法編譯後會變成就寫法，因為 TS 考慮到相容性，編譯盡可能支援老舊版本瀏覽器。
+- 型別宣告大小寫有差，永遠用小寫！
+- 型別推斷: TS 在宣告變數時，若不宣告型別卻有賦值，其實會自動推斷，但後續仍然無法改變型別
+- 那為何要手動宣告型別?
+  - 因為一開始沒宣告型別，又沒賦值，則會變成 any 型別。但沒事不要這樣寫。這是 TypeScript 不是 AnyScript
+  - 在 const 又有更細節，Literal Type (字面型別)
+  - TS null 和 undefined 是不同型別，無法彼此換值
+- 陣列型別宣告: `<dataType>[]`
+  - 陣列型別不宣告，也會被自動推斷
+- 能讓 TS 自動推斷就自動推斷，不然程式碼很醜。但絕對不要 AnyScript
+- 自訂義 type
+
+  - 很像 TDD 的測試規格
+  - `type`
+  - `interface`: 介面就是一個規範，可以用主機板插槽的*介面*vs 顯卡來想像
+  - `?`: optional，可有可無
+  - `|`: 選項
+  - TODO:
+  - | 項目 | type | interface |
+    | :--: | :--: | :-------: |
+
+- 回傳值
+  - 可以寫明函數的回傳值會是什麼型別
+  - void
 
 # RWD
 
@@ -1718,3 +1760,14 @@
 - AI 會取代工程師嗎?
   - 會取代高度依賴 AI 的開發者
   - 可以取代 TDD 的規格開發
+- 當一個 BUG 存在夠久，沒有修改，就會變成一個功能
+  - 比如:
+    ```js
+    typeof null; // object
+    ```
+- Duck Typing
+  |項目|Duck Typing|TS|
+  |:--:|:--:|:--:|
+  |意義|如果它走起來像鴨子、叫起來像鴨子，那麼它就是一隻鴨子。| |
+  |風格|自由自在的彈性開發風格|嚴謹、囉嗦|
+  |規範比擬|人治|法治|
