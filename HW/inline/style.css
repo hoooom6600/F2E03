@@ -47,13 +47,13 @@ button {
   margin: 0 auto;
 }
 
-nav.max1200 > :first-child {
+/* nav.max1200 > :first-child {
   margin-left: 20px;
 }
 
 nav.max1200 > :last-child {
   margin-right: 20px;
-}
+} */
 
 .menu {
   font-size: 0;
@@ -119,9 +119,9 @@ a.menu-btn:hover {
   align-items: center;
 }
 
-.hero-content {
+/* .hero-content {
   width: 50%;
-}
+} */
 
 .hero-title {
   margin-bottom: 40px;
@@ -169,7 +169,7 @@ a.menu-btn:hover {
   margin-top: 85px;
 }
 
-.world-scale p {
+.world-scale div {
   position: relative;
   top: 120px;
   text-align: center;
@@ -212,7 +212,7 @@ a.menu-btn:hover {
 .customer-content {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -600,6 +600,7 @@ blockquote .quote {
   font-size: 12px;
   display: flex;
   padding: 60px 0 20px 0;
+  gap: 40px;
 }
 
 .info img {
@@ -608,7 +609,7 @@ blockquote .quote {
 
 .info > div {
   width: 25%;
-  margin: 0 20px;
+  /* margin: 0 20px; */
 }
 
 .info address {
@@ -687,13 +688,13 @@ blockquote .quote {
   font-size: 15px;
 }
 
-.copyright .max1200 > :first-child {
+/* .copyright .max1200 > :first-child {
   margin-left: 20px;
 }
 
 .copyright .max1200 > :last-child {
   margin-right: 20px;
-}
+} */
 
 .copyright a {
   color: #9ea6b7;
