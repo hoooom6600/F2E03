@@ -927,6 +927,7 @@
     - `class`
       - `constructor`: 建構子
         - new 下去之後，會立刻執行的 function
+        - `constructor` 物件的初始化，只執行一次，物件建立時執行。除非手動操作，否則不會響應變化
       - 比較不會汙染到外面程式碼
       - class 是語法糖，本質上是 function。背後還是 `__proto__` 和 `prototype` 的關係
         - ES6 之後推出的
@@ -945,8 +946,8 @@
      - `arguments` 類似 ES6 `...`，是在 ES6 之前全收下的意思
   3. 是否有使用 `new`，有用 `new` 則為空物件
      - 因為 `new` 會先將 `this` 指向空物件
-     - 和箭頭函數混用，則箭頭函數會被視為 `constuctor`，所以報錯
-       - `new` 要搭配 `constuctor`
+     - 和箭頭函數混用，則箭頭函數會被視為 `constructor`，所以報錯
+       - `new` 要搭配 `constructor`
   4. 是否有用 `apply` 或 `call` 或 `bind`
      - `apply` 和 `call` 可以綁架 this，強迫把 this 轉向成參數
      - 可以用遊戲中的法師幫戰士補血
