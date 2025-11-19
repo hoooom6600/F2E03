@@ -7,38 +7,30 @@ section {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  max-width: 960px;
+  background-color: #aaa;
 }
 
 .card {
-  width: 300px;
+  width: calc(25% - 15px);
   background-color: bisque;
+  position: relative;
+}
+
+.card:nth-child(even) .card-header::after {
+  content: "HOT";
+  position: absolute;
+  background-color: red;
+  color: white;
+  padding: 2px 40px;
+  right: -30px;
+  top: 10px;
+  transform: rotate(45deg);
 }
 
 .card-header {
   position: relative;
   overflow: hidden;
-}
-
-.card-header::before {
-  content: "";
-  position: absolute;
-  top: 48px;
-  left: -10px;
-  border: 10px solid brown;
-  border-left-color: transparent;
-  border-bottom-color: transparent;
-  z-index: -1;
-}
-
-.card-header::after {
-  content: "HOT";
-  position: absolute;
-  background-color: red;
-  color: white;
-  padding: 0 40px;
-  right: -30px;
-  top: 10px;
-  transform: rotate(45deg);
 }
 
 .tag {
@@ -47,12 +39,38 @@ section {
   background-color: red;
   /* border-radius: 3px; */
   padding: 2px 10px;
+  z-index: 1;
 }
 
 .discount {
   top: 20px;
   left: -10px;
 }
+
+/* 優惠裝飾三角形，寫法一 */
+/* 取右邊框線的下側 */
+.discount::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  border-top: none;
+  border-right: 10px solid brown;
+  border-bottom: 10px solid transparent;
+}
+
+/* 優惠裝飾三角形，寫法二 */
+/* 取上 + 右側邊框線 */
+/* .discount::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  border: 10px solid brown;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  z-index: -1;
+} */
 
 .price-off {
   right: 0;
