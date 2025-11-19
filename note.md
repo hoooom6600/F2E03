@@ -370,6 +370,14 @@
   |漸進動畫|X|∆|X|
   |SEO|O|∆|X|
 
+- Transition: 轉場
+
+  - `all` 的前提是 `duration` 時間只有一個值
+  - `delay` 可以達成同一元素但不同屬性轉場分開進行
+    - `delay` 接受負值，即吃掉原始 `duration` 對應時間的變化
+  - [`timing-function`](https://cubic-bezier.com/#.17,.67,.83,.67): 轉場速度模式
+  - **_不適用於 `display: none;`_**
+
 - 好朋友 CSS (粗體為後續 CSS 屬性的啟動者)
   - **flex** + justify-content + align-item +
   - **position** + inset (top, right, bottom, left) + z-index
