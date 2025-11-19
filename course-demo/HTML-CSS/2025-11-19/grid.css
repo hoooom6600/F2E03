@@ -1,0 +1,123 @@
+section {
+  margin: 100px;
+  background-color: #aaa;
+  display: grid;
+}
+
+section.group {
+  grid-template-columns: repeat(10, 1fr);
+  gap: 4px;
+}
+
+.item {
+  background-color: #ffa;
+}
+
+.item1 {
+  background-color: #faa;
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+  /* z-index 蓋掉 item 2 */
+  z-index: 1;
+}
+
+.item2 {
+  background-color: #aaf;
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
+}
+
+.item3 {
+  background-color: #aff;
+  /* 練習 span */
+  /* grid-column: 4 / 7; */
+  grid-column: 4 / span 3;
+  grid-row: 2 / 3;
+}
+
+.item4 {
+  background-color: #faf;
+  /* 練習 grid-area 4 個參數 */
+  grid-area: 1/8/3/10;
+}
+
+.item13 {
+  background-color: #afc;
+  /* 超出剩餘數量 */
+  grid-column: 1 / span 5;
+}
+
+section.wrap {
+  height: 600px;
+  grid-template-columns: repeat(3, 200px);
+  gap: 20px;
+  justify-content: end;
+  justify-items: start;
+  align-content: center;
+  align-items: center;
+}
+
+.box {
+  font-size: 30px;
+  height: 100px;
+}
+
+.box1 {
+  background-color: #faa;
+}
+.box2 {
+  background-color: #ffa;
+  margin: auto;
+}
+.box3 {
+  background-color: #aaf;
+}
+
+section.grid {
+  height: 600px;
+  grid-template-areas:
+    "header header header"
+    "aside . main"
+    "aside footer footer";
+  grid-template-columns: 1fr 1fr 8fr;
+  font-size: 30px;
+  gap: 20px;
+}
+
+.grid header {
+  grid-area: header;
+  background-color: #aaf;
+}
+.grid aside {
+  grid-area: aside;
+  background-color: #afa;
+}
+.grid main {
+  grid-area: main;
+  background-color: #ffa;
+}
+.grid footer {
+  grid-area: footer;
+  background-color: #faf;
+}
+
+section.card-wrap {
+  grid-template-columns: repeat(7, minmax(100px, 1fr));
+  grid-template-rows: 50% 50%;
+}
+
+.card {
+  background-color: bisque;
+  padding: 20px;
+}
+
+.card-header {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
