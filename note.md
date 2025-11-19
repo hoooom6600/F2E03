@@ -299,6 +299,7 @@
     - clear
     - 文繞圖
   - display
+
     - inline-block
       - 注意空白字元問題
       - 當元素沒有寫死寬度時，同層內其中一個元素超出剩餘寬度，則不會自適應縮窄以並排
@@ -317,7 +318,41 @@
           - 實務上，要改變 shrink 的值，通常是改成 0，表示不要收縮
         - flex-basis
           - 優先序: flex-basis > width / height (是寬還高，依主軸而定)
-    - [青蛙遊戲](https://flexboxfroggy.com/)
+      - [青蛙遊戲](https://flexboxfroggy.com/)
+    - grid
+      - 父層
+        - grid-template = grid-template-areas + grid-template-columns
+        - grid-template-
+          - columns
+          - rows
+          - areas
+            - 需搭配子層 grid-area
+            - 字串，自訂命名。通常會縮排
+            - `.`: 格子留白
+            - 只能命名格子只能是矩形，不可為 L 或其他形狀
+        - grid-auto-flow ≒ flex-direction
+        - gap
+        - 尺寸設定
+          - fr
+          - repeat(n 次, 尺寸)
+          - minmax(min,max)
+      - 子層
+        - grid- (記得後綴沒有 s)
+          - column-
+            - start
+            - end
+          - row-
+            - start
+            - end
+          - area
+            - 告訴 CSS 選取的元素是父層 areas 命名的哪個。屬性值不用 `"` 包字串
+            - 座標: <grid-row-start\> / <grid-column-start\> / <grid-row-end\> / <grid-column-end\>
+          - 第 n 條線
+            - 數字
+            - /
+            - span
+      - [花園遊戲](https://codepip.com/games/grid-garden/)
+
   - 排版演變史
     - table → float → inline-block → flex
   - 定位 (position)
@@ -379,8 +414,9 @@
   - **_不適用於 `display: none;`_**
 
 - 好朋友 CSS (粗體為後續 CSS 屬性的啟動者)
-  - **flex** + justify-content + align-item +
+  - **flex** + justify-content + align-item
   - **position** + inset (top, right, bottom, left) + z-index
+  - z-index + (**flex** || **grid**)
 
 # Git
 
