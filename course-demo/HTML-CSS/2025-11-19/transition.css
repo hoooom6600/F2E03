@@ -1,0 +1,64 @@
+section {
+  margin: 100px;
+  background-color: #aaa;
+}
+
+.box {
+  width: 300px;
+  height: 300px;
+  background-color: #faa;
+  font-size: 18px;
+}
+
+.box + .box {
+  margin-top: 50px;
+}
+
+.box1 {
+  transition-property: background-color, border-radius;
+  transition-duration: 2s, 1s;
+  transition-delay: 0s, 2s;
+}
+
+.box1:hover {
+  background-color: #afa;
+  border-radius: 100%;
+}
+
+.box2 {
+  transition-property: border-radius;
+  transition-duration: 30s;
+  transition-delay: -5s;
+}
+
+.box2:hover {
+  border-radius: 100%;
+}
+
+.box3 {
+  transition-property: border-radius, background-color;
+  transition-duration: 1s, 2s;
+  transition-delay: 0s, 1s;
+}
+
+.box3:hover {
+  transition-property: background-color, border-radius;
+  transition-duration: 2s, 1s;
+  transition-delay: 0s, 2s;
+  background-color: #afa;
+  border-radius: 100%;
+}
+
+.box4 {
+  transition-property: background-color, border-radius;
+  transition-duration: 1s, 2s;
+  transition-delay: 2s, 0s;
+}
+
+.box4:hover {
+  transition-property: background-color, border-radius;
+  transition-duration: 2s, 1s;
+  transition-delay: 0s, 2s;
+  background-color: #afa;
+  border-radius: 100%;
+}
