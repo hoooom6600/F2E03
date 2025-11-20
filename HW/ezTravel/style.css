@@ -1,56 +1,197 @@
+* {
+  font-family: Gudea, Heiti, 微軟正黑體, Microsoft JhengHei;
+}
+
 main {
-  margin: 100px;
-  background-color: #ccc;
+  width: 1100px;
+  margin: 0 auto;
+}
+
+section {
+  margin: 50px 0;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 40px;
+  margin-bottom: 15px;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.hot-topic h2::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -10px;
+  z-index: -1;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 36px 36px 0 0;
+  border-color: #fab617 transparent transparent;
+}
+
+.jp-follow h2::before,
+.tw-must h2::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -10px;
+  z-index: -1;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 18px 18px 0 0;
+  border-color: #11d073 transparent transparent;
+}
+
+.hot-topic a {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  background-color: #fafafa;
+  height: 100%;
+}
+
+.hot-topic span {
+  display: inline-block;
+  width: 75%;
+  font-size: 14px;
+  color: #222;
+  font-weight: 700;
+  padding: 10px;
+  transition: 0.4s;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.box {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.price {
+  color: #fab617;
+  font-size: 18px;
+  /* line-height: 18px; */
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.up {
+  font-size: 14px;
+  font-weight: normal;
+  color: #fff;
+  margin-left: 5px;
+}
+
+.relative {
+  position: relative;
+}
+
+.description {
+  position: absolute;
+  padding: 10px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.jp-follow .description > :first-child {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.jp-follow .description > :nth-child(2) {
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  transition: 0.4s;
+}
+
+.card:hover {
+  box-shadow: 0 3px 15px 0 rgba(34, 34, 34, 0.15);
+}
+
+.hot-topic .card:hover span {
+  color: #0c9251;
 }
 
 .grid {
   display: grid;
-  gap: 10px;
-}
-
-.box {
-  background-color: #ffa;
+  gap: 15px;
 }
 
 .hot-topic .grid {
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  height: 330px;
+  grid-template-columns: repeat(3, 1fr) 1.7fr;
+  grid-template-rows: repeat(8, 1fr);
 }
 
 .hot-topic .box1 {
-  grid-area: 1/1/5/2;
+  grid-area: 1/1/9/2;
 }
 
 .hot-topic .box2 {
-  grid-area: 1/2/4/3;
+  grid-area: 1/2/6/3;
 }
 
 .hot-topic .box3 {
-  grid-area: 4/2/5/3;
+  grid-area: 6/2/9/3;
 }
 
 .hot-topic .box4 {
-  grid-area: 1/3/2/4;
+  grid-area: 1/3/4/4;
 }
 
 .hot-topic .box5 {
-  grid-area: 2/3/5/4;
+  grid-area: 4/3/9/4;
 }
 
 .hot-topic .box6 {
-  grid-area: 1/4/2/5;
+  grid-area: 1/4/3/5;
 }
 .hot-topic .box7 {
-  grid-area: 2/4/3/5;
+  grid-area: 3/4/5/5;
 }
 .hot-topic .box8 {
-  grid-area: 3/4/4/5;
+  grid-area: 5/4/7/5;
 }
 .hot-topic .box9 {
-  grid-area: 4/4/5/5;
+  grid-area: 7/4/9/5;
+}
+
+.hot-topic .box6.card img,
+.hot-topic .box7.card img,
+.hot-topic .box8.card img,
+.hot-topic .box9.card img {
+  width: 25%;
 }
 
 .jp-follow .grid {
+  height: 395px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   grid-template-areas:
     "xmas xmas late spring"
     "xmas xmas already picked";
@@ -63,26 +204,162 @@ main {
   grid-area: late;
 }
 .jp-follow .box3 {
-  grid-area: spring;
+  grid-area: already;
 }
 .jp-follow .box4 {
-  grid-area: already;
+  grid-area: spring;
 }
 .jp-follow .box5 {
   grid-area: picked;
 }
 
+/* .jp-follow .grid {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.jp-follow .box1 {
+  grid-area: 1/1/3/3;
+}
+.jp-follow .box2 {
+  grid-area: 1/3/2/4;
+}
+.jp-follow .box3 {
+  grid-area: 2/3/2/4;
+}
+.jp-follow .box4 {
+  grid-area: 1/4/2/5;
+}
+.jp-follow .box5 {
+  grid-area: 2/4/3/5;
+} */
+
+.tw-must .grid {
+  height: 395px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
 .tw-must .box1 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
 .tw-must .box2 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
 .tw-must .box3 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
 }
 .tw-must .box4 {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
 .tw-must .box5 {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
 .tw-must .box6 {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
 .tw-must .box7 {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+/* .tw-must .grid {
+  grid-template-areas:
+    "list AD exp ali"
+    "carousel AD maioli maple";
+  gap: 10px;
+}
+
+.tw-must .box1 {
+  grid-area: list;
+}
+.tw-must .box2 {
+  grid-area: carousel;
+}
+.tw-must .box3 {
+  grid-area: AD;
+}
+.tw-must .box4 {
+  grid-area: exp;
+}
+.tw-must .box5 {
+  grid-area: maioli;
+}
+.tw-must .box6 {
+  grid-area: ali;
+}
+.tw-must .box7 {
+  grid-area: maple;
+} */
+
+.tw-must ul li {
+  display: inline;
+}
+
+.tw-must ul li a {
+  transition: all 0.4s;
+  font-size: 14px;
+  text-decoration: none;
+  color: #222;
+  padding: 4px 8px 4px 0;
+  margin: 5px 8px 5px 0;
+  display: inline-block;
+}
+
+.tw-must .description {
+  background-color: #fafafa;
+  min-height: 66px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.tw-must .description p {
+  font-size: 14px;
+  color: #222;
+  transition: 0.4s;
+}
+
+.tw-must a:hover .description p {
+  color: #0c9251;
+}
+
+.tw-must .price {
+  justify-content: end;
+  align-items: center;
+  margin-top: 10px;
+  color: #ff8b00 !important;
+  font-size: 18px !important;
+  /* line-height: 18px; */
+  font-weight: 700 !important;
+}
+
+.tw-must .up {
+  color: #222;
+}
+
+.tw-must .box4 img,
+.tw-must .box5 img,
+.tw-must .box6 img,
+.tw-must .box7 img {
+  height: calc(100% - 66px);
 }
