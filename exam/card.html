@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex / grid 卡片</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      /* section {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .card {
+        width: calc(25% - (30px / 4));
+        height: 150px;
+        background-color: #3498db;
+      } */
+
+      section {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 10px;
+      }
+
+      .card {
+        height: 150px;
+        background-color: #3498db;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+        1. 使用 Flexbox 或是 Grid 佈局
+        2. .card 在一行中最多顯示 4 個
+        3. 每個卡片寬度相等(總容器寬度的 1/4)
+        4. 當容器寬度不足以容納 4 個卡片時，自動換行
+        5. 每個 .card 之間的間距 (gap) 為 10px
+        6. .card 的高度為 150px，背景色為 #3498db
+        請寫出 section 和 .card 的完整 CSS 程式碼。
+    -->
+    <section>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+    </section>
+  </body>
+</html>
