@@ -1,0 +1,86 @@
+nav {
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #586a6a;
+}
+
+.main-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.main-menu li {
+  position: relative;
+  text-align: center;
+}
+
+.main-menu li a {
+  background-color: #818d92;
+  display: inline-block;
+  height: 80px;
+  line-height: 80px;
+  padding: 0 20px;
+  color: #eee;
+}
+
+.main-menu > li:hover .middle-menu {
+  display: block;
+  left: 10px;
+  top: calc(100% + 10px);
+}
+
+.main-menu > li:hover .middle-menu a {
+  width: 100%;
+}
+
+.main-menu > li:hover::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  width: calc(100% + 10px);
+  display: block;
+  height: calc(300% + 10px);
+}
+
+.main-menu > li:hover::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 10px;
+  border: 10px solid transparent;
+  border-bottom: 10px solid #818d92;
+}
+
+.middle-menu,
+.sub-menu {
+  display: none;
+  width: 100%;
+  position: absolute;
+  left: 100%;
+  top: 20px;
+}
+
+.middle-menu li:hover > a {
+  background-color: #c3b091;
+}
+
+.middle-menu > li:hover .sub-menu {
+  display: block;
+}
+
+.logo-img {
+  height: 80px;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+.avatar {
+  height: 80px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
