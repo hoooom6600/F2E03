@@ -1,0 +1,165 @@
+nav {
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #586a6a;
+}
+
+.main-menu-PC {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.main-menu-PC li {
+  position: relative;
+  text-align: center;
+}
+
+.main-menu-PC li a {
+  background-color: #818d92;
+  display: inline-block;
+  height: 80px;
+  line-height: 80px;
+  padding: 0 20px;
+  color: #eee;
+}
+
+.main-menu-PC > li:hover .middle-menu {
+  display: block;
+  left: 10px;
+  top: calc(100% + 10px);
+}
+
+.main-menu-PC > li:hover .middle-menu a {
+  width: 100%;
+}
+
+.main-menu-PC > li:hover::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  width: calc(100% + 10px);
+  display: block;
+  height: calc(300% + 10px);
+}
+
+.main-menu-PC > li:hover::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 10px;
+  border: 10px solid transparent;
+  border-bottom: 10px solid #818d92;
+}
+
+.middle-menu,
+.sub-menu {
+  display: none;
+  width: 100%;
+  position: absolute;
+  left: 100%;
+  top: 20px;
+}
+
+.middle-menu li:hover > a {
+  background-color: #c3b091;
+}
+
+.middle-menu > li:hover .sub-menu {
+  display: block;
+}
+
+.logo-img {
+  height: 80px;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+.avatar {
+  height: 80px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.nav-plug-checkbox,
+.nav-plug,
+.main-menu-mobile {
+  display: none;
+}
+
+@media all and (width <= 768px) {
+  nav {
+    height: 60px;
+    position: relative;
+  }
+
+  .logo-img {
+    height: 60px;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+
+  .avatar-box {
+    display: none;
+  }
+
+  .hamberger {
+    margin-right: 15px;
+  }
+
+  .nav-plug .hamberger .line {
+    height: 3px;
+    width: 20px;
+    background-color: #fff;
+    border-radius: 9999px;
+  }
+
+  .hamberger .line + .line {
+    margin-top: 5px;
+  }
+
+  .nav-plug {
+    display: block;
+  }
+
+  .main-menu-PC,
+  .main-menu-mobile,
+  input[type="radio"] {
+    display: none;
+    left: 100%;
+  }
+
+  .nav-plug-checkbox:checked ~ .main-menu-mobile {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #818d92;
+    color: #fff;
+  }
+
+  .main-menu-mobile a,
+  .main-menu-mobile label {
+    padding: 15px;
+  }
+
+  .main-menu-mobile label {
+    position: relative;
+  }
+
+  .main-menu-mobile label::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 0;
+    right: 0;
+    border: 8px solid transparent;
+    border-top: 8px solid #fff;
+  }
+}
