@@ -1,0 +1,63 @@
+.card {
+  width: 250px;
+  height: 500px;
+  margin: 40px;
+  background-color: #aaf;
+  transition: 0.5s;
+}
+
+.banner {
+  width: 100%;
+}
+
+.banner-img {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  aspect-ratio: 4/1;
+  object-fit: cover;
+}
+
+.container {
+  width: 80%;
+  max-width: 900px;
+  background-color: #aaa;
+  font-size: 0;
+  margin: 100px auto;
+}
+
+.box {
+  width: 49%;
+  height: 200px;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.box + .box {
+  margin-left: 2%;
+}
+
+.box1 {
+  background-color: red;
+}
+
+.box2 {
+  background-color: blue;
+}
+
+@media screen and (min-width: 1024px) {
+  .card {
+    background-color: #ffa;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .card {
+    background-color: #faa;
+  }
+}
+@media (width < 768px) {
+  .card {
+    background-color: #aaf;
+  }
+}
