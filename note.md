@@ -1846,13 +1846,15 @@
   |風格|自由自在的彈性開發風格|嚴謹、囉嗦|
   |規範比擬|人治|法治|
 
-# 面試題目
+# 面試題目（JS 觀念綜合複習）
 
-- String([]) == ''
-  - `+ [] // 0`
-- ```
-   let a = 0
-   let b = a // b指向a，二者同一記憶體位置
+- ```js
+  String([]); // ""
+  +[]; // 0
+  ```
+- ```js
+  let a = 0;
+  let b = a; // b 指向 a，二者同一記憶體位置
   ```
 - 記得屬性呼叫出來的型別
 - 強迫轉型 ≠ 自動轉型
@@ -1874,5 +1876,14 @@
   - TypeError → 型別不對
 - `eval()`: 評估後執行，參數是字串。將字串當作 JS 程式碼執行
   - 沒事別用，有可能傷害使用者的電腦
-- 在 JS，可以拿物件當 key，會經過字串化`[object Object]`，不管那個物件 key 長怎樣，有多長，永遠是`[object Object]`
+- 在 JS，可以拿物件當 key，會經過字串化 `[object Object]`，不管那個物件 key 長怎樣，有多長，永遠是 `[object Object]`
   - `localStorage` 只會解讀字串，所以存取物件也會是 `[object Object]`，除非 JSON 化 `JSON.stringify()`，但解出來也是文字，不是物件，還要再 `JSON.parse()` 轉回來物件
+- `throw` ≠ `return`
+  - `throw` 出來的東西會被 `catch` 抓走，作為 `catch` 的參數
+- `new` 的 `return` 回基礎型態就不會影響，但如果是物件就有差
+  - 但平時不要在`new` 做 `return`
+- `import` 就算寫在中間，也會類似變數提升的建構期（不是變數提升），邏輯上永遠被視為在檔案最上面執行前就完成連結 (pre-parsed)
+  - `import`: pre-parsed
+  - `require`: 走該行程式碼，需要時才載進來
+- `Symbol`: 每個 `Symbol` 都是個別個體，獨一無二，即便內容相等
+- `push()` 方法的回傳值是新陣列的 `length`
