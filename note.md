@@ -1871,7 +1871,7 @@
 - `...`展開會是陣列，typeof 出來是 object
   - 但是 function typeof 出來是 function
 - 三種錯誤提示
-  - ReferenceError → 找不到 (TDZ) 或打錯字
+  - ReferenceError → 找不到或 TDZ 或打錯字
   - SyntaxError → 語法寫錯
   - TypeError → 型別不對
 - `eval()`: 評估後執行，參數是字串。將字串當作 JS 程式碼執行
@@ -1887,3 +1887,39 @@
   - `require`: 走該行程式碼，需要時才載進來
 - `Symbol`: 每個 `Symbol` 都是個別個體，獨一無二，即便內容相等
 - `push()` 方法的回傳值是新陣列的 `length`
+- `class` 的 `static` 只能給 `class` 用，不能給產出來的實例物件使用
+  - 不是 `class` 的 `prototype`
+
+```js
+class Hero {
+  static hey() {
+    console.log("hey");
+  }
+}
+// 以上等同以下
+Hero.hey = function () {
+  console.log("hey");
+};
+```
+
+- 若是 `prototype` ，如則下
+
+```js
+Hero.prototype.hey = function () {
+  console.log("hey");
+};
+// 以上等同以下
+class Hero {
+  hey() {
+    console.log("hey");
+  }
+}
+```
+
+- `new Set` 方法會讓東西不重複
+- 產生物件的時候，會生出一個看不見的字串 key
+- 多個 `setTimeout` 的時候，誰先做完誰先贏，但還要考量到不同函數的執行時間要多久，所以等待時間未必是獲勝依據
+- `pure function`
+  - 不能有副作用 (side effect)
+  - 不會對傳進來的參數動手腳，也不會往外找東西更改
+  - 只讀不寫
