@@ -42,6 +42,7 @@ function active() {
           this.resetForm()
           this.goToTasks()
           this.isLogin = true
+          this.getTasks()
         } catch (err) {
           console.log(err)
           alert(err.response.data.message)
@@ -209,6 +210,7 @@ function active() {
           localStorage.removeItem("todoToken")
           this.isLogin = false
           this.goToLogin()
+          this.tasks = []
         } catch (err) {
           console.log(err)
         }
