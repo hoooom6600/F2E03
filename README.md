@@ -7,6 +7,7 @@
    - [課表 (course-schedule)](https://hoooom6600.github.io/F2E03/HW/course-schedule/course-schedule.html)
    - [Google 表單 (form)](https://hoooom6600.github.io/F2E03/HW/form/form.html)
    - [inline 官網首頁仿切 (inline)](https://hoooom6600.github.io/F2E03/HW/inline/index.html)
+   - [ezTravel 易遊網首頁部分區塊仿切(ezTravel)](https://hoooom6600.github.io/F2E03/HW/ezTravel/index.html)
 
 2. JavaScript
 
@@ -35,3 +36,6 @@
    - (20) 🍬
    - (21) 🍬
    - (22) 🍬
+   - (23) 🍬
+   - (24) in progress
+   - (25) in progress
