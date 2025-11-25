@@ -142,12 +142,30 @@
           <li>
             <div class="item-content">
               <label>
-                <input type="checkbox" @click.prevent="taskToggle(task.id)" />
-                <p class="content" :class="task.completed_at == null? '': 'line-through text-gray-300'" x-text="task.content"></p>
+                <input type="checkbox" x-show="!task.isEditing" @click.prevent="taskToggle(task.id)" />
+
+                <div class="flex">
+                  <p
+                    x-show="!task.isEditing"
+                    class="content"
+                    :class="task.completed_at == null? '': 'line-through text-gray-300'"
+                    x-text="task.content"
+                  ></p>
+                  <input
+                    @keyup.enter="updateTODO(task.id)"
+                    x-show="task.isEditing"
+                    type="text"
+                    class="border border-gray-400 p-2"
+                    x-model="taskName"
+                  />
+                  <button x-show="task.isEditing" class="bg-amber-400 p-4 px-5" @click.prevent="updateTODO(task.id)">V</button>
+                </div>
               </label>
             </div>
-            <div class="item-control">
-              <a href="#" class="edit"><img class="icon" src="src/assets/pen-to-square-solid.svg" /></a>
+            <div class="item-control" x-show="!task.isEditing">
+              <a @click.prevent="toggleEdit(task.id)" href="#" class="edit"
+                ><img class="icon" src="src/assets/pen-to-square-solid.svg"
+              /></a>
               <!-- dataset 綁定寫法 -->
               <!-- <a :data-id="task.id" @click.prevent="deleteTask" href="#" class="delete"
                 ><img class="icon" src="src/assets/trash-can-solid.svg"

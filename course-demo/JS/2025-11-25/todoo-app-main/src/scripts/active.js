@@ -7,6 +7,7 @@ function active() {
     nickname: "",
     password: "",
     newTask: "",
+    taskName: "",
     tasks: [],
     isLogin: false,
     init() {
@@ -182,6 +183,32 @@ function active() {
 
       // 真做
       this.toggleDebounce(id, targetToggle)
+    },
+    toggleEdit(id) {
+      this.tasks.forEach((task) => (task.isEditing = false))
+      const targetIndex = this.tasks.findIndex((task) => task.id === id)
+
+      if (targetIndex >= 0) {
+        this.tasks[targetIndex].isEditing = !this.tasks[targetIndex].isEditing
+        this.taskName = this.tasks[targetIndex].content
+      }
+    },
+    updateTODO(id) {
+      const config = this.getConfig()
+      const targetIndex = this.tasks.findIndex((task) => task.id === id)
+      this.tasks[targetIndex].isEditing = false
+
+      // 沒修改就不打 API
+      if (this.tasks[targetIndex].content != this.taskName) {
+        this.tasks[targetIndex].content = this.taskName
+        const editedTaskName = {
+          todo: {
+            content: this.taskName,
+          },
+        }
+
+        axios.put(`https://todoo.5xcamp.us/todos/${id}`, editedTaskName, config)
+      }
     },
     deleteTask(id) {
       const config = this.getConfig()
