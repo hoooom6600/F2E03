@@ -13,7 +13,7 @@ function calcGCD(...numbers) {
 
   // 類似小學找公因數的短除法，L 型的那個，只是程式寫短除法只能盡舉慢慢來
   for (let factor = 1; factor <= min; factor++) {
-    let isdivisible = numbers.every((number) => number % factor == 0);
+    const isdivisible = numbers.every((number) => number % factor == 0);
     if (isdivisible) {
       factors.push(factor);
     }
