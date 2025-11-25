@@ -8,6 +8,18 @@
 
 function bankersRounding(num, digits = 0) {
   // 實作程式碼寫在這裡
+  const numString = num.toString();
+
+  let integer = numString.split(".")[0];
+  let decimal = numString.split(".")[1];
+
+  const targetPlaceIndex = decimal.length - (1 + digits); // 銀行家捨入法到小數點後「第幾位」
+  let targetPlace = Number(decimal[targetPlaceIndex]);
+
+  if (targetPlace < 5) {
+  } else if (targetPlace > 5) {
+  } else {
+  }
 }
 
 console.log(bankersRounding(0.4)); // 0
