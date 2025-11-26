@@ -175,11 +175,14 @@ nav {
 
   .middle-menu {
     position: static;
-    display: none;
+    display: block;
     background-color: #c3b091;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s;
   }
 
-  .toggle-middle-menu:checked + .middle {
-    display: block;
+  .toggle-middle-menu:checked + .middle-menu {
+    max-height: 500px;
   }
 }
