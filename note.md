@@ -413,6 +413,16 @@
   - [`timing-function`](https://cubic-bezier.com/#.17,.67,.83,.67): 轉場速度模式
   - **_不適用於 `display: none;`_**
 
+- Animation: 動畫
+
+  - animation-iteration-count: 重複次數預設為 1
+  - [animation 套件](https://css-loaders.com/)
+
+- |   項目   | Transition |        Animation         |
+  | :------: | :--------: | :----------------------: |
+  | 控制方式 |  自動播放  |         觸發事件         |
+  | 動態內容 |  複雜步驟  | 起與始，沒有中間其他變化 |
+
 - 好朋友 CSS (粗體為後續 CSS 屬性的啟動者)
   - **flex** + justify-content + align-item
   - **position** + inset (top, right, bottom, left) + z-index
