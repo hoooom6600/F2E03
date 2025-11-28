@@ -1,0 +1,126 @@
+section {
+  max-width: 1200px;
+  margin: 100px auto;
+  display: flex;
+  border: 5px solid #001780;
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: #001780;
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+}
+
+.box + .box {
+  margin-left: 0;
+}
+
+.block {
+  width: 60px;
+  height: 60px;
+  background-color: #a337a3;
+}
+
+.box1 .block {
+  position: absolute;
+  animation-name: xy-grow;
+  animation-iteration-count: infinite;
+  animation-duration: 5s;
+}
+
+.block1-1 {
+  top: 10px;
+  left: 10px;
+}
+
+.block1-2 {
+  /* top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+
+  /* bottom: 50%;
+  right: 50%;
+  transform: translate(50%, 50%); */
+
+  inset: 0;
+  margin: auto;
+}
+.block1-3 {
+  right: 10px;
+  bottom: 10px;
+}
+
+@keyframes xy-grow {
+  0% {
+    /* width: 60px;
+    height: 60px; */
+  }
+  /* 25% {
+    width: 180px;
+    height: 60px;
+  }
+  50% {
+    width: 60px;
+    height: 60px;
+  }
+  75% {
+    width: 60px;
+    height: 180px;
+  }
+  100% {
+    width: 60px;
+    height: 60px;
+  } */
+  25% {
+    width: calc(100% - 20px);
+    height: calc((100% - 20px) / 3);
+  }
+  50% {
+    width: calc((100% - 20px) / 3);
+    height: calc((100% - 20px) / 3);
+  }
+  75% {
+    width: calc((100% - 20px) / 3);
+    height: calc(100% - 20px);
+  }
+  100% {
+    width: calc((100% - 20px) / 3);
+    height: calc((100% - 20px) / 3);
+  }
+}
+
+.box2 .block {
+  position: absolute;
+  bottom: 10px;
+  height: 120px;
+  animation-name: jump;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  animation-direction: alternate;
+}
+
+.block2-1 {
+  left: 10;
+  animation-delay: 0.1s;
+}
+.block2-2 {
+  left: 70px;
+  animation-delay: 0.25s;
+}
+.block2-3 {
+  left: 130px;
+  animation-delay: 0.5s;
+}
+
+@keyframes jump {
+  0% {
+    bottom: 10px;
+  }
+  100% {
+    /* bottom: 80px; */
+    bottom: 40%;
+  }
+}
