@@ -1643,6 +1643,18 @@
   | HTML 位置 |      放在 row 子層       |                放在 row 該層                |           放在 row 子層            |
   |   使用    |      搭配 cols 使用      |                搭配 col 使用                |              獨立使用              |
 
+## Bootstrap & Tailwind
+
+- CSS + JS
+- 有些工程師認為 Bootstrap 和 Tailwind 不是框架
+- Bootstrap
+  - scroll-behavior: smooth;
+- Tailwind
+  - 以 4 為倍數
+  - `@apply`: 要安裝套件才能這樣用，連 CDN 不支援這種 CSS 檔案語法。好處是可以減少 HTML class 的負擔，有些人 coding style 不喜歡太長的 class
+  - [Flowbite](https://flowbite.com/)
+  - Tailwind CSS IntelliSense: VS Code 套件
+
 # 終端機(Ternimal)使用
 
 ## 指令
