@@ -772,64 +772,73 @@
   - ===: 嚴格相等（不會轉換型別，date type 和 value 都要相等）
     - undefined === null (X)
 
-## ES6 新語法
+## 新語法
 
-- `${}`: 字串與變量組合寫法
-  - backtick
-- 箭頭函數
-  - 不是一般 function 的簡寫，差異在 `this`，沒用到 `this` 的時候是沒有效果差異
-- 物件簡寫
-  - 當 key 的名字和 value 變量名稱是一樣時，可以直接寫 key，不用 key: value<br>
-  ```
-  let name = 'kitty';
-  let age = 18;
-  let cat = {
-    name
-    age
-  }
-  ```
-- 解構（承上 cat 例子）
+- ES 6
 
-  - 把物件裡的東西拿出來用
+  - `${}`: 字串與變量組合寫法
+    - backtick
+  - 箭頭函數
+    - 不是一般 function 的簡寫，差異在 `this`，沒用到 `this` 的時候是沒有效果差異
+  - 物件簡寫
+    - 當 key 的名字和 value 變量名稱是一樣時，可以直接寫 key，不用 key: value<br>
+    ```
+    let name = 'kitty';
+    let age = 18;
+    let cat = {
+      name
+      age
+    }
+    ```
+  - 解構（承上 cat 例子）
 
-  ▼ 當 cat 物件剛好有 name 和 age 屬性，就訪問他們
+    - 把物件裡的東西拿出來用
 
-  ```
-  const { name, age } = cat
-  ```
+    ▼ 當 cat 物件剛好有 name 和 age 屬性，就訪問他們
 
-  若沒有對應的屬性，結果為 `undefined`。<br>
-  接冒號可以變成宣告一個新變數
+    ```
+    const { name, age } = cat
+    ```
 
-  ```
-  const { name: username, age } = cat;
-  ```
+    若沒有對應的屬性，結果為 `undefined`。<br>
+    接冒號可以變成宣告一個新變數
 
-  上方 `name: username` 等同
+    ```
+    const { name: username, age } = cat;
+    ```
 
-  ```
-  const username = cat.name
-  ```
+    上方 `name: username` 等同
 
-  - 函數參數
+    ```
+    const username = cat.name
+    ```
 
-  ```
-  function printCats({ name, age }) {
-    console.log(name)
-    console.log(age)
-  }
-  ```
+    - 函數參數
 
-- `...`
-  - 陣列
-    - 展開
-    - 解構
-    - 把剩下的全收
-  - 函數
-    - 把剩下的全收
-      - 通常用在參數數量不固定的場合
-  - 在 ES6 之前，全收下的功能要用 `arguments`，是一個隱藏變數
-    - 但是箭頭函數沒有 `aruguments`
+    ```
+    function printCats({ name, age }) {
+      console.log(name)
+      console.log(age)
+    }
+    ```
+
+  - `...`
+
+    - 陣列 與 物件
+      - 展開
+      - 解構
+      - 把剩下的全收
+      - 合併
+        - 物件合併後的 key 順序會以 a-z 排列，物件也不像陣列有一定的順序規則，所以問題不大。
+    - 函數
+      - 把剩下的全收
+        - 通常用在參數數量不固定的場合
+    - 在 ES6 之前，全收下的功能要用 `arguments`，是一個隱藏變數
+      - 但是箭頭函數沒有 `aruguments`
+
+  - ES 11
+    - 可選串連 Optional Chaining（?.）
+    - 空值合併運算子 Nullish coalescing (??)
 
 ## 關鍵字 / 保留字
 
@@ -1616,6 +1625,11 @@
 - 回傳值
   - 可以寫明函數的回傳值會是什麼型別
   - void
+
+# Vue
+
+- 閉包和封裝是現代 JS 框架的核心
+-
 
 # RWD
 
