@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- 2. 條件渲染 -->
+    <div id="conditional">
+      <h3>2. 條件渲染</h3>
+      <!-- v-if vs v-show -->
+      <div>
+        <h4>魔法箱遊戲</h4>
+        <button @click="toggleBox">打開/關閉魔法箱</button>
+
+        <div v-if="isBoxOpen" class="magic-box">✨ 恭喜找到寶藏！</div>
+
+        <div v-show="isBoxVisible" class="floating-box">
+          🎁 這個箱子一直在飄動
+        </div>
+
+        <!-- v-else & v-else-if -->
+        <div>
+          <p>魔法能量: {{ magicPower }}</p>
+          <div v-if="magicPower >= 80">🔥 魔法能量充沛！</div>
+          <div v-else-if="magicPower >= 50">⚡ 魔法能量尚可</div>
+          <div v-else>💤 需要補充魔法能量...</div>
+        </div>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

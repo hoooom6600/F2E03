@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- 4. 事件處理 -->
+    <div id="events">
+      <h3>4. 事件處理</h3>
+      <!-- v-on (@) -->
+      <div>
+        <h4>魔法練習場</h4>
+        <div class="magic-training">
+          <p>魔法點數: {{ magicPoints }}</p>
+          <button v-on:click="castSpell" type="button">施放魔法 ✨</button>
+          <button @click.right.prevent="superSpell">右鍵施放超級魔法 🌟</button>
+          <div v-if="isCasting" class="spell-effect">{{ currentSpell }}</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            magicPoints: 0,
+            isCasting: false,
+            currentSpell: ''
+          }
+        },
+        methods: {
+          castSpell() {
+            this.magicPoints += 1
+            this.showSpellEffect('✨ 魔法閃耀！')
+          },
+          superSpell() {
+            this.magicPoints += 5
+            this.showSpellEffect('🌟 超級魔法發動！')
+          },
+          showSpellEffect(spell) {
+            this.currentSpell = spell
+            this.isCasting = true
+            setTimeout(() => {
+              this.isCasting = false
+            }, 1000)
+          }
+        }
+      }).mount('#events')
+    </script>
+  </body>
+</html>

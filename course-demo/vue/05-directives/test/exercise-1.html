@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>練習 1: 文字渲染</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 練習 1: 使用 v-text 顯示 "你好，Vue！" -->
+      <p>請在這裡輸入答案：</p>
+
+      <!-- 練習 2: 使用插值語法顯示 "歡迎來到 {{ courseName }}" -->
+      <p>請在這裡輸入答案：</p>
+
+      <!-- 練習 3: 使用 v-html 顯示 HTML 內容 -->
+      <div>請在這裡輸入答案：</div>
+    </div>
+
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            message: "你好，Vue！",
+            courseName: "Vue.js",
+            htmlContent: "<strong>這是粗體文字</strong>"
+          }
+        }
+      })
+      app.mount("#app")
+    </script>
+  </body>
+</html>

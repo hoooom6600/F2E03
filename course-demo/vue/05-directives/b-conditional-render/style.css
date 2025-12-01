@@ -1,0 +1,30 @@
+.magic-box {
+  padding: 20px;
+  background: linear-gradient(45deg, #FFD700, #FFA500);
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.floating-box {
+  padding: 20px;
+  background: linear-gradient(45deg, #87CEEB, #4169E1);
+  border-radius: 10px;
+  margin: 10px 0;
+  animation: float 2s ease-in-out infinite;
+}
+
+.spell-effect {
+  font-size: 24px;
+  animation: fadeOut 1s ease-in-out;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- 5. 表單輸入綁定 -->
+    <div id="form-binding">
+      <h3>5. 表單輸入綁定</h3>
+      <!-- v-model -->
+      <div>
+        <h4>創建你的魔法角色</h4>
+        <div class="character-creator">
+          <div>
+            <label>角色名稱：</label>
+            <input v-model="character.name" type="text" />
+          </div>
+
+          <div>
+            <label>選擇職業：</label>
+            <select v-model="character.class">
+              <option value="wizard">魔法師 🧙‍♂️</option>
+              <option value="warrior">戰士 ⚔️</option>
+              <option value="archer">弓箭手 🏹</option>
+            </select>
+          </div>
+
+          <div>
+            <label>特殊能力：</label>
+            <input type="checkbox" v-model="character.skills" value="fire" />
+            火焰魔法
+            <input type="checkbox" v-model="character.skills" value="ice" />
+            冰凍魔法
+            <input type="checkbox" v-model="character.skills" value="healing" />
+            治癒魔法
+          </div>
+
+          <div class="character-preview">
+            <h5>角色預覽</h5>
+            <p>名稱：{{ character.name }}</p>
+            <p>職業：{{ character.class }}</p>
+            <p>特殊能力：{{ character.skills.join(', ') }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            character: {
+              name: '',
+              class: 'wizard',
+              skills: []
+            }
+          }
+        }
+      }).mount('#form-binding')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- 3. 列表渲染 -->
+    <div id="list">
+      <h3>3. 列表渲染</h3>
+      <!-- v-for -->
+      <div>
+        <h4>寵物商店</h4>
+        <ul>
+          <li v-for="(pet, index) in pets" :key="index">
+            {{ pet.emoji }} {{ pet.name }} - ${{ pet.price }}
+            <button @click="adoptPet(index)">領養</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            pets: [
+              { emoji: '🐱', name: '波斯貓', price: 300 },
+              { emoji: '🐕', name: '哈士奇', price: 400 },
+              { emoji: '🐰', name: '垂耳兔', price: 200 },
+              { emoji: '🐹', name: '倉鼠', price: 100 }
+            ]
+          }
+        },
+        methods: {
+          adoptPet(index) {
+            alert(
+              `恭喜您領養了 ${this.pets[index].emoji}${this.pets[index].name}！`
+            )
+          }
+        }
+      }).mount('#list')
+    </script>
+  </body>
+</html>

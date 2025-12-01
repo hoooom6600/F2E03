@@ -1,0 +1,49 @@
+.scenario-box {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+}
+
+.filter-panel,
+.admin-panel,
+.user-panel {
+  background: #f5f5f5;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 4px;
+}
+
+.price-ranges,
+.categories,
+.admin-controls,
+.user-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.monitoring {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+.count {
+  color: #666;
+  margin: 10px 0;
+}
+
+button {
+  padding: 8px 16px;
+  margin: 5px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #f0f0f0;
+}

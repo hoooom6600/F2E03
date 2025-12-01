@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="comparison">
+      <!-- 頻繁切換的場景 -->
+      <div class="scenario-box">
+        <h3>場景一：購物網站商品快速篩選（適合用 v-show）</h3>
+        <div class="filter-section">
+          <button @click="togglePrice">切換價格區間</button>
+          <button @click="toggleCategory">切換商品分類</button>
+          <div class="count">切換次數：{{ switchCount }}</div>
+
+          <!-- 使用 v-show 的商品篩選面板 -->
+          <div v-show="showPrice" class="filter-panel">
+            <h4>價格區間</h4>
+            <div class="price-ranges">
+              <label><input type="checkbox" /> 0-100</label>
+              <label><input type="checkbox" /> 101-500</label>
+              <label><input type="checkbox" /> 501+</label>
+            </div>
+          </div>
+
+          <!-- 使用 v-show 的分類面板 -->
+          <div v-show="showCategory" class="filter-panel">
+            <h4>商品分類</h4>
+            <div class="categories">
+              <label><input type="checkbox" /> 衣服</label>
+              <label><input type="checkbox" /> 鞋子</label>
+              <label><input type="checkbox" /> 配件</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 條件較少改變的場景 -->
+      <div class="scenario-box">
+        <h3>場景二：使用者權限控制（適合用 v-if）</h3>
+        <div class="auth-section">
+          <button @click="toggleUserRole">切換用戶身份</button>
+          <p>當前身份：{{ userRole }}</p>
+
+          <!-- 使用 v-if 的管理員面板 -->
+          <div v-if="userRole === 'admin'" class="admin-panel">
+            <h4>管理員控制面板</h4>
+            <div class="admin-controls">
+              <button>用戶管理</button>
+              <button>系統設置</button>
+              <button>數據分析</button>
+            </div>
+          </div>
+
+          <!-- 使用 v-if 的一般用戶面板 -->
+          <div v-if="userRole === 'user'" class="user-panel">
+            <h4>一般用戶面板</h4>
+            <div class="user-controls">
+              <button>個人資料</button>
+              <button>我的訂單</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 監控面板 -->
+      <div class="monitoring">
+        <h3>效能監控</h3>
+        <p>v-show 切換耗時：{{ vShowSwitchTime }}ms</p>
+        <p>v-if 切換耗時：{{ vIfSwitchTime }}ms</p>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

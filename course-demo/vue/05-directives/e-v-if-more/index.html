@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="list">
+      <!-- 2. 避免 v-if 和 v-for 一起使用 -->
+      <section class="demo-section">
+        <h3>v-if 與 v-for 的正確使用方式</h3>
+
+        <!-- ❌ 錯誤示範 -->
+        <div class="wrong-example">
+          <h4>❌ 錯誤寫法：v-for 和 v-if 一起使用</h4>
+          <!-- <div v-for="item in items" v-if="item.isActive" :key="item.id">
+            {{ item.name }}
+          </div> -->
+        </div>
+
+        <!-- ✅ 正確示範 -->
+        <div class="correct-example">
+          <h4>✅ 正確寫法：使用計算屬性過濾</h4>
+          <div v-for="item in activeItems" :key="item.id">{{ item.name }}</div>
+          <!-- <div v-for="(item, index) in activeItems" :key="index">{{ item.name }}</div> -->
+        </div>
+      </section>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

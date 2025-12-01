@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="bind-demo">
+      <!-- 1. 基礎屬性綁定 -->
+      <section class="demo-section">
+        <h3>1. 基礎屬性綁定</h3>
+        <img v-bind:src="avatarUrl" :alt="userName" class="avatar" />
+        <a :href="profileLink" :title="'查看 ' + userName + ' 的檔案'">
+          {{ userName }} 的個人檔案
+        </a>
+      </section>
+
+      <!-- 2. 樣式綁定 -->
+      <section class="demo-section">
+        <h3>2. 樣式綁定</h3>
+
+        <!-- 2.1 Class 綁定 -->
+        <div class="button-group">
+          <button
+            v-for="(theme, index) in themes"
+            :key="index"
+            :class="{
+          'btn': true,
+          'active': selectedTheme === theme
+        }"
+            @click="selectedTheme = theme"
+          >
+            {{ theme }}
+          </button>
+        </div>
+
+        <!-- 2.2 Style 綁定 -->
+        <div
+          class="color-box"
+          :style="{
+        backgroundColor: selectedTheme,
+        width: boxSize + 'px',
+        height: boxSize + 'px'
+      }"
+        ></div>
+
+        <div class="size-control">
+          <label>調整大小：</label>
+          <input type="range" v-model="boxSize" min="50" max="200" />
+        </div>
+      </section>
+
+      <!-- 3. 動態屬性綁定 -->
+      <section class="demo-section">
+        <h3>3. 動態屬性綁定</h3>
+        <div class="form-group">
+          <input
+            :type="inputType"
+            :placeholder="placeholder"
+            v-model="inputValue"
+            :disabled="isDisabled"
+          />
+          <button @click="togglePassword">
+            {{ showPassword ? '隱藏' : '顯示' }} 密碼
+          </button>
+          <button @click="isDisabled = !isDisabled">
+            {{ isDisabled ? '啟用' : '禁用' }} 輸入
+          </button>
+        </div>
+      </section>
+
+      <!-- 4. 動態組件屬性綁定 -->
+      <section class="demo-section">
+        <h3>4. 進度條示例</h3>
+        <div
+          class="progress-bar"
+          :style="progressBarStyle"
+          :title="'當前進度: ' + progress + '%'"
+        >
+          <div
+            class="progress"
+            :style="{
+          width: progress + '%',
+          backgroundColor: getProgressColor
+        }"
+          ></div>
+        </div>
+        <button @click="updateProgress">更新進度</button>
+      </section>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>

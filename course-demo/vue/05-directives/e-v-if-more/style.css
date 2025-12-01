@@ -1,0 +1,79 @@
+.demo-section {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+.comparison {
+  display: flex;
+  gap: 20px;
+}
+
+.list-group {
+  flex: 1;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.item {
+  margin: 10px 0;
+  padding: 10px;
+  background: #f5f5f5;
+  border-radius: 4px;
+  display: flex;
+  gap: 10px;
+}
+
+.wrong-example, .correct-example {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.nested-wrong, .nested-correct {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.array-updates {
+  margin: 10px 0;
+}
+
+.update-methods {
+  margin-bottom: 10px;
+}
+
+.array-display {
+  display: flex;
+  gap: 10px;
+}
+
+.array-display > div {
+  padding: 10px;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+button {
+  padding: 8px 16px;
+  margin: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #f5f5f5;
+}
+
+input {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
