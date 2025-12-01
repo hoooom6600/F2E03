@@ -1628,8 +1628,15 @@
 
 # Vue
 
-- 閉包和封裝是現代 JS 框架的核心
--
+- **_閉包_**和**_封裝_**是現代 JS 框架的核心
+  - 閉包
+    - 元件的 data() 函數
+- 解決資料和 DOM 混在一起、手動更新的問題
+- extension
+  - chrome
+    - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=zh-TW)
+- VS Code
+  - Vue (Official)
 
 # RWD
 
