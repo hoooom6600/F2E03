@@ -2,8 +2,10 @@ import { GoogleGenAI } from "@google/genai"; // 記得先改 package.json 的 ty
 import { input } from "@inquirer/prompts";
 import ora from "ora";
 
+// 手刻對話紀錄
 const ai = new GoogleGenAI({}); // 假設已設定環境變數 GEMINI_API_KEY
 const spinner = ora("思考中...");
+const chatHistory = [];
 
 // 等待輸入是一個 Promise ，要 await
 let question = await input({ message: "->" });
@@ -12,6 +14,7 @@ while (question.trim() != "") {
     break;
   }
 
+  chatHistory.push({ role: "user", parts: [{ text: question }] });
   spinner.start();
 
   // 是一個 Promise，所以要 await
@@ -25,7 +28,37 @@ while (question.trim() != "") {
     },
   });
   spinner.stop();
+
+  chatHistory.push({ role: "model", parts: [{ text: resp.text }] });
+  console.log(chatHistory);
   console.log(resp.text); // 屬性名稱要看手冊，不是自己隨便掰的
 
   question = await input({ message: "->" });
 }
+
+// 用 gemini 內建方法紀錄對話
+// const ai = new GoogleGenAI({});
+// const chat = ai.chats.create({
+//   model: "gemini-2.5-flash",
+//   config: {
+//     systemInstruction: "一律用臺灣繁體中文回答",
+//   },
+// });
+
+// const spinner = ora("思考中...");
+
+// let question = await input({ message: "->" });
+// while (question.trim() != "") {
+//   if (question == "exit") {
+//     break;
+//   }
+
+//   spinner.start();
+//   const resp = await chat.sendMessage({ message: question });
+//   spinner.stop();
+
+//   console.log(chat.getHistory());
+//   console.log(resp.text);
+
+//   question = await input({ message: "->" });
+// }
