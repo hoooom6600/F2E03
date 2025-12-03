@@ -908,7 +908,8 @@
   - REPL = Read + Eval + Print + Loop
 
     - console.log() 就是一個 REPL
-    - 無窮迴圈不一定會當機，比如作業系統就是不斷在等待動作指令
+    - 無窮迴圈不一定會當機，比如作業系統就是不斷在等待動作指令，或者沒有內容的空轉
+    - 會當機的無窮迴圈是因為在迴圈裡做了很多不合理的動作，耗用太多資源
 
   - 種類
 
@@ -1975,3 +1976,44 @@ class Hero {
   - 不能有副作用 (side effect)
   - 不會對傳進來的參數動手腳，也不會往外找東西更改
   - 只讀不寫
+
+# AI Agent
+
+- 文字接龍
+- 模型沒有記憶功能，Agent 才有
+  - context: 每一次提出 prompt，都會把前面問過的東西再餵給 AI，只是使用者看不到
+  - context window: 限制記憶數量
+    - 摘要壓縮
+    - 清除過期的對話，比如上限 10 次，當輸入第 11 次，則忘記第 1 次的紀錄
+    - `sendMessage` 方法 (Gemini 的用法)
+    - `temperature`: 文字產生的隨機機率，範圍 0 - 2，越小越固定 (多數 AI 有的用法)。類似創造性的光譜
+      - 但 0 也不代表同樣問題會生成一樣文字，只是幾乎機率高
+  - | 項目 |       優點       |               缺點               |
+    | :--: | :--------------: | :------------------------------: |
+    | 摘要 | 快速掌握重點內容 | 失去資料準確度，也有可能忘記東西 |
+    | 清除 |     邏輯簡單     |       問太多會忘記前面設定       |
+- Agent 重點在做，而非幫忙想。就像訴訟代理人（律師），要告人的是案主，不是律師
+- GPT 不是代理人，雖然他想做
+- LLM:
+  - 向量:
+  - 在向量空間裡，距離越近（XY 軸），則相似度越高
+  - AI 處理文字轉成 0101...的向量然後存到資料庫裡，再去跟資料庫的其他向量去比較相似度來撈資料
+  - 向量比向量，僅止於字面上的比較，不代表他是對的
+- gemini [手冊](https://ai.google.dev/gemini-api/docs/libraries?hl=zh-tw)
+  - 主角套件: `@google/genai`
+  - 隱藏金鑰
+    - API KEY 環境變數，建立另外一個檔案，通常叫 `.env`
+    - `process.env.<環境變數>`: Node 取得環境變數的內建方法屬性。終端機執行指令 `node --env-file=<環境變數檔案名稱> <執行檔案名稱>`
+    - 早期的 Node 安裝 [dotenv](https://github.com/motdotla/dotenv) 套件
+    - 再建立一個 `.gitignore` 忽略存有金鑰的檔案，之後再 `.env.example` 才推到 GitHub，讓別人知道這邊會需要金鑰，但金鑰來源讓別人自己想
+  - 先改 `package.json` `type:"module"`，因為 `import` 語法是 ES6 ESM 語法，是在 node 推出之後才發生的事情。node 預設 `type:"commonJS"`
+    - 人設設定 `systemInstruction`
+      - 系統提示詞不應該繞過使用者撒嬌或超出範圍的 prompt
+      - 提示詞會影響結果，但效果不大，主要影響產出文字的風格。因為專業度是模型訓練出來，使用者只是丟出 prompt 給 AI，prompt 變成向量再去比較而已
+  - 配角套件
+    - [`inquirer`](https://github.com/SBoudrias/Inquirer.js/tree/main)
+      - 可以連續互動提問
+    - [ora](https://github.com/sindresorhus/ora)
+  - 工具
+    - functionCall，呼叫工具與否，AI 自己判斷問句重點，更甚者須進一步追問才會呼叫
+  - 如果提示詞的需求很明確，答案卻不理想 → 換腦袋 ~~聰明珊瑚腦~~
