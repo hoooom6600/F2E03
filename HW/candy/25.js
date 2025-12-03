@@ -49,11 +49,11 @@ function bankersRounding(num, digits = 0) {
   // 捨入法邏輯
   // 四捨
   if (decidingDigit < 5) {
-    return Number(num.toString().slice(0, -1));
+    return Number(num.toString().slice(0, roundingIndex + 1));
   }
   // 六入
   else if (decidingDigit > 5) {
-    return Number((num + carryNumber).toString().slice(0, -1));
+    return Number((num + carryNumber).toString().slice(0, roundingIndex + 1));
   }
   // 五成雙
   else {
