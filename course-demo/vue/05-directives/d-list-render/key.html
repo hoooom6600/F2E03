@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="list">
+      <h3>比較有無 :key 的差異</h3>
+      <div>
+        <h4>水果攤</h4>
+        <p>要輸入東西才比較能看到效果差異</p>
+        <ul>
+          <!-- <li v-for="fruit in fruits" :key="fruit.id"> -->
+          <li v-for="fruit in fruits">
+            <span>{{ fruit.emoji }}</span>
+            <input type="text" :placeholder="'請輸入'+fruit.name" />
+            <button @click="removeFruit(fruit.id)">刪除</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            fruits: [
+              { id: 1, emoji: "🍎", name: "蘋果" },
+              { id: 2, emoji: "🍌", name: "香蕉" },
+              { id: 3, emoji: "🍊", name: "橘子" },
+            ],
+          };
+        },
+        methods: {
+          removeFruit(id) {
+            this.fruits = this.fruits.filter((fruit) => id !== fruit.id);
+          },
+        },
+      }).mount("#list");
+    </script>
+  </body>
+</html>

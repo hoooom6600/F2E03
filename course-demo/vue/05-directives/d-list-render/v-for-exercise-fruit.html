@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h2>水果清單</h2>
+      <ul>
+        <!-- 使用 v-for 顯示每個水果 -->
+        <li v-for="(fruit, index) in fruits" :key="index">{{ fruit }}</li>
+      </ul>
+    </div>
+
+    <script>
+      const { createApp } = Vue;
+
+      createApp({
+        data() {
+          return {
+            fruits: ["蘋果", "香蕉", "橘子", "葡萄", "西瓜"],
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

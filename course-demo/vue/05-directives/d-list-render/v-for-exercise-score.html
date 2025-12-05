@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h2>學生成績列表</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>姓名</th>
+            <th>分數</th>
+            <th>等級</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 使用 v-for 顯示每位學生 -->
+          <tr v-for="student in students" :key="student.id">
+            <td>{{ student.name }}</td>
+            <td>{{ student.score }}</td>
+            <td>
+              <!-- 等級：90+ A, 80+ B, 70+ C, 60+ D, 其他 F -->
+              {{ student.score >= 90 ? 'A': student.score >= 80? 'B':
+              student.score >= 70 ? 'C' : student.score >= 60 ? 'D' : 'F' }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      const { createApp } = Vue;
+
+      createApp({
+        data() {
+          return {
+            students: [
+              { id: 1, name: "小明", score: 92 },
+              { id: 2, name: "小華", score: 78 },
+              { id: 3, name: "小美", score: 85 },
+              { id: 4, name: "小強", score: 66 },
+              { id: 5, name: "小玲", score: 95 },
+            ],
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
