@@ -57,11 +57,16 @@
       <section class="demo-section">
         <h3>3. 動態屬性綁定</h3>
         <div class="form-group">
-          <input
+          <!-- <input
             :type="inputType"
             :placeholder="placeholder"
             v-model="inputValue"
             :disabled="isDisabled"
+          /> -->
+          <input
+            v-model="inputValue"
+            :="{type:inputType,
+          placeholder:placeholder, disabled:isDisabled }"
           />
           <button @click="togglePassword">
             {{ showPassword ? '隱藏' : '顯示' }} 密碼
