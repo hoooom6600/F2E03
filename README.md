@@ -13,7 +13,11 @@
 
    - [Youbike API 串接與陣列綜合練習 (youbike)](https://hoooom6600.github.io/F2E03/HW/youbike/index.html)
 
-3. 糖果題 (candy)
+3. Vue
+
+   - [Vue 註冊表單 v-model 練習 (vue-sign-up)](https://hoooom6600.github.io/F2E03/HW/vue-sign-up/vue-sign-up.html)
+
+4. 糖果題 (candy)
    - (1) 👌 → 👌
    - (2) 🍬
    - (3) 👌 → 🍬
