@@ -17,6 +17,7 @@
         <div class="magic-training">
           <p>魔法點數: {{ magicPoints }}</p>
           <button v-on:click="castSpell" type="button">施放魔法 ✨</button>
+          <!-- 網頁預設點擊滑鼠右鍵會顯示選單，所以這邊加了 prevent -->
           <button @click.right.prevent="superSpell">右鍵施放超級魔法 🌟</button>
           <div v-if="isCasting" class="spell-effect">{{ currentSpell }}</div>
         </div>
@@ -29,27 +30,27 @@
           return {
             magicPoints: 0,
             isCasting: false,
-            currentSpell: ''
-          }
+            currentSpell: "",
+          };
         },
         methods: {
           castSpell() {
-            this.magicPoints += 1
-            this.showSpellEffect('✨ 魔法閃耀！')
+            this.magicPoints += 1;
+            this.showSpellEffect("✨ 魔法閃耀！");
           },
           superSpell() {
-            this.magicPoints += 5
-            this.showSpellEffect('🌟 超級魔法發動！')
+            this.magicPoints += 5;
+            this.showSpellEffect("🌟 超級魔法發動！");
           },
           showSpellEffect(spell) {
-            this.currentSpell = spell
-            this.isCasting = true
+            this.currentSpell = spell;
+            this.isCasting = true;
             setTimeout(() => {
-              this.isCasting = false
-            }, 1000)
-          }
-        }
-      }).mount('#events')
+              this.isCasting = false;
+            }, 1000);
+          },
+        },
+      }).mount("#events");
     </script>
   </body>
 </html>

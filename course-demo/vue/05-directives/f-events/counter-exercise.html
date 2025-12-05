@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h2>計數器</h2>
+
+      <div class="counter">
+        <button @click="minus">-</button>
+        <span class="count">{{ count }}</span>
+        <button @click="plus">+</button>
+      </div>
+
+      <button @click="reset">重置</button>
+    </div>
+
+    <script>
+      const { createApp } = Vue;
+
+      createApp({
+        data() {
+          return {
+            count: 0,
+          };
+        },
+        methods: {
+          // 定義增加、減少、重置的方法
+          minus() {
+            //  拒絕負數
+            if (this.count > 0) {
+              this.count -= 1;
+            }
+          },
+          plus() {
+            this.count += 1;
+          },
+          reset() {
+            this.count = 0;
+          },
+        },
+      }).mount("#app");
+    </script>
+
+    <style>
+      .counter {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-size: 24px;
+        margin: 20px 0;
+      }
+      .count {
+        min-width: 50px;
+        text-align: center;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+      }
+    </style>
+  </body>
+</html>
