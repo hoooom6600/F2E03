@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Vue 註冊表單 v-model 練習</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -41,18 +41,25 @@
           <label>性別：</label>
           <div class="radio-group">
             <!-- 單選按鈕 -->
-            <p v-for="gender in genders">
-              <input type="radio" :id="gender" name="gender" :value="gender" />
+            <div v-for="gender in genders">
+              <input
+                type="radio"
+                :id="gender"
+                name="gender"
+                :value="gender"
+                v-model="form.gender"
+              />
               <label :for="gender">{{ gender }}</label>
-            </p>
+            </div>
           </div>
         </div>
 
         <!-- 縣市（下拉） -->
         <div class="form-group">
           <label>居住縣市：</label>
-          <select>
+          <select v-model="form.city">
             <option value="">請選擇</option>
+            <option :value="city" v-for="city in cities">{{ city }}</option>
             <!-- 選項 -->
           </select>
         </div>
@@ -67,6 +74,7 @@
               name="interestOptions"
               :id="interestOption"
               :value="interestOption"
+              v-model="form.interests"
             />
             <label :for="interestOption">{{ interestOption }}</label>
           </div>
@@ -91,10 +99,14 @@
         <p>姓名：{{ form.name }}</p>
         <p>Email：{{ form.email }}</p>
         <p>年齡：{{ form.age }}</p>
-        <p>性別：{{ genders }}</p>
+        <p>性別：{{ form.gender }}</p>
         <p>居住縣市：{{ form.city }}</p>
-        <p>興趣：{{ form.interests }}</p>
-        <p>條款同意：{{ form.agreed ? '不同意':'同意' }}</p>
+        <p>
+          興趣：
+          <span v-for="interest in form.interests">{{ interest + ' '}}</span>
+          <span v-if="form.interests.length == 0">無</span>
+        </p>
+        <p>條款同意：{{ form.agreed ? '同意':'不同意' }}</p>
       </div>
     </div>
 
@@ -129,6 +141,16 @@
           canSubmit() {
             // 檢查是否可以提交
             // 條件：姓名、email、年齡、性別、城市都已填寫，且同意條款
+            if (
+              this.form.name.trim() != "" &&
+              this.form.email.trim() != "" &&
+              this.form.age != null &&
+              this.form.gender != "" &&
+              this.form.city != "" &&
+              this.form.agreed
+            ) {
+              return true;
+            }
           },
         },
         methods: {
