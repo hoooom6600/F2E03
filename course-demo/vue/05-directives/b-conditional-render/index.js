@@ -3,13 +3,13 @@ Vue.createApp({
     return {
       isBoxOpen: false,
       isBoxVisible: true,
-      magicPower: 49
-    }
+      magicPower: 100,
+    };
   },
   methods: {
     toggleBox() {
-      this.isBoxOpen = !this.isBoxOpen
-      this.isBoxVisible = !this.isBoxVisible
-    }
-  }
-}).mount('#conditional')
+      this.isBoxOpen = !this.isBoxOpen;
+      this.isBoxVisible = !this.isBoxVisible;
+    },
+  },
+}).mount("#conditional");
