@@ -19,6 +19,10 @@
           <!-- <div v-for="item in items" v-if="item.isActive" :key="item.id">
             {{ item.name }}
           </div> -->
+          <!-- 可以這樣正常顯示，但缺點是如果 CSS 沒 reset 好，不顯示的內容可能還是會保留一個 div 空間 -->
+          <div v-for="item in items" :key="item.id">
+            <div v-if="item.isActive">{{ item.name }}</div>
+          </div>
         </div>
 
         <!-- ✅ 正確示範 -->
