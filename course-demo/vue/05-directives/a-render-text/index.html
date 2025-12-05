@@ -13,6 +13,10 @@
       <div>
         <!-- v-text vs {{ }} -->
         <p v-text="studentName"></p>
+        <p>{{ studentNumber }}號 {{ studentName }}同學{{ checkInWord }}</p>
+        <p v-text="studentName + checkInWord"></p>
+        <!-- 第 19 行會壞掉 -->
+        <!-- <p v-text="studentName checkInWord"></p> -->
         <p>{{ studentName }}同學，歡迎來到 Vue 課程！</p>
 
         <!-- v-html -->
