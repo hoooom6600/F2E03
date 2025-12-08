@@ -1668,15 +1668,29 @@
     - React 框架跑迴圈不加 `:key` 會直接不給使用，報錯
 - **_v-for 不能和 v-if 同時使用在同一層_**
   - 順序: v-if > v-for，若 v-if 用到 for 出來的東西，會讀不到(cannot read → undefined)
-- |  項目  |        computed        | methods |
-  | :----: | :--------------------: | :-----: |
-  | return |         一定要         | 視情況  |
-  |  分類  | **_屬性_**，不用()呼叫 |  方法   |
+- |  項目  |        computed        | methods  |
+  | :----: | :--------------------: | :------: |
+  | return |         一定要         |  視情況  |
+  |  分類  | **_屬性_**，不用()呼叫 |   方法   |
+  |  觸發  |       相依性更新       | 事件行為 |
 - 事件處理
   - `v-on:<event>` == `@<event>`
 - 綁定
   - `v-bind` == `:`
   - 可以屬性各自前綴 `:`，或者 `:={<各種vue data()>}`
+- 生命週期
+  - computed 的相依更新也是在圖片的圈圈
+  - unmounted 執行狀況，如：跳轉頁面，表示頁面不屬於 Vue 所控制
+  - created 階段可以訪問到 data 和 methods，API 也適合寫在 create 或 beforeMounted
+  - API response 有可能延遲，所以不要寫在 mounted
+  - 進入頁面就馬上提醒，比如加入會員沒? → mounted
+  - beforeUpdate: 行為後，提醒使用者確認是否要更新
+  - updated: 確認要更新。更新完後的操作
+  - beforeUnmount: 準備銷毀元件。向使用者確認是否要跳轉、離開的提醒
+  - unmounted: 死亡。提示已經執行完跳轉頁面
+  - 最常用: created, mounted
+- 計算屬性 (computed)
+- 偵聽器 (watch)
 
 # RWD
 
