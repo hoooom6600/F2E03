@@ -15,13 +15,21 @@
         <!-- 姓名 -->
         <div class="form-group">
           <label>姓名：</label>
-          <input type="text" placeholder="請輸入姓名" v-model="form.name" />
+          <input
+            type="text"
+            placeholder="請輸入姓名"
+            v-model.trim="form.name"
+          />
         </div>
 
         <!-- Email -->
         <div class="form-group">
           <label>Email：</label>
-          <input type="email" placeholder="請輸入 Email" v-model="form.email" />
+          <input
+            type="email"
+            placeholder="請輸入 Email"
+            v-model.trim="form.email"
+          />
         </div>
 
         <!-- 年齡 -->
@@ -32,7 +40,7 @@
             placeholder="請輸入年齡"
             min="0"
             max="120"
-            v-model="form.age"
+            v-model.number="form.age"
           />
         </div>
 
@@ -41,7 +49,7 @@
           <label>性別：</label>
           <div class="radio-group">
             <!-- 單選按鈕 -->
-            <div v-for="gender in genders">
+            <label :for="gender" v-for="gender in genders" :key="gender">
               <input
                 type="radio"
                 :id="gender"
@@ -49,8 +57,8 @@
                 :value="gender"
                 v-model="form.gender"
               />
-              <label :for="gender">{{ gender }}</label>
-            </div>
+              {{ gender }}
+            </label>
           </div>
         </div>
 
@@ -58,25 +66,32 @@
         <div class="form-group">
           <label>居住縣市：</label>
           <select v-model="form.city">
-            <option value="">請選擇</option>
-            <option :value="city" v-for="city in cities">{{ city }}</option>
+            <option value="" disabled>請選擇</option>
+            <option :value="city" v-for="city in cities" :key="city">
+              {{ city }}
+            </option>
             <!-- 選項 -->
           </select>
         </div>
-
         <!-- 興趣（複選） -->
         <div class="form-group">
           <label>興趣：</label>
-          <div class="checkbox-group" v-for="interestOption in interestOptions">
+          <div class="checkbox-group">
             <!-- 複選框 -->
-            <input
-              type="checkbox"
-              name="interestOptions"
-              :id="interestOption"
-              :value="interestOption"
-              v-model="form.interests"
-            />
-            <label :for="interestOption">{{ interestOption }}</label>
+            <label
+              :for="interestOption"
+              v-for="interestOption in interestOptions"
+              :key="interestOption"
+            >
+              <input
+                type="checkbox"
+                name="interestOptions"
+                :id="interestOption"
+                :value="interestOption"
+                v-model="form.interests"
+              />
+              {{ interestOption }}
+            </label>
           </div>
         </div>
 
@@ -89,7 +104,7 @@
         </div>
 
         <!-- 提交按鈕 -->
-        <button type="submit">註冊</button>
+        <button type="submit" :disabled="!canSubmit">註冊</button>
       </form>
 
       <!-- 即時預覽 -->
@@ -103,8 +118,8 @@
         <p>居住縣市：{{ form.city }}</p>
         <p>
           興趣：
-          <span v-for="interest in form.interests">{{ interest + ' '}}</span>
           <span v-if="form.interests.length == 0">無</span>
+          <span>{{ form.interests.join("、") }}</span>
         </p>
         <p>條款同意：{{ form.agreed ? '同意':'不同意' }}</p>
       </div>
@@ -141,16 +156,14 @@
           canSubmit() {
             // 檢查是否可以提交
             // 條件：姓名、email、年齡、性別、城市都已填寫，且同意條款
-            if (
-              this.form.name.trim() != "" &&
-              this.form.email.trim() != "" &&
+            return (
+              this.form.name &&
+              this.form.email &&
               this.form.age != null &&
-              this.form.gender != "" &&
-              this.form.city != "" &&
+              this.form.gender &&
+              this.form.city &&
               this.form.agreed
-            ) {
-              return true;
-            }
+            );
           },
         },
         methods: {
