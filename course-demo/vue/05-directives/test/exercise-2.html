@@ -14,13 +14,20 @@
   <body>
     <div id="app">
       <!-- 練習 1: 當 isLoggedIn 為 true 時顯示訊息（使用 v-if） -->
-      <p>請在這裡輸入答案：</p>
+      <!-- <p>請在這裡輸入答案：</p> -->
+      <p><span>登入狀態： </span><span v-if="isLoggedIn">已登入</span></p>
 
       <!-- 練習 2: 使用 v-show 切換訊息的顯示/隱藏 -->
-      <p>請在這裡輸入答案：</p>
+      <!-- <p>請在這裡輸入答案：</p> -->
+      <p><span>顯示狀態： </span><span v-show="isVisible">HELLO!</span></p>
 
       <!-- 練習 3: 根據 userRole 顯示不同的訊息（使用 v-if/else） -->
-      <p>請在這裡輸入答案：</p>
+      <!-- <p>請在這裡輸入答案：</p> -->
+      <p>
+        <span>使用者角色： </span>
+        <span v-if="userRole == 'user'">{{ userRole }}</span>
+        <span v-else>{{ userRole }}</span>
+      </p>
 
       <button @click="toggleLogin">切換登入狀態</button>
       <button @click="toggleVisibility">切換顯示狀態</button>
@@ -33,22 +40,22 @@
           return {
             isLoggedIn: false,
             isVisible: true,
-            userRole: "user"
-          }
+            userRole: "user",
+          };
         },
         methods: {
           toggleLogin() {
-            this.isLoggedIn = !this.isLoggedIn
+            this.isLoggedIn = !this.isLoggedIn;
           },
           toggleVisibility() {
-            this.isVisible = !this.isVisible
+            this.isVisible = !this.isVisible;
           },
           switchRole() {
-            this.userRole = this.userRole === "user" ? "admin" : "user"
-          }
-        }
-      })
-      app.mount("#app")
+            this.userRole = this.userRole === "user" ? "admin" : "user";
+          },
+        },
+      });
+      app.mount("#app");
     </script>
   </body>
 </html>
