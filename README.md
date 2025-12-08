@@ -16,6 +16,7 @@
 3. Vue
 
    - [Vue 註冊表單 v-model 練習 (vue-sign-up)](https://hoooom6600.github.io/F2E03/HW/vue-sign-up/vue-sign-up.html)
+   - [Vue 筆記存檔 watch 練習 (vue-watch-note)](https://hoooom6600.github.io/F2E03/HW/vue-watch-note/vue-watch-note.html)
 
 4. 糖果題 (candy)
    - (1) 👌 → 👌
@@ -41,5 +42,5 @@
    - (21) 🍬
    - (22) 🍬
    - (23) 🍬
-   - (24) in progress
+   - (24) 🍬
    - (25) in progress
