@@ -1638,19 +1638,45 @@
 - extension
   - chrome
     - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=zh-TW)
-- VS Code
+- VS Code 套件
   - Vue (Official)
+- vue vs vite
+  - |     項目     | Vue 專案（通常指 Vue CLI） |                     Vite 專案                     |
+    | :----------: | :------------------------: | :-----------------------------------------------: |
+    |     本質     |  Vue CLI 建立的 Vue 專案   | 使用 Vite 作為建構工具的專案（可為 Vue/React 等） |
+    |   開發速度   |            較慢            |                       較快                        |
+    | 官方推薦程度 | 過去主流，目前官方不再推薦 |            ✔ **Vue 官方推薦標準方案**             |
+    | 建立專案指令 |      `vue create app`      |             `npm create vite@latest`              |
 
 ## 語法操作
 
 - `npm create vue@latest`: 建立專案指令
 - 元件
-  - 檔案命名: 開發慣例，首字大寫，為了方便和原生 HTML 標籤區隔
+  - 檔案命名: 開發慣例，首字大寫（大駝峰），為了方便和原生 HTML 標籤區隔
   - 元件內容三本柱:
     - `<script>`: JS，也是有可能沒撰寫到。看開發需求
     - `<template>`: HTML
     - `<style>`: 如果用 Tailwind，可能就不用 `<style>`
-- `createApp(<objest parameter>)`
+    - 三者排放順序不會有功能上的差異，只有團隊開發的格式要求
+  - 優點: 重複使用 + 模組化方便分工開發
+- `createApp(<object parameter>)`
+- 檔案結構:
+
+  - [./public](https://ithelp.ithome.com.tw/articles/10293243): 裡面的東西不會經過編譯和打包。打包的時候，裡面的檔案會直接被複製一份，放在根目錄內
+
+  - main.js: 啟動專案
+
+- 語法風格
+
+  - |            項目            |             選項             |                                組合                                 |
+    | :------------------------: | :--------------------------: | :-----------------------------------------------------------------: |
+    | 語法差異<br/>只在<script\> |       `export default`       | 寫法一、`<script setup>`<br/>寫法二、`export default` + `setup(){}` |
+    |        響應資料定義        |           `data()`           |               ※註 1<br/>變數宣告 + `ref(<paremeter>)`               |
+    |        訪問響應資料        |            `this`            |                       `<variable-name>.value`                       |
+    |          計算屬性          | 屬性<br/>`computed: { ... }` |              Vue 組合式方法<br/>`computed(() => ...)`               |
+    |            優點            |           閱讀直覺           |                             程式碼簡潔                              |
+
+  - ※註 1: ref() → 物件，類似原生 JS const array，可以修改 array 內的元素；const → 記憶體位置
 
 - 模板語法
   - |   項目   |                          v-text                          |        `{{  }}`         |                                                    v-html                                                     |
@@ -1707,6 +1733,7 @@
     |   命名限制    |                             computed 的 get()、set() **為固定命名**。                             |
     |  帶參數限制   |                  computed function **不能正常使用參數**，通常也不需要傳遞參數。                   |
 - 偵聽器 (watch)
+
   - |         項目         |                             說明                             |
     | :------------------: | :----------------------------------------------------------: |
     |        回傳值        |                              X                               |
