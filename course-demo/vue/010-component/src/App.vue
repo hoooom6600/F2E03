@@ -1,18 +1,22 @@
 <script setup>
-import BlogList from './components/PropsExample/BlogList.vue';
-import CardContainer from './components/SlotExample/CardContainer.vue';
-import UseItemList from './components/ScopedSlotExample/UseItemList.vue';
-import UseLayout from './components/ScopedSlotExample/UseLayout.vue';
-import Message from './components/practice_props/Message.vue';
-import CollapsePanel from './components/practice_slot/CollapsePanel.vue';
-import Counter from './components/emit/Counter.vue';
-import FormParent from './components/emit/FormParent.vue';
-import Cart from './components/emit/Cart.vue';
+import BlogList from "./components/PropsExample/BlogList.vue";
+import CardContainer from "./components/SlotExample/CardContainer.vue";
+import UseItemList from "./components/ScopedSlotExample/UseItemList.vue";
+import UseLayout from "./components/ScopedSlotExample/UseLayout.vue";
+import Message from "./components/practice_props/Message.vue";
+import CollapsePanel from "./components/practice_slot/CollapsePanel.vue";
+import Counter from "./components/emit/Counter.vue";
+import FormParent from "./components/emit/FormParent.vue";
+import Cart from "./components/emit/Cart.vue";
 </script>
 
 <template>
   <main>
-    <BlogList />
+    <Message type="success" title="Hello" content="Nice to meet you" />
+    <Message type="success" title="World" content="" />
+    <Message type="warning" title="Hi" />
+    <Message type="error" />
+    <!-- <BlogList /> -->
     <!-- <CardContainer /> -->
     <!-- <UseItemList /> -->
     <!-- <UseLayout /> -->
