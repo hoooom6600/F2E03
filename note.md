@@ -485,6 +485,8 @@
   - `git branch -d <branch name>`: 刪除分支
   - `git branch <new branch name> <commit ID>`: 在特定位置開分支
   - `git branch <old branch name> <commit ID>`: 把指定既有 branch 貼紙貼到特定位置
+  - branch 名字可以帶有斜線，只是會被視為資料夾。
+    - 對於作業系統而言，資料夾和檔案沒有差異。所以已有同名檔案無法建立同名資料夾，反之亦然。
 - HEAD `(*)`: 定位現在在哪個 commit，哪個 branch
   - 當同一個 commit ID 位置有多個 branch，會以 HEAD 所指的 branch 長出新的斷點
 - `git switch <branch name / commit ID>` = `git checkout <branch name / commit ID>`
@@ -521,6 +523,18 @@
     - ORIG_HEAD: 只記錄 merge / rebase 之前的 HEAD，記憶前一動的 HEAD，而且只會記憶一個。所以可以搭配 reset 撤銷 merge / rebase
       - ORIG\*HEAD 會移動的常見指令只有 merge/ rebase / reset，**_commit 不會_**
 
+- 修改歷史紀錄
+  - 最後一則 commit
+    - `git commit --amend`: 目前 uncommitted 合併到最後一則 commit，只有最後一則可以被修改
+      - `--no-edit`: 代表我沒有要編輯
+      - `-m <message>`: 更新 commit message
+      - commit 時間仍為舊的
+  - 其他
+    - `EDITOR="code --wait" git rebase -i <commit ID>`
+      - `EDITOR="code --wait"`: 選定編輯器為 vs code，預設為 vim。 wait 代表等待處理後再執行
+      - `git rebase -i`: 個別 pick 再 rebase 回去
+    - `git squash`: 融合，把多個 commit 幾成一顆
+    - `git edit`: 拆開，把一個 commit 拆成好幾顆。先 reset 再 edit
 - merge VS rebase
   | 項目 | merge | rebase |
   | :------: | :---: | :----: |
@@ -623,6 +637,7 @@
     - 常用檔案 → 完整備份
     - 很久沒碰的檔案 → 差異備份
   - 題外話: 區塊鏈 (SHA-256) 的原理跟 Git (SHA-1) 很像
+  - 有向無環圖(DAG, Directed Acyclic Graph): Git 設計圖像化。有方向但不會有環形結構
 
 - object
 
@@ -654,9 +669,14 @@
     - 紀錄結構和檔案名字
     - `git commit` 之後長出來
     - `git cat-file <ID> -p`: 可以看到 tree 裡不同行為與內容
+    - 沒有 commit 就沒有 tree，但 add 之後在 .git/index 裡面會有檔名紀錄
   - commit
-  - tag
-  - 有向無環圖(DAG, Directed Acyclic Graph): Git 設計圖像化。有方向但不會有環形結構
+  - tag: 就是標籤，比較常用在標示哪個 commit 狀況是哪個版本號
+    - Annotated: 有注記的標籤，指向 tag 物件，tag 物件再指向某 commit ID
+      - tag 物件可以看到誰做這個標籤，輸入了什麼內容，本質上也是個 commit
+      - 要使用 tag，盡量使用 Annotated，官方也如此推薦
+    - Lightweight: 輕量化的標籤，直接指向某 commit ID
+      - 如果只是要簡單的紀錄，就用 Lightweight 標籤
 
 # JaveScript
 
@@ -1842,6 +1862,11 @@
   - Tailwind CSS IntelliSense: VS Code 套件
 
 # 終端機(Ternimal)使用
+
+## 作業系統
+
+- bash: MacOS / Linux
+- powershell: 微軟家的
 
 ## 指令
 
