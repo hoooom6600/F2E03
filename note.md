@@ -532,10 +532,14 @@
 
 - stash
   - 應用場合: 正在處理某專案，但臨時被主管叫去做其他專案
-    - `git stash`: 藏
+    - `git stash`: 藏。把目前還沒 commit 的東西先存起來
   - 應用場合: 其他專案做好了，要回來把原本 stash 的檔案開出來繼續用
   - `git stash pop`: 拿出來，但刪掉 stash
+    - stash 本身沒有 branch 的觀念，在任何分支上都能 pop 跨分支取出 stash
   - `git stash apply`: 拿出來，但留著 stash
+  - 取用
+    - 預設: 從最新的 stash 取來用
+    - 指定 stash: `git stash pop / apply stash@{<n>}`
   - stash 只能在本機存取，無法被 push
 
 #### 進階操作
@@ -555,9 +559,20 @@
     - 執行 `EDITOR="code --wait" git rebase -i <commit ID>` 會進入修改 commit 的 GitLens 圖形操作
       - `squash`: 融合，把多個 commit 捏成一顆。與上一個 pick / commit 合併成一顆
       - `edit`: 暫停在該 commit，搭配 `git reset HEAD^` 將 commit 拆成多個
+  - Git 是唯讀的，只能新增不能修改
+    - 修改都是假象，實際上是生成新物件（SHA-1 會重算）
+    - parent 改了，其後者也會改，因為 SHA-1 要重算
+    - 要刪也是可以，但實務上很少很少用到。而且刪除要很多連續步驟，非常麻煩。~~連龍哥都不完全記得指令內容~~
+  - 團專發 PR 建議先 rebase 整理過
+    - 團專 -f 只對自己的分支強推
+    - GitHub 禁止強推是針對 branch，不是整個專案
+    - --force-with-lease: 只對自己開的分支能硬推
+  - author 和 committer 不同人
+    - 發生在透過 rebase 調整順序或者 pick 的時候
 
 - `git cherry-pick <commit ID>`: 從某分支挑選特定 commit 複製到目前所在分支上，不用再 merge
 - [操作練習](https://learngitbranching.js.org/?locale=zh_TW)
+- [pre-commit 檢查工具](https://pre-commit.com/)
 
 ### 遠端操作
 
@@ -599,6 +614,7 @@
   - 檔案內列出不想要 Git 偵測的檔名包含副檔名
   - 可以用 `*` 來概括指定副檔名的所有檔案，如： `*.html`
   - 在建立 `.gitignore` 之前的檔案無法被忽略，只能刪除重建要被忽略的文件
+  - GitHub 有幫忙整理出一個可以被忽略的[列表](https://github.com/github/gitignore)
 - `.keep` 或 `.gitkeep`: Git 不會偵測空資料夾，若要讓 Git 偵測到某空資料夾，則將此檔案放入即可
 - 檔案都是 `.` 開頭!!!
 
@@ -635,6 +651,10 @@
   - 歷史紀錄不一樣 ≠ 衝突
     - 歷史紀錄不一樣是分歧，衝突是改到**_同一個檔案_**
     - 分歧: 假設現在有協同專案，甲在 A 分支，乙在 B 分支，各自 commit 且 push，這樣歷史記錄不同但不是衝突
+- Git flow
+  - 大型多人專案: 上百人開發才比較有感，因為多了 release 可以緩衝。
+    ![多人Git flow](https://gitbook.tw/images/tw/gitflow/why-need-git-flow/flow.png)
+  - 極簡風: [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
 
 ### Git 原理
 
