@@ -523,24 +523,13 @@
     - ORIG_HEAD: 只記錄 merge / rebase 之前的 HEAD，記憶前一動的 HEAD，而且只會記憶一個。所以可以搭配 reset 撤銷 merge / rebase
       - ORIG\*HEAD 會移動的常見指令只有 merge/ rebase / reset，**_commit 不會_**
 
-- 修改歷史紀錄
-  - 最後一則 commit
-    - `git commit --amend`: 目前 uncommitted 合併到最後一則 commit，只有最後一則可以被修改
-      - `--no-edit`: 代表我沒有要編輯
-      - `-m <message>`: 更新 commit message
-      - commit 時間仍為舊的
-  - 其他
-    - `EDITOR="code --wait" git rebase -i <commit ID>`
-      - `EDITOR="code --wait"`: 選定編輯器為 vs code，預設為 vim。 wait 代表等待處理後再執行
-      - `git rebase -i`: 個別 pick 再 rebase 回去
-    - `git squash`: 融合，把多個 commit 幾成一顆
-    - `git edit`: 拆開，把一個 commit 拆成好幾顆。先 reset 再 edit
 - merge VS rebase
   | 項目 | merge | rebase |
   | :------: | :---: | :----: |
   | 歷史紀錄 | 詳細 | 簡潔 |
   | 學習成本 | 低 | 高 |
   |回到上一動|reset|要調 reflog|
+
 - stash
   - 應用場合: 正在處理某專案，但臨時被主管叫去做其他專案
     - `git stash`: 藏
@@ -548,6 +537,25 @@
   - `git stash pop`: 拿出來，但刪掉 stash
   - `git stash apply`: 拿出來，但留著 stash
   - stash 只能在本機存取，無法被 push
+
+#### 進階操作
+
+- 修改歷史紀錄
+
+  - 最後一則 commit
+    - `git commit --amend`: 目前 uncommitted 合併到最後一則 commit，只有最後一則可以被修改
+      - `--no-edit`: 代表我沒有要編輯
+      - `-m <message>`: 更新 commit message
+      - commit 時間仍為舊的
+  - 中間的 commit
+    - `EDITOR="code --wait" git rebase -i <commit ID>`
+      - `EDITOR="code --wait"`: 選定編輯器為 vs code，預設為 vim。 wait 代表等待處理後再執行
+      - `git rebase -i`: 個別 pick 再 rebase 回去
+      - `<commit ID>`: 要修改的 commit 的**_前一顆_**ID
+    - 執行 `EDITOR="code --wait" git rebase -i <commit ID>` 會進入修改 commit 的 GitLens 圖形操作
+      - `squash`: 融合，把多個 commit 捏成一顆。與上一個 pick / commit 合併成一顆
+      - `edit`: 暫停在該 commit，搭配 `git reset HEAD^` 將 commit 拆成多個
+
 - `git cherry-pick <commit ID>`: 從某分支挑選特定 commit 複製到目前所在分支上，不用再 merge
 - [操作練習](https://learngitbranching.js.org/?locale=zh_TW)
 
