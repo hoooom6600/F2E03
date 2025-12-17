@@ -8,14 +8,11 @@ import CollapsePanel from "./components/practice_slot/CollapsePanel.vue";
 import Counter from "./components/emit/Counter.vue";
 import FormParent from "./components/emit/FormParent.vue";
 import Cart from "./components/emit/Cart.vue";
+import Card from "./components/practice_slot/Card.vue";
 </script>
 
 <template>
   <main>
-    <Message type="success" title="Hello" content="Nice to meet you" />
-    <Message type="success" title="World" content="" />
-    <Message type="warning" title="Hi" />
-    <Message type="error" />
     <!-- <BlogList /> -->
     <!-- <CardContainer /> -->
     <!-- <UseItemList /> -->
@@ -23,6 +20,19 @@ import Cart from "./components/emit/Cart.vue";
     <!-- <Counter /> -->
     <!-- <FormParent /> -->
     <!-- <Cart /> -->
+
+    <!-- 元件練習 -->
+    <!-- <Message type="success" title="Hello" content="Nice to meet you" />
+    <Message type="success" title="World" content="" />
+    <Message type="warning" title="Hi" />
+    <Message type="error" /> -->
+
+    <!-- 插槽練習 -->
+    <Card>
+      <template #header></template>
+      <template #default>This is body</template>
+      <template v-slot:footer></template>
+    </Card>
   </main>
 </template>
 
