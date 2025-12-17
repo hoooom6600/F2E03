@@ -1837,9 +1837,56 @@
 
 ## 組件
 
-- 資料傳遞
-  - `props`: 父 → 子
-  - `emit`: 子 → 父
+- 資料傳遞: 單向流動
+  - `props`: 父 → 子。像是在公司中，老闆派發任務，員工無法改變老闆的資料。
+    - 子元件不能直接修改 props
+    - `defineProps`
+      - array
+      - object
+        - 型別
+        - 型別 + required + validator + default
+  - `emit`: 子 → 父。員工通知老闆改變資料，員工不直接改老闆資料。父元件收到後自行修改。
+    - `defineEmits`
+      - 發送: `emit(<訊號>, <參數>)`
+  - `provide` / `inject`: 跨層傳遞，祖先 → 任意深層子孫。不用一層一層傳 props。比喻: 透天厝的 wifi
+    - `provide`: 祖先給所有後代用。比喻: 阿公想給孫子 100 塊零用錢
+      - `provide(<傳遞名稱>, <傳遞的值>)`
+        - 參數比喻: 頂樓阿公的 100 塊零用錢
+    - `inject`: 子孫用 inject 取得。比喻: 孫子得到阿公的零用錢
+    - global store: 全域管理
+      - pinia 套件
+        - 有安裝的話，會有 `src/stores` 資料夾
+        - 是 js 檔案
+        - 開發慣例 export 變數的前綴 `use`
+        - 解構如同組合式 reactive 不能一般解構，要 `storeToRefs()`
+          - action 直接解構，不用特殊解構
+- 插槽 (slot)
+  - Vue 的標籤，不是原生 HTML
+  - `<slot>` 放在子元件的 `<template>`
+- 匿名插槽
+  - 父元件可以直接在元件標籤內插入 HTML 標籤或文字。
+  - 若父元件沒有提供內容，則顯示子元件 `<slot>` 中的預設內容。
+- 具名插槽
+  - 子元件 `<slot>` 的 `name` 屬性，對應父元件的 `v-slot:name` 或 `<template #name>`。
+  - 可多個具名插槽，父元件可針對不同 slot 插入不同內容。
+- |  項目  |           props            |             slot             |
+  | :----: | :------------------------: | :--------------------------: |
+  |  使用  |     動態綁定在標籤屬性     |   如同一般 HTML 標籤寫內文   |
+  |  資料  | 資料（字串 / 數值 / 狀態） | 畫面內容（可含 HTML / 元件） |
+  | 控制權 |     子元件決定怎麼渲染     |      父元件決定顯示結構      |
+- `<template v-slot:<slot-name>>` == `<template #<slot-name>`
+  - `#` 就是 `v-slot:` 的縮寫
+  - 只能用在 `<template>`
+- 元件樣式: `scoped` 屬性，這樣子元件彼此不會汙染樣式
+
+## Vue Router
+
+- 在 main.js import router
+- 透過 vue-router 切換，只切換需要改變的地方
+- 後端 router 每次切換都會重新載入整個頁面，因為請求新的 HTML 回應
+- Vue 標籤
+  - `<RouterLink to="<path>">`，很像原生 `<a href="<path>">`
+  - `<RouterView>`: 顯示切換路徑的頁面結果
 
 # RWD
 
