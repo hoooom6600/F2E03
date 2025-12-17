@@ -9,6 +9,10 @@ import Counter from "./components/emit/Counter.vue";
 import FormParent from "./components/emit/FormParent.vue";
 import Cart from "./components/emit/Cart.vue";
 import Card from "./components/practice_slot/Card.vue";
+
+import { ref } from "vue";
+import CartCounter from "./components/practice_emit/Counter.vue";
+const quantity = ref(1);
 </script>
 
 <template>
@@ -28,11 +32,18 @@ import Card from "./components/practice_slot/Card.vue";
     <Message type="error" /> -->
 
     <!-- 插槽練習 -->
-    <Card>
+    <!-- <Card>
       <template #header></template>
       <template #default>This is body</template>
       <template v-slot:footer></template>
-    </Card>
+    </Card> -->
+
+    <!-- emits 練習 -->
+    <div class="app">
+      <h2>購物車數量</h2>
+      <CartCounter v-model:count="quantity" />
+      <p>目前數量：{{ quantity }}</p>
+    </div>
   </main>
 </template>
 
