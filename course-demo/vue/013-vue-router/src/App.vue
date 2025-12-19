@@ -13,6 +13,7 @@ const goToPracticeLogin = () => {
 };
 
 const goToProduct = () => {
+  // 從 API 拿資料到路徑，目前這裡寫死為字串 ':id'
   router.push("/product/:id");
 };
 </script>
