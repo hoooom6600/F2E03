@@ -1,12 +1,14 @@
 <script setup>
-import Counter from './components/Counter.vue'
-import ProductList from './components/ProductList.vue'
-import ShoppingCart from './components/ShoppingCart.vue'
+import Counter from "./components/Counter.vue";
+import ProductList from "./components/ProductList.vue";
+import ShoppingCart from "./components/ShoppingCart.vue";
+import CartView from "./components/CartView.vue";
 </script>
 
 <template>
   <main>
-    <Counter />
+    <CartView />
+    <!-- <Counter /> -->
     <!-- <div class="cart">
       <ProductList />
       <ShoppingCart />

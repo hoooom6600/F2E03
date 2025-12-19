@@ -1,3 +1,11 @@
+<script setup>
+import { useCartStore } from "@/stores/practice-cart";
+import { storeToRefs } from "pinia";
+
+const cartStore = useCartStore();
+const { items, totalItems, totalPrice } = storeToRefs(cartStore);
+const { removeItem, updateQuantity, clearCart } = cartStore;
+</script>
 <template>
   <div class="cart">
     <h2>購物車</h2>
@@ -25,12 +33,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { useCartStore } from "@/stores/cart";
-import { storeToRefs } from "pinia";
-
-const cartStore = useCartStore();
-const { items, totalItems, totalPrice } = storeToRefs(cartStore);
-const { removeItem, updateQuantity, clearCart } = cartStore;
-</script>
