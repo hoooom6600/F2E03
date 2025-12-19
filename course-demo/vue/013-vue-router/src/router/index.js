@@ -35,10 +35,15 @@ const router = createRouter({
       path: "/practice",
       name: "practice",
       component: Practice, // 練習全域 import router
+      // 巢狀路由練習
       children: [
         {
-          path: "/status",
+          path: "status",
           component: () => import("../components/PracticeStatus.vue"), // 練習 component 後的函數 import
+        },
+        {
+          path: "/remind",
+          component: () => import("@/components/Remind.vue"), // 練習巢狀 + 路徑符號@
         },
       ],
     },
