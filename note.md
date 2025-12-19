@@ -1860,6 +1860,7 @@
         - 開發慣例 export 變數的前綴 `use`
         - 解構如同組合式 reactive 不能一般解構，要 `storeToRefs()`
           - action 直接解構，不用特殊解構
+    - TODO: pinia vs `provide` / `inject`，要 wifi 比喻
 - 插槽 (slot)
   - Vue 的標籤，不是原生 HTML
   - `<slot>` 放在子元件的 `<template>`
@@ -1887,6 +1888,30 @@
 - Vue 標籤
   - `<RouterLink to="<path>">`，很像原生 `<a href="<path>">`
   - `<RouterView>`: 顯示切換路徑的頁面結果
+- TODO:
+  - base root router
+  - 路徑`@`符號
+  - 路徑的全域 import vs 函數 import
+  - dynamic router with `:`
+  - 路由守衛，meta.auth
+  - 巢狀路由 `children`
+    - `children`路由`/`的出現情況
+
+# Node.js
+
+## 名詞解釋
+
+- npm: 套件管理
+- nvm: Node 版本管理
+  - 可以安裝不同版本的 Node.js
+  - 指令
+    - `nvm ls`: 列出目前有安裝的 Node.js 版本
+    - `nvm list available`: 顯示可安裝版本
+    - `nvm install <version number> / --lts`: 安裝指定版本 / 目前最新的 LTS 版本
+    - `nvm current`: 目前正在使用哪個版本，等同 `node -v`
+    - `nvm uninstall <version number>`: 刪除指定版本
+    - `node` 指令啟動 node 後，輸入 `.editor` 進入編輯模式，可以多行輸入
+- Express: Node.js 的後端框架
 
 # RWD
 
