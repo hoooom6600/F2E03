@@ -38,6 +38,11 @@ const router = createRouter({
         },
       ],
     },
+    {
+      path: "/practice2",
+      name: "practice2",
+      component: () => import("../components/Practice2.vue"),
+    },
   ],
 });
 

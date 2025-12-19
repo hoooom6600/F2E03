@@ -1,12 +1,16 @@
 <script setup>
-import { RouterLink, RouterView, useRouter } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterLink, RouterView, useRouter, useRoute } from "vue-router";
+import HelloWorld from "./components/HelloWorld.vue";
 
-const router = useRouter()
+const router = useRouter();
 
 const goToAbout = () => {
-  router.push('/about')
-}
+  router.push("/about");
+};
+
+const goToPracticeLogin = () => {
+  router.push("/practice2");
+};
 </script>
 
 <template>
@@ -19,6 +23,8 @@ const goToAbout = () => {
         <!-- <RouterLink to="/about">About</RouterLink> -->
         <button @click="goToAbout">About</button>
         <RouterLink to="/user/123">User</RouterLink>
+        <RouterLink to="/practice">Login</RouterLink>
+        <button @click="goToPracticeLogin">Login2</button>
       </nav>
     </div>
   </header>
