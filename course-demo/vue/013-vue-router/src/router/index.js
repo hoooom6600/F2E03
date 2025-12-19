@@ -43,6 +43,10 @@ const router = createRouter({
       name: "practice2",
       component: () => import("../components/Practice2.vue"),
     },
+    {
+      path: "/product/:id",
+      component: () => import("../components/ProductDetail.vue"),
+    },
   ],
 });
 

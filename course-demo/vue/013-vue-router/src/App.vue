@@ -11,6 +11,10 @@ const goToAbout = () => {
 const goToPracticeLogin = () => {
   router.push("/practice2");
 };
+
+const goToProduct = () => {
+  router.push("/product/:id");
+};
 </script>
 
 <template>
@@ -25,6 +29,7 @@ const goToPracticeLogin = () => {
         <RouterLink to="/user/123">User</RouterLink>
         <RouterLink to="/practice">Login</RouterLink>
         <button @click="goToPracticeLogin">Login2</button>
+        <button @click="goToProduct">Product</button>
       </nav>
     </div>
   </header>
