@@ -1899,9 +1899,31 @@
 
 # Node.js
 
+## 特色
+
+- Node.js: 單一執行緒，節省資源。一個廚房只有一個廚師
+  - 同步執行: 一個廚師做完一道菜，才能做其他事。做完 A 才能做 B
+  - 非同步執行: 以做披薩為例，廚師把披薩放進烤箱，就會跑去做其他事。事情很多就不會塞車。開始做 A，也同時開始 B
+- Java, C#: 多執行緒，記憶體消耗大，大部分時間都在等待。一個廚房有多個廚師
+
 ## 名詞解釋
 
 - npm: 套件管理
+
+  - 指令
+    - `npm init`: 建立 package.json，終端機會逐步詢問設定檔
+      - `-y`: 所有設定步驟預設 yes = 懶人建立 package.json
+    - `intstall / i`: 安裝到 `dependencies`
+      - `--save-dev`: 安裝到 `devDependencies`。部署的時候不會安裝，因為是僅限開發狀況會用到的
+    - `uninstall / rm`: 移除
+  - package.json
+    - `description`: 專案說明，選填
+    - `main`: 專案入口
+    - `script`: 腳本
+    - `type`: 預設為 `commonjs`
+      - `"type": commonjs` + `require`
+      - `"type": module` + `import`
+
 - nvm: Node 版本管理
   - 可以安裝不同版本的 Node.js
   - 指令
@@ -1912,6 +1934,7 @@
     - `nvm uninstall <version number>`: 刪除指定版本
     - `node` 指令啟動 node 後，輸入 `.editor` 進入編輯模式，可以多行輸入
 - Express: Node.js 的後端框架
+- fs: File System，Node 的模組，用來讀取文件
 
 # RWD
 
