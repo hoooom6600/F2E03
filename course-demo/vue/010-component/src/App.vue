@@ -41,6 +41,7 @@ const quantity = ref(1);
     <!-- emits 練習 -->
     <div class="app">
       <h2>購物車數量</h2>
+      <!-- 把子元件 (CartCounter) 的 count prop 綁定到父元件資料的 quantity -->
       <CartCounter v-model:count="quantity" />
       <p>目前數量：{{ quantity }}</p>
     </div>
