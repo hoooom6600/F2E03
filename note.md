@@ -1464,8 +1464,8 @@
 
   - `GET`: 取得
   - `POST`: 替換做更新
-  - `PUT`: 建立、新增、修改
-  - `PATCH`: 修改
+  - `PUT`: 建立、新增、（整筆資料）修改
+  - `PATCH`: （部分資料）修改
   - `DELETE`: 刪除
 
 - RESTFul API
@@ -1933,8 +1933,48 @@
     - `nvm current`: 目前正在使用哪個版本，等同 `node -v`
     - `nvm uninstall <version number>`: 刪除指定版本
     - `node` 指令啟動 node 後，輸入 `.editor` 進入編輯模式，可以多行輸入
-- Express: Node.js 的後端框架
 - fs: File System，Node 的模組，用來讀取文件
+
+## 伺服器
+
+### 框架
+
+- [Express](https://github.com/expressjs/express): 基於 Node.js 的 Web 應用程式框架，用來建立後端 API 與網站伺服器
+  - 資料互動（HTTP Methods）
+    - get
+    - post
+    - put
+    - patch
+    - delete
+  - 第一個參數: 路徑
+    - 前綴有冒號 (:) 代表是動態路由參數 → 會在 req.params 取得
+- 第二個參數: 函數
+  - 通常是 `(req, res) => {}`
+    - `req`（Request，前端送進來的資料）
+      - `GET / POST` 都會用到
+      - `req.body`（POST / PATCH 常用）
+      - `req.query`（GET 常用）
+      - `req.params`（路由參數）
+    - `res`（Response，後端回傳給前端）
+      - `GET / POST` 都會用到
+        - `res.send`：可帶字串、JSON、陣列等
+        - `res.json`：專門回傳 JSON
+        - `res.status`：設定 HTTP 狀態碼
+  - 觀察 port 指令
+    - `lsof -i :<port num>`: 查詢指定 port 是否使用中（mac 指令）
+    - `kill -9 <PID>`: 強制結束使用該 port 的程序（不是 port 號）
+  - Request 處理（Middleware）
+    - `app.use(express.json())`: 讓 express 可以解析 JSON 格式的 request body
+  - 套件: [Nodemon](https://github.com/remy/nodemon)
+    - 好處: 修改 server js 不用手動重啟伺服器
+    - 開發才會用到，部署不會用
+    - 通常用 `--save-dev`（或 `-D`）形式安裝
+
+### 工具
+
+- Postman
+  - key 和 string value 一定要用雙引號包
+  - js 重整之後，postman 也要重新 get, post
 
 # RWD
 
