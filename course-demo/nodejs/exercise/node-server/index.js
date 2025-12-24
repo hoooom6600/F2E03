@@ -8,7 +8,21 @@ const server = http.createServer((req, res) => {
   res.setHeader("Content-Type", "application/json");
 
   // 根據請求路徑回應不同內容
-  if (req.url === "/todos") {
+  if (req.url === "/") {
+    res.writeHead(200);
+    res.end(
+      JSON.stringify({
+        message: "歡迎來到首頁",
+      })
+    );
+  } else if (req.url === "/api/users") {
+    res.writeHead(200);
+    res.end(
+      JSON.stringify({
+        users: ["使用者1", "使用者2"],
+      })
+    );
+  } else if (req.url === "/todos") {
     res.writeHead(200);
     res.end(
       JSON.stringify({
