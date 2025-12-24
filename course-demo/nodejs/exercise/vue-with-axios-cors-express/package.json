@@ -1,0 +1,27 @@
+{
+  "name": "vue-with-axios-cors-express",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "start": "nodemon index.js",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.11",
+    "vue": "^3.5.25"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.2",
+    "vite": "^7.2.4",
+    "vite-plugin-vue-devtools": "^8.0.5"
+  }
+}
