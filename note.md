@@ -1841,12 +1841,14 @@
   - `props`: 父 → 子。像是在公司中，老闆派發任務，員工無法改變老闆的資料。
     - 子元件不能直接修改 props
     - `defineProps`
+      - 沒有變數帶入，則為 template 直接使用。有變數是給 script 使用
       - array
       - object
         - 型別
         - 型別 + required + validator + default
   - `emit`: 子 → 父。員工通知老闆改變資料，員工不直接改老闆資料。父元件收到後自行修改。
     - `defineEmits`
+      - 沒有變數帶入，則為 template 直接使用。有變數是給 script 使用
       - 發送: `emit(<訊號>, <參數>)`
   - `provide` / `inject`: 跨層傳遞，祖先 → 任意深層子孫。不用一層一層傳 props。比喻: 透天厝的 wifi
     - `provide`: 祖先給所有後代用。比喻: 阿公想給孫子 100 塊零用錢
@@ -2187,6 +2189,7 @@
 - 重點在**_開發_**，測試是手段
 - 先寫測試(規格, Spec)，再寫實作。和一般工程師開發思維相反
 - 寫測試的時候就是寫說明書的思維
+- 不是綠燈就是正確，也可以透過改規格作弊
 - 還沒實作要怎麼測試？
   - 天馬行空，假設它存在，就像設計師或漫畫家。**大膽假設**
   - 就像倒敘法電影的模式
@@ -2208,6 +2211,8 @@
   - Act
   - Assert
 - [jest JS 測試框架](https://jestjs.io/)
+
+  - 對 ES6 是實驗性支援，所以測試 Vue 會有問題
   - 匯入匯出，需在 package.json 加入 `"type": "module"`，並且將執行變數改成 `node --experimental-vm-modules`。後者的更改源於 jest *實驗性*支援 ECMAScript Modules (ESM)
   - `it` == `test`，但對中文開發者來說，`it`的功能無感，這只是為了語意閱讀
   - `describe` 必須包住 `it` 或 `test` 才能作測試，但 `describe` 可有可無。也是對中文開發者無感，只是語意化。
@@ -2216,6 +2221,31 @@
     | :--: | :---: | :----: |
     | 意義 | 拋錯  |  回傳  |
     | 風格 | 激進  |  溫和  |
+
+- SDD (Spec-Driven Development)
+  - [spec-kit](https://github.com/github/spec-kit)
+    - 要先裝 uv(python 的工具)
+    - 比較適合用在從 0 到 1
+  - [OpenSpec](https://github.com/Fission-AI/OpenSpec)
+    - 規劃
+    - 實作
+    - 結束
+- BDD (Behavior-Driven Development)
+  - 只測行為
+    - Given: 假設一個情況
+    - When: 當
+    - Then: 則
+- | 項目  |  TDD   |     SDD      |     BDD      |
+  | :---: | :----: | :----------: | :----------: |
+  | TODO: | 大範圍 | TDD 的子集合 | TDD 的子集合 |
+
+- [Vitest](https://vitest.dev/)
+  - `--run`: 只測試一次，不一直監聽
+- CI / CD
+  - CI (Continuous Integration)
+  - CD
+    - 大 CD (Continuous Deployment, CD - Deployment)
+    - 小 CD (Continuous Delivery, CD - Delivery)
 
 # 執行不理想的常見原因
 
