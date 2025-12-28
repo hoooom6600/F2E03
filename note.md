@@ -1464,8 +1464,8 @@
 
   - `GET`: 取得
   - `POST`: 替換做更新
-  - `PUT`: 建立、新增、（整筆資料）修改
-  - `PATCH`: （部分資料）修改
+  - `PUT`: 建立、新增、修改
+  - `PATCH`: 修改
   - `DELETE`: 刪除
 
 - RESTFul API
@@ -1840,29 +1840,31 @@
 - 資料傳遞: 單向流動
   - `props`: 父 → 子。像是在公司中，老闆派發任務，員工無法改變老闆的資料。
     - 子元件不能直接修改 props
-    - `defineProps`
-      - 沒有變數帶入，則為 template 直接使用。有變數是給 script 使用
+    - `defineProps`: 寫在**_子_**元件
+      - 本身回傳一個**_物件_**
       - array
       - object
         - 型別
         - 型別 + required + validator + default
   - `emit`: 子 → 父。員工通知老闆改變資料，員工不直接改老闆資料。父元件收到後自行修改。
-    - `defineEmits`
-      - 沒有變數帶入，則為 template 直接使用。有變數是給 script 使用
+    - `defineEmits`: 寫在**_子_**元件
+      - `defineEmits` 本身回傳一個「用來發送事件」的**_函數_**
       - 發送: `emit(<訊號>, <參數>)`
-  - `provide` / `inject`: 跨層傳遞，祖先 → 任意深層子孫。不用一層一層傳 props。比喻: 透天厝的 wifi
+  - `provide` / `inject`: 跨層傳遞，祖先 → 任意深層子孫。不用一層一層傳 props。比喻: 私人透天厝的 WiFi
     - `provide`: 祖先給所有後代用。比喻: 阿公想給孫子 100 塊零用錢
       - `provide(<傳遞名稱>, <傳遞的值>)`
         - 參數比喻: 頂樓阿公的 100 塊零用錢
     - `inject`: 子孫用 inject 取得。比喻: 孫子得到阿公的零用錢
     - global store: 全域管理
       - pinia 套件
+        - 比喻: 公共 WiFi
         - 有安裝的話，會有 `src/stores` 資料夾
-        - 是 js 檔案
-        - 開發慣例 export 變數的前綴 `use`
+        - 是 js 檔案，可以開多個 js 檔案管理不同內容
+        - `defineStore`
+        - 因為是 js 檔，所以記得要 `export`，還要記得 import vue 函數、變數，以及 `return`，return 給其他任一元件使用
+        - 開發慣例 export 變數的前綴 `use`，`export const use<*>`
         - 解構如同組合式 reactive 不能一般解構，要 `storeToRefs()`
-          - action 直接解構，不用特殊解構
-    - TODO: pinia vs `provide` / `inject`，要 wifi 比喻
+          - action (methods) 直接解構，不用特殊解構
 - 插槽 (slot)
   - Vue 的標籤，不是原生 HTML
   - `<slot>` 放在子元件的 `<template>`
@@ -1881,23 +1883,97 @@
   - `#` 就是 `v-slot:` 的縮寫
   - 只能用在 `<template>`
 - 元件樣式: `scoped` 屬性，這樣子元件彼此不會汙染樣式
+- 元件註冊（components）
+  - 需要註冊
+    - 選項式 API
+    - 組合式 API，但使用 `setup()`（沒有 `<script setup>`）
+  - 不需要註冊
+    - Vue 3 `<script setup>`
+      - import 後可直接在 template 使用
+
+### Vue 的 export
+
+- 做元件的時候不一定要 export，因為 vue 的 export 是 data() 響應資料的處理，給 template 用的
+- 引入元件不用寫 export
 
 ## Vue Router
+
+### 基本概念
 
 - 在 main.js import router
 - 透過 vue-router 切換，只切換需要改變的地方
 - 後端 router 每次切換都會重新載入整個頁面，因為請求新的 HTML 回應
-- Vue 標籤
-  - `<RouterLink to="<path>">`，很像原生 `<a href="<path>">`
-  - `<RouterView>`: 顯示切換路徑的頁面結果
-- TODO:
-  - base root router
-  - 路徑`@`符號
-  - 路徑的全域 import vs 函數 import
-  - dynamic router with `:`
-  - 路由守衛，meta.auth
-  - 巢狀路由 `children`
-    - `children`路由`/`的出現情況
+
+### URL 路徑 (Router Path)
+
+- 相對路徑
+  - `child`，沒有前綴斜線，Vue Router 會自動把它加到父路由的 path 之後，被解析成 `/parent/child`
+- 絕對路徑
+  - `/child`，不會帶上父路由 /parent
+
+### Router URL 初始化設定（主要跟部署網站根目錄有關）
+
+- `router/index.js`
+  - `history: createWebHistory(import.meta.env.BASE_URL)`
+    - `import.meta.env.BASE_URL`：**_Vite_** 環境變數，設定 Vue 專案 URL 的基本路徑
+      - 在 `vite.config.js` 的 `base` key 做更改，預設為 `/`
+      - 部署到子目錄時需改成 `/子目錄/`
+    - SEO 加分
+    - 能記錄瀏覽器上下頁（前進/後退）
+  - 通常不使用 `createWebHashHistory()`
+    - URL 會出現 `#`
+    - 主要是舊瀏覽器的用法，不利於 SEO
+
+### **_動態路由_** 與 **_路由守衛_**
+
+- `RouterLink` + `RouterView`
+  - 比較難對元件做樣式客製化
+- `useRoute` + `useRouter` 與
+  - 二者都是函數。注意拼寫只差一個尾字 `r`
+    - `useRoute()`
+      - 通常搭配呼叫後端 API
+      - 回傳的資料可以做未來動態 route 或頁面渲染的處理
+      - index.js 中 `path` key
+        - 接受正規表達式
+        - `/:<參數>`: **_動態_** route，一定要有冒號
+          - `route.params.<參數>`: 取得動態參數
+    - `useRouter()`
+      - `.push(<路徑>)`
+        - 好處是可以加入判斷邏輯，也可搭配事件（如：`@click`）使用。`RouterLink` + `RouterView` 辦不到這點
+      - index.js `meta` key
+        - `requiresAuth: <boolean>`: 設定頁面是否需要權限，**_路由守衛_**
+        - `router.beforeEach(to, from, next)`
+          - `beforeEach()`
+            - 每次換頁都會觸發這個函數
+            - 傳入參數是 callback 函數 `(to, from, next)`
+              - `to`：要前往的路由
+              - `from`：從哪裡來
+              - `next()`: 放行，有參數是代表要導向的頁面
+
+### 巢狀路由 children
+
+- index.js `children` key
+  - 陣列，內容跟 routes[] 是一樣的結構，`path` + `component` + `children`(optional)
+- `children` + 父層 template `<RouterView>`
+- `children` 路由 `/` 的出現情況
+  - 根據 相對/絕對路徑規則，通常 `/` 代表父路由的預設子路由
+  - 見 URL 路徑 (Router Path) 相對絕對路徑
+
+### 元件載入
+
+#### 路徑
+
+- `@`: `/src` 的簡寫
+
+#### 方式
+
+- 全域 import (同步 import)
+- 函數 import (動態 import, lazy loading)
+
+### Vue 標籤
+
+- `<RouterLink to="<path>">`，很像原生 `<a href="<path>">`
+- `<RouterView>`: 顯示切換路徑的頁面結果
 
 # Node.js
 
@@ -1932,53 +2008,12 @@
     - `nvm ls`: 列出目前有安裝的 Node.js 版本
     - `nvm list available`: 顯示可安裝版本
     - `nvm install <version number> / --lts`: 安裝指定版本 / 目前最新的 LTS 版本
+    - `nvm use <version number>`: 使用指定版本
     - `nvm current`: 目前正在使用哪個版本，等同 `node -v`
     - `nvm uninstall <version number>`: 刪除指定版本
     - `node` 指令啟動 node 後，輸入 `.editor` 進入編輯模式，可以多行輸入
+- Express: Node.js 的後端框架
 - fs: File System，Node 的模組，用來讀取文件
-
-## 伺服器
-
-### 框架
-
-- [Express](https://github.com/expressjs/express): 基於 Node.js 的 Web 應用程式框架，用來建立後端 API 與網站伺服器
-  - 資料互動（HTTP Methods）
-    - get
-    - post
-    - put
-    - patch
-    - delete
-  - 第一個參數: 路徑
-    - 前綴有冒號 (:) 代表是動態路由參數 → 會在 req.params 取得
-- 第二個參數: 函數
-  - 通常是 `(req, res) => {}`
-    - `req`（Request，前端送進來的資料）
-      - `GET / POST` 都會用到
-      - `req.body`（POST / PATCH 常用）
-      - `req.query`（GET 常用）
-      - `req.params`（路由參數）
-    - `res`（Response，後端回傳給前端）
-      - `GET / POST` 都會用到
-        - `res.send`：可帶字串、JSON、陣列等
-        - `res.json`：專門回傳 JSON
-        - `res.status`：設定 HTTP 狀態碼
-  - 觀察 port 指令
-    - `lsof -i :<port num>`: 查詢指定 port 是否使用中（mac 指令）
-    - `kill -9 <PID>`: 強制結束使用該 port 的程序（不是 port 號）
-  - Request 處理（Middleware）
-    - `app.use(express.json())`: 讓 express 可以解析 JSON 格式的 request body
-  - 套件: [Nodemon](https://github.com/remy/nodemon)
-    - 好處: 修改 server js 不用手動重啟伺服器
-    - 開發才會用到，部署不會用
-    - 通常用 `--save-dev`（或 `-D`）形式安裝
-  - cors: 中間件 (Middleware)
-    - 功能介紹
-
-### 工具
-
-- Postman
-  - key 和 string value 一定要用雙引號包
-  - js 重整之後，postman 也要重新 get, post
 
 # RWD
 
@@ -2189,7 +2224,6 @@
 - 重點在**_開發_**，測試是手段
 - 先寫測試(規格, Spec)，再寫實作。和一般工程師開發思維相反
 - 寫測試的時候就是寫說明書的思維
-- 不是綠燈就是正確，也可以透過改規格作弊
 - 還沒實作要怎麼測試？
   - 天馬行空，假設它存在，就像設計師或漫畫家。**大膽假設**
   - 就像倒敘法電影的模式
@@ -2211,8 +2245,6 @@
   - Act
   - Assert
 - [jest JS 測試框架](https://jestjs.io/)
-
-  - 對 ES6 是實驗性支援，所以測試 Vue 會有問題
   - 匯入匯出，需在 package.json 加入 `"type": "module"`，並且將執行變數改成 `node --experimental-vm-modules`。後者的更改源於 jest *實驗性*支援 ECMAScript Modules (ESM)
   - `it` == `test`，但對中文開發者來說，`it`的功能無感，這只是為了語意閱讀
   - `describe` 必須包住 `it` 或 `test` 才能作測試，但 `describe` 可有可無。也是對中文開發者無感，只是語意化。
@@ -2221,31 +2253,6 @@
     | :--: | :---: | :----: |
     | 意義 | 拋錯  |  回傳  |
     | 風格 | 激進  |  溫和  |
-
-- SDD (Spec-Driven Development)
-  - [spec-kit](https://github.com/github/spec-kit)
-    - 要先裝 uv(python 的工具)
-    - 比較適合用在從 0 到 1
-  - [OpenSpec](https://github.com/Fission-AI/OpenSpec)
-    - 規劃
-    - 實作
-    - 結束
-- BDD (Behavior-Driven Development)
-  - 只測行為
-    - Given: 假設一個情況
-    - When: 當
-    - Then: 則
-- | 項目  |  TDD   |     SDD      |     BDD      |
-  | :---: | :----: | :----------: | :----------: |
-  | TODO: | 大範圍 | TDD 的子集合 | TDD 的子集合 |
-
-- [Vitest](https://vitest.dev/)
-  - `--run`: 只測試一次，不一直監聽
-- CI / CD
-  - CI (Continuous Integration)
-  - CD
-    - 大 CD (Continuous Deployment, CD - Deployment)
-    - 小 CD (Continuous Delivery, CD - Delivery)
 
 # 執行不理想的常見原因
 
