@@ -2497,6 +2497,8 @@ class Hero {
     - 自動遞增的整數
     - 從 1 開始自動遞增（不是 0）
     - 常用於主鍵（id）
+    - 每次插入資料時，自動生成下一個數字
+    - 刪除舊的資料不會影響 sequence，新資料會繼續從最大值 +1 開始
     - **_很常用_**
   - `bigint`
     - 大整數
@@ -2583,7 +2585,9 @@ class Hero {
 - 指定（判斷）刪除
   - `DELETE FROM <table-name> WHERE <column-name> = <value>`
 - 全部刪除
-  - `DELETE FROM <table-name> WHERE <column-name> = <value>`
+  - `DELETE FROM <table-name>`
+- 有外鍵綁定資料時，會被擋住刪除
+  - 真的想刪除，先清理「依賴這筆資料的其他表格的資料」（關聯資料），再刪掉主表資料。
 
 ##### 查詢資料
 
@@ -2591,11 +2595,34 @@ class Hero {
   - `SELECT <table-column> FROM <table-name>`
     - `*`: 表示全部欄位
 - 特定查詢
+
   - `SELECT <table-column> FROM <table-name> WHERE <table-column> = <value>`
     - `WHERE <table-column> = <value>` 是可選項，代表指定查詢條件
-      - `WHERE` 可以使用其他運算式，例如 `>`, `<`, `LIKE`, `IN`，不僅限於 `=`
+      - `WHERE` 可以使用其他運算式，不僅限於 `=`，例如：
+        - 比較運算子：=, !=, <>, >, <, >=, <=
+          - `<>` 等同 `!=`
+        - 邏輯運算子：AND, OR, NOT
+        - 集合 / 範圍：IN, NOT IN, BETWEEN
+          - `IN`: 當 `OR` 的條件欄位相同但要求的值不同（同欄位多值比對），可以改成 `IN` 來整理
+          - `BETWEEN... AND...`: 接受數值、時間、字串
+            - 字串的比對，就像紙本字典的查詢方法
+        - 模糊比對：LIKE
+          - `%`：代表 **任意長度的任意字元**（可以是 0 個字元）
+          - `_`：代表 **單一字元**
+        - 空值判斷：IS NULL, IS NOT NULL
+          - 不能用 `= NULL`, `!= NULL` 來相等使用，是不同東西
+          - 原因：`NULL` 表示「未知值」，任何用 `=` 或`!=` 比較都會回傳 `UNKNOWN`，不會選出資料。
+        - 存在判斷：EXISTS, NOT EXISTS
+        - 正規表示式
+
 - 限制查詢
-  - `LIMIT`: 限定查詢幾筆資料
+  - `LIMIT <num>`: 限定查詢 n 筆資料
+  - `OFFSET <num>`: 表示忽略 n 筆資料
+- 順序排列
+  - `ORDER BY <table-column> ASC / DESC`
+    - `ASC`: 預設值。遞增，由小到大
+    - `DESC`: 遞減，由大到小
+    - 可接受多欄位條件排序，`ORDER BY <table-column-1> [ASC|DESC], <table-column-2> [ASC|DESC]`
 
 #### 圖像化工具
 
