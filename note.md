@@ -2409,3 +2409,194 @@ class Hero {
   - 工具
     - functionCall，呼叫工具與否，AI 自己判斷問句重點，更甚者須進一步追問才會呼叫
   - 如果提示詞的需求很明確，答案卻不理想 → 換腦袋 ~~聰明珊瑚腦~~
+
+# 資料庫
+
+## 基礎觀念
+
+- **DB（Database）**：像一個 Excel 檔案
+  - 通常用蛇式命名（snake_case）
+- **Table**：像 Excel 檔案裡的一個工作表
+- **Row（資料列）**：一筆資料（Excel 的一列）
+- **Column（欄位）**：資料的屬性（Excel 的一欄）
+
+## SQL / NoSQL
+
+### SQL（關聯式資料庫）
+
+- 資料**有固定結構（Schema）**
+- 用 **Table + 欄位** 存資料
+- 表與表之間可以建立「關聯（Relation）」
+- 使用 **SQL 語法** 查詢資料
+- 比起 NoSQL，可以限制欄位能有唯一特殊值 (UNIQUE)
+- 適合：
+  - 結構固定的資料
+  - 資料關係明確（例如：使用者 ↔ 訂單）
+  - 金流、帳務、後台系統
+
+**常見 SQL 資料庫**
+
+- MySQL
+- PostgreSQL
+- SQLite
+- MSSQL
+
+**概念對照**
+
+- Table = 表格
+- Primary Key = 身分證字號（唯一）
+- Foreign Key = 關聯用的欄位
+- JOIN = 把多張表接起來查
+
+### NoSQL（非關聯式資料庫）
+
+- **沒有固定 Schema（或很彈性）**
+- 資料結構可以每筆都不同
+- 不強調表與表的關聯
+- 查詢方式依資料庫而異（不一定是 SQL）
+- 適合：
+  - 資料結構常變
+  - 大量資料、高效能
+  - 即時資料、快取、Log、聊天訊息
+
+**常見 NoSQL 資料庫**
+
+- MongoDB（文件型）
+- Redis（Key-Value）
+- Firebase / Firestore
+- DynamoDB
+
+**常見資料形式**
+
+- JSON
+- Key → Value
+
+### SQL vs NoSQL 簡易比較
+
+|   項目   |      SQL       |     NoSQL      |
+| :------: | :------------: | :------------: |
+| 資料結構 |      固定      |      彈性      |
+|  Schema  |   必須先定義   |     不一定     |
+|   關聯   |   強（JOIN）   |    弱或沒有    |
+| 學習曲線 |      中等      |     低～中     |
+| 常見用途 | 商業系統、後台 | 即時資料、快取 |
+
+### 前端工程師常見搭配
+
+- **正式資料**：SQL（MySQL / PostgreSQL）
+- **快取 / 驗證碼 / Session**：Redis
+- **彈性資料 / Prototype**：MongoDB
+- **前端直連（小專案）**：Firebase
+
+### PostgreSQL
+
+#### data type
+
+- 數值
+  - `serial`
+    - 自動遞增的整數
+    - 從 1 開始自動遞增（不是 0）
+    - 常用於主鍵（id）
+    - **_很常用_**
+  - `bigint`
+    - 大整數
+  - `decimal`
+    - 小數點
+    - **_很常用_**
+  - `numeric`
+  - `float`
+    - 浮點數
+    - 也是小數點，但有誤差，比較少用
+  - `integer`
+    - 一般整數
+    - **_很常用_**
+- 字串
+  - `char(n)`
+    - `n` 代表可接受字元長度
+    - **固定長度**
+    - 長度不足會自動補空白
+    - 適合用在身分證字號，固定 10 碼
+  - `character varying(n)`（`varchar`）
+    - `n` 代表最大可接受字元長度
+    - **可變長度**
+    - 字元長度不足時，只會使用實際長度的記憶體空間
+  - `text`
+    - **不限制字元長度**
+    - 不需指定 `n`
+    - 在 PostgreSQL 中，效能與 `varchar` 幾乎相同
+    - 適合長文字（描述、文章內容）
+  - 字元長度最高限制是 255 個字元
+- 時間
+  - `TIMESTAMP`
+
+#### 約束
+
+- PRIMARY KEY: 主鍵(PK)，唯一值。可以跟其他 table 做關聯
+- UNIQUE: 欄位唯一特殊值
+- NOT NULL: 代表必填
+- DEFAULT `<value>`: 預設值
+
+#### 語法
+
+##### 修改資料表
+
+- 新增
+  - `CREATE TABLE`: 建立表格
+  - `CREATE DATABASE`: 建立資料庫
+  - `ADD COLUMN`: 新增欄位
+    - `<欄位名稱> <data type> <約束>`
+- 刪除
+  - `DROP COLUMN <column-name>`: 刪除欄位
+- 修改
+  - `ALTER TABLE <table-name>`: 修改指定表格，不用括號
+  - `RENAME COLUMN <old-column-name> TO <new-column-name>`: 修改欄位名稱
+  - `REFERENCES table_name(column_name)`：外鍵(Foreign Key, FK)，參照另一個表格的指定欄位
+- 語法符號
+  - `()`: 新增 TABLE 才需要括號
+  - `,`: 分隔欄位
+  - `;`: 表格結束
+  - `--`: 註解
+  - **_縮排_**: 單純好閱讀，不影響功能
+
+##### 插入資料
+
+- `INSERT INTO <table-name> (table-column) VALUES (value)`
+  - `(table-column)` 接受多欄，用 `,` 隔開
+  - 可以單次加入多筆資料，寫成 `(value), (value), (value)...` 即可
+  - 插入後可同時查詢**_本次加入的資料_** `RETURNING <table-column>`，接受查詢多欄位
+    - `<table-column>` 一次可接受多欄
+  - 時間戳記以 `NOW()` 為例，`NOW()` 的結果是依使用 `INSERT` 的時機，等於同一批次的多筆資料，時間都相同
+    - 解法
+      - 一次一筆資料插入
+      - 使用其他時間戳記函數
+
+##### 修改資料
+
+- `UPDATE <table-name> SET <table-column> = <new-value> WHERE <table-column> = <existed-value>`
+  - 可同時查詢**_本次更新的資料_** `RETURNING <table-column>`，接受查詢多欄位
+  - `WHERE` 條件不可省略，否則會更新整張表的資料。發生悲劇無法復原，除非隨時有在備份
+  - 可同時更新多筆資料，逗號區隔
+    - `<table-column> = <new-value>`, `<table-column> = <new-value>`
+
+##### 刪除資料
+
+- 指定（判斷）刪除
+  - `DELETE FROM <table-name> WHERE <column-name> = <value>`
+- 全部刪除
+  - `DELETE FROM <table-name> WHERE <column-name> = <value>`
+
+##### 查詢資料
+
+- 基本查詢
+  - `SELECT <table-column> FROM <table-name>`
+    - `*`: 表示全部欄位
+- 特定查詢
+  - `SELECT <table-column> FROM <table-name> WHERE <table-column> = <value>`
+    - `WHERE <table-column> = <value>` 是可選項，代表指定查詢條件
+      - `WHERE` 可以使用其他運算式，例如 `>`, `<`, `LIKE`, `IN`，不僅限於 `=`
+- 限制查詢
+  - `LIMIT`: 限定查詢幾筆資料
+
+#### 圖像化工具
+
+- [DBeaver](https://dbeaver.io/)
