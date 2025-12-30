@@ -2368,6 +2368,7 @@ class Hero {
   - 不能有副作用 (side effect)
   - 不會對傳進來的參數動手腳，也不會往外找東西更改
   - 只讀不寫
+- 把物件當 key，會先被字串化，永遠都是`'[object Object]'`
 
 # AI Agent
 
