@@ -2624,6 +2624,35 @@ class Hero {
     - `ASC`: 預設值。遞增，由小到大
     - `DESC`: 遞減，由大到小
     - 可接受多欄位條件排序，`ORDER BY <table-column-1> [ASC|DESC], <table-column-2> [ASC|DESC]`
+- 關聯查詢: `JOIN ... ON ...`
+  - 資料分散在不同 table，但想要查詢有共通的資訊，就比對顯示
+  - `INNER JOIN <another-table> ON <condition>`: 只保留雙方都有對到的資料
+  - `LEFT JOIN`: 保留左表全部，右表對不到補 NULL
+  - `RIGHT JOIN`: 保留右表全部，左表對不到補 NULL
+  - 其他 JOIN
+    ![其他 JOIN](https://www.runoob.com/wp-content/uploads/2019/01/sql-join.png)
+- 改寫 column 名稱
+
+  - `AS`
+    - 幫要顯示的 column 改名字，不會改到 database schema
+    - 要改名多個 column，則單一 column 寫一次 `AS`
+    - 可以偷懶不寫 `AS`，但很不好閱讀理解
+      - 所以 `SELECT` 多欄位一定要逗號，否則會被解讀為 `AS`
+    - `ORDER BY` 用 `AS` 改名前後的 column name 都可以做排序
+
+- 聚合函數
+  - `COUNT(<column-name>)`
+    - 回傳 table column 有幾筆資料
+    - 不一定是整個表單資料數量，因為有的欄位可能沒有資料
+  - `SUM()`
+  - `AVG()`
+  - `MAX()`
+  - `MIN()`
+- 分組
+  - `GROUP BY (<column-name>)`: 先分類，再統計。以 column 來分類。
+- 資料過濾
+  - `WHERE`: 過濾原始資料
+  - `HAVING`: 過濾分組結果（搭配 `GROUP BY`）
 
 #### 圖像化工具
 
