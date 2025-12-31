@@ -2654,6 +2654,24 @@ class Hero {
   - `WHERE`: 過濾原始資料
   - `HAVING`: 過濾分組結果（搭配 `GROUP BY`）
 
+### ORM
+
+- 用程式語言寫法來操作資料庫，就不用寫 SQL 語法
+
+#### 套件
+
+- [Prisma ORM](https://www.prisma.io/)
+  - 有自己的語法，學習成本較高
+- [Drizzle ORM](https://orm.drizzle.team/)
+  - 輕量化
+  - 語法接近 SQL
+  - 安裝
+    - 開發套件: `npm install express drizzle-orm pg dotenv`
+    - 開發工具: `npm install -D drizzle-kit nodemon`
+  - `DATABASE_URL=postgresql://postgres:postgres@localhost:5432/notes_app`
+    - `postgres:postgres@localhost:5432/notes_app`
+      - 帳號:密碼@路徑/DB 檔案名稱
+
 #### 圖像化工具
 
 - [DBeaver](https://dbeaver.io/)
